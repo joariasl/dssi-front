@@ -3,6 +3,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+$fa-font-path: "../bower_components/font-awesome-sass/assets/fonts/font-awesome/";
+@import "font-awesome-sass/assets/stylesheets/font-awesome.scss";
+
 .left_col {
   background: #2A3F54;
 }
