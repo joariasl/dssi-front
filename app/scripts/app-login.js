@@ -15,18 +15,17 @@ angular
     'ngCookies',
     'ngMessages',
     'ngResource',
-    'ngRoute',
+    'ui.router',
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+  .config(function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise("/");
+    $stateProvider
+      .state('main', {
+        url: '/',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
         controllerAs: 'login'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
   });
