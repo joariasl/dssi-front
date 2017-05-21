@@ -1,0 +1,15 @@
+image: node:6.10.3
+
+pipelines:
+  default:
+    - step:
+        script:
+          - apt-get update && apt-get install -y ruby-full
+          - gem install sass compass
+          - npm install -g grunt-cli bower yo generator-karma generator-angular
+          - npm install karma karma-jasmine karma-chrome-launcher
+          - npm install -g karma-cli
+          - npm install
+          - bower install --allow-root
+          - grunt test
+          - grunt build
