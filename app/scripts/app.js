@@ -17,7 +17,8 @@ angular
     'ngResource',
     'ui.router',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ngStorage'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/");
@@ -34,4 +35,24 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       });
+  })
+  .config(function($httpProvider) {
+    $httpProvider.interceptors.push(['$q', '$window', '$localStorage', function ($q, $window, $localStorage) {
+      return {
+        'request': function (config) {
+          config.headers = config.headers || {};
+          if ($localStorage.token) {
+            config.headers.Authorization = 'Bearer ' + $localStorage.token;
+          }
+          return config;
+        },
+        'responseError': function (response) {
+          if (response.status === 401 || response.status === 403) {
+            delete $localStorage.token;
+            $window.location.href = "login.html";
+          }
+          return $q.reject(response);
+        }
+      };
+    }]);
   });
