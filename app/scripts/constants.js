@@ -11,5 +11,5 @@
 angular
   .module('dssiFrontApp')
   .constant('urls', {
-    BASE_API: 'http://localhost:8000/v1'
+    BASE_API: 'http://localhost:8000/api'
   });
