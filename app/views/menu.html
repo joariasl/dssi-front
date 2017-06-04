@@ -1,0 +1,17 @@
+<!-- sidebar menu -->
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+  <div class="menu_section">
+    <h3>General</h3>
+    <ul class="nav side-menu">
+      <li ng-repeat="item in menu.menu"><a><i class="fa fa-{{ item.icon }}"></i> {{ item.name }} <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li ng-repeat="item_sub in item.items"><a ui-sref="{{ item_sub.state }}" href="#"> {{ item_sub.name }}</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+</div>
+<!-- /sidebar menu -->
+
+<script src="js/gentella.js"></script>
