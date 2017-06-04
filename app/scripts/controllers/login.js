@@ -20,15 +20,7 @@ angular.module('dssiFrontApp')
 
     function submit(){
       var formData = vm.formLogin;
-      console.log('Form Data: ', formData);
-      var sendData = '';
-      angular.forEach(formData, function(value, key){
-        if(!!sendData){
-          sendData += '&';
-        }
-        sendData += key+'='+value;
-      });
-
-      Auth.signin(sendData);
+      formData.email = formData.username;
+      Auth.signin(formData);
     }
   });

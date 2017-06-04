@@ -13,13 +13,14 @@ angular.module('dssiFrontApp')
 Auth.$inject = ['$http', '$localStorage', 'urls'];
 function Auth($http, $localStorage, urls) {
   var service = {
-    'signin': signin
+    signin: signin
   };
   return service;
 
   ////////////
 
   function signin(data, success, error) {
+    console.log('Signin Data: ', data);
     // $http.post(urls.BASE_API + '/authenticate', data).success(success).error(error);
     $http({
       method  : 'POST',
@@ -29,7 +30,7 @@ function Auth($http, $localStorage, urls) {
     }).then(
       function(result) {
         var data = result.data;
-          console.log('Datos NO error: ', data);
+        console.log('Datos NO error: ', data);
         // If not return error
         if (!data.error) {
           //$localStorage.token = res.token;
@@ -38,7 +39,7 @@ function Auth($http, $localStorage, urls) {
       },
       function(result){
         var data = result.data;
-          console.log('Datos error: ', data);
+        console.log('Datos error: ', data);
         if(data.error){
           vm.loginError = true;
           vm.error = data.error;
