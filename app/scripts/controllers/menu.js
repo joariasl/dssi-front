@@ -12,6 +12,11 @@ angular.module('dssiFrontApp')
     var vm = this;
     vm.menu = [
       {
+        id: 0,
+        name: 'Dashboard',
+        icon: 'dashboard'
+      },
+      {
         id: 1,
         name: 'Control de Acceso',
         icon: 'unlock-alt',
@@ -19,16 +24,31 @@ angular.module('dssiFrontApp')
           {
             id: 2,
             name: 'Checklist',
-            state: 'main',
-            icon: 'file-text-o'
+            state: 'checklist.view',
           },
           {
             id: 3,
+            name: 'Visitas',
+            state: 'visits.view',
+          },
+          {
+            id: 4,
             name: 'Llaves',
-            state: 'about',
-            icon: 'key'
+            state: 'keys.view',
+          }
+        ]
+      },
+      {
+        id: 1,
+        name: 'Sistema',
+        icon: 'gears',
+        items: [
+          {
+            id: 5,
+            name: 'Usuarios',
+            state: '',
           }
         ]
       }
-    ]
+    ];
   });
