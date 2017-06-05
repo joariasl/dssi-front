@@ -18,7 +18,8 @@ angular
     'ui.router',
     'ngSanitize',
     'ngTouch',
-    'ngStorage'
+    'ngStorage',
+    'ui.bootstrap'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/");
