@@ -6,17 +6,14 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <br />
         <!-- LUGAR / FECHA / TURNO -->
         <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
           <div class="form-group">
-            <label class="col-md-2 col-sm-3 col-xs-12" for="date">Fecha
-            </label>
+            <label class="col-md-2 col-sm-3 col-xs-12" for="date">Fecha</label>
             <div class="col-md-4 col-sm-6 col-xs-12">
-              <input type="text" id="date" required="required"><br />
+              <input type="text" id="date" required="required">
             </div>
-            <label class="col-md-2 col-sm-3 col-xs-12" for="active">Turno
-            </label>
+            <label class="col-md-2 col-sm-3 col-xs-12" for="active">Turno</label>
             <div class="col-md-4 col-sm-6 col-xs-12" id="active" required>
               <select class="form-control">
                 <option>Mañana</option>
@@ -35,13 +32,13 @@
                 <thead>
                   <tr>
                     <th></th>
-                    <th>ITEM</th>
-                    <th>ESTADO</th>
-                    <th>OBSERVACIONES</th>
+                    <th>Item</th>
+                    <th>Estado</th>
+                    <th>Observaciones</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <td rowspan="8">OBJETIVIDAD</td>
+                  <td rowspan="8">Objetividad</td>
                   <tr>
                     <td>Equipo radial</td>
                     <td>
@@ -140,7 +137,7 @@
                       data-parsley-maxlength="100" data-parsley-validation-threshold="10" style="width: 290px; height: 35px;"></textarea>
                     </td>
                   </tr>
-                  <td rowspan="4">ACTIVIDAD</td>
+                  <td rowspan="4">Actividad</td>
                   <tr>
                     <td>Retiro de basura</td>
                     <td>
@@ -183,65 +180,62 @@
                       data-parsley-maxlength="100" data-parsley-validation-threshold="10" style="width: 290px; height: 35px;"></textarea>
                     </td>
                   </tr>
-                </tr>
-                <tr>
-                  <th scope="row"></th>
-                  <td>Cumplimiento</td>
-                  <td>%</td>
-                  <td>%</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <table class="table table-bordered">
-              <tbody>
-                <tr>
-                  <td colspan="2">CONTROL DE CREDENCIALES</td>
-                </tr>
-                <tr>
-                  <td>Disponiblidad</td>
-                  <td>
-                    <div class="item form-group">
-                      <div class="col-md-4 col-sm-6 col-xs-12">
-                        <input type="number" id="number" name="number1" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                  <tr>
+                    <th scope="row"></th>
+                    <td>Cumplimiento</td>
+                    <td>%</td>
+                    <td>%</td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <td colspan="2">Control de credenciales</td>
+                  </tr>
+                  <tr>
+                    <td>Disponiblidad</td>
+                    <td>
+                      <div class="item form-group">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                          <input type="number" id="number" name="number1" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Entregadas</td>
-                  <td>
-                    <div class="item form-group">
-                      <div class="col-md-4 col-sm-6 col-xs-12">
-                        <input type="number" id="number" name="number2" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Entregadas</td>
+                    <td>
+                      <div class="item form-group">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                          <input type="number" id="number" name="number2" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Total</td>
-                  <td>
-                    <div class="form-group">
-                      <div class="col-md-4 col-sm-6 col-xs-12">
-                        <input type="text" class="form-control" disabled="disabled" placeholder="">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Total</td>
+                    <td>
+                      <div class="form-group">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                          <input type="text" class="form-control" disabled="disabled" placeholder="">
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="ln_solid"></div>
-          <div class="form-group">
-            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-3">
-              <button class="btn btn-primary" type="reset">Limpiar</button>
-              <button type="submit" class="btn btn-success">Registrar</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="ln_solid"></div>
+            <div class="form-group">
+              <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-3">
+                <button class="btn btn-primary" type="reset">Limpiar</button>
+                <button type="submit" class="btn btn-success">Registrar</button>
+              </div>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 </div>
