@@ -1,0 +1,200 @@
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Registrar Checklist</h2>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <br />
+        <!-- LUGAR / FECHA / TURNO -->
+        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+          <div class="form-group">
+            <label class="col-md-2 col-sm-3 col-xs-12" for="date">Fecha
+            </label>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <input type="text" id="date" required="required"><br />
+            </div>
+            <label class="col-md-2 col-sm-3 col-xs-12" for="active">Turno
+            </label>
+            <div class="col-md-4 col-sm-6 col-xs-12" id="active" required>
+              <select class="form-control">
+                <option>Mañana</option>
+                <option>Tarde</option>
+                <option>Noche</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- TABLA DE REGISTRO -->
+          <div class="x_title">
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            </br>
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>ITEM</th>
+                    <th>SI</th>
+                    <th>NO</th>
+                    <th>OBSERVACIONES</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <td rowspan="8">OBJETIVIDAD</td>
+                  <tr>
+                    <td>Equipo radial</td>
+                    <td><input type="radio" class="flat" name="check1" value="Y" checked="" required /></td>
+                    <td><input type="radio" class="flat" name="check1" value="N" /></td>
+                    <td>
+                      <textarea id="message" required="required" class="form-control" name="message1" data-parsley-trigger="keyup"
+                      data-parsley-maxlength="100" data-parsley-validation-threshold="10" style="width: 290px; height: 35px;"></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Computador</td>
+                    <td><input type="radio" class="flat" name="check2" value="Y" checked="" required /></td>
+                    <td><input type="radio" class="flat" name="check2" value="N" /></td>
+                    <td>
+                      <textarea id="message" required="required" class="form-control" name="message2" data-parsley-trigger="keyup"
+                      data-parsley-maxlength="100" data-parsley-validation-threshold="10" style="width: 290px; height: 35px;"></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Sistemas de cámaras</td>
+                    <td><input type="radio" class="flat" name="check3" value="Y" checked="" required /></td>
+                    <td><input type="radio" class="flat" name="check3" value="N" /></td>
+                    <td>
+                      <textarea id="message" required="required" class="form-control" name="message3" data-parsley-trigger="keyup"
+                      data-parsley-maxlength="100" data-parsley-validation-threshold="10" style="width: 290px; height: 35px;"></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Sistema de enrolamiento</td>
+                    <td><input type="radio" class="flat" name="check4" value="Y" checked="" required /></td>
+                    <td><input type="radio" class="flat" name="check4" value="N" /></td>
+                    <td>
+                      <textarea id="message" required="required" class="form-control" name="message4" data-parsley-trigger="keyup"
+                      data-parsley-maxlength="100" data-parsley-validation-threshold="10" style="width: 290px; height: 35px;"></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Celular</td>
+                    <td><input type="radio" class="flat" name="check5" value="Y" checked="" required /></td>
+                    <td><input type="radio" class="flat" name="check5" value="N" /></td>
+                    <td>
+                      <textarea id="message" required="required" class="form-control" name="message5" data-parsley-trigger="keyup"
+                      data-parsley-maxlength="100" data-parsley-validation-threshold="10" style="width: 290px; height: 35px;"></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Pantalla eventos actualizada</td>
+                    <td><input type="radio" class="flat" name="check6" value="Y" checked="" required /></td>
+                    <td><input type="radio" class="flat" name="check6" value="N" /></td>
+                    <td>
+                      <textarea id="message" required="required" class="form-control" name="message6" data-parsley-trigger="keyup"
+                      data-parsley-maxlength="100" data-parsley-validation-threshold="10" style="width: 290px; height: 35px;"></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Ascensores</td>
+                    <td><input type="radio" class="flat" name="check7" value="Y" checked="" required /></td>
+                    <td><input type="radio" class="flat" name="check7" value="N" /></td>
+                    <td>
+                      <textarea id="message" required="required" class="form-control" name="message7" data-parsley-trigger="keyup"
+                      data-parsley-maxlength="100" data-parsley-validation-threshold="10" style="width: 290px; height: 35px;"></textarea>
+                    </td>
+                  </tr>
+                  <td rowspan="4">ACTIVIDAD</td>
+                  <tr>
+                    <td>Retiro de basura</td>
+                    <td><input type="radio" class="flat" name="check8" value="Y" checked="" required /></td>
+                    <td><input type="radio" class="flat" name="check8" value="N" /></td>
+                    <td>
+                      <textarea id="message" required="required" class="form-control" name="message8" data-parsley-trigger="keyup"
+                      data-parsley-maxlength="100" data-parsley-validation-threshold="10" style="width: 290px; height: 35px;"></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Ingreso camión de valores</td>
+                    <td><input type="radio" class="flat" name="check9" value="Y" checked="" required /></td>
+                    <td><input type="radio" class="flat" name="check9" value="N" /></td>
+                    <td>
+                      <textarea id="message" required="required" class="form-control" name="message9" data-parsley-trigger="keyup"
+                      data-parsley-maxlength="100" data-parsley-validation-threshold="10" style="width: 290px; height: 35px;"></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Retiro de lavandería</td>
+                    <td><input type="radio" class="flat" name="check10" value="Y" checked="" required /></td>
+                    <td><input type="radio" class="flat" name="check10" value="N" /></td>
+                    <td>
+                      <textarea id="message" required="required" class="form-control" name="message10" data-parsley-trigger="keyup"
+                      data-parsley-maxlength="100" data-parsley-validation-threshold="10" style="width: 290px; height: 35px;"></textarea>
+                    </td>
+                    </tr>
+                  </tr>
+                  <tr>
+                    <th scope="row"></th>
+                    <td>Cumplimiento</td>
+                    <td>%</td>
+                    <td>%</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <td colspan="2">CONTROL DE CREDENCIALES</td>
+                  </tr>
+                  <tr>
+                    <td>Disponiblidad</td>
+                    <td>
+                      <div class="item form-group">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                          <input type="number" id="number" name="number1" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Entregadas</td>
+                    <td>
+                      <div class="item form-group">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                          <input type="number" id="number" name="number2" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Total</td>
+                    <td>
+                      <div class="form-group">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                          <input type="text" class="form-control" disabled="disabled" placeholder="">
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="ln_solid"></div>
+            <div class="form-group">
+              <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-3">
+                <button class="btn btn-primary" type="reset">Limpiar</button>
+                <button type="submit" class="btn btn-success">Registrar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
