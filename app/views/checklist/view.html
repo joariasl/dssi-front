@@ -35,7 +35,7 @@
       </div>
       <div class="x_content">
         <div class="table-responsive">
-          <table ng-controller="ChecklistViewCtrl as checklistview" class="table table-bordered">
+          <table class="table table-bordered">
             <thead >
               <tr class="headings">
                 <th rowspan="2" >
@@ -44,7 +44,7 @@
                 <th rowspan="2" class="column-title">N° Folio</th>
                 <th rowspan="2" class="column-title">Fecha</th>
                 <th rowspan="2" class="column-title">Turno</th>
-                <th colspan="{{ checklistview.checklistItemGroups.length }}" class="column-title">% Cumplimiento</th> <!--colspan segun cuantos grupos existan-->
+                <th colspan="{{ checklistView.checklistItemGroups.length }}" class="column-title">% Cumplimiento</th> <!--colspan segun cuantos grupos existan-->
                 <th colspan="3" class="column-title">Credenciales</th>
                 <th rowspan="2" class="column-title">Ver</th>
                 <th class="bulk-actions" colspan="9">
@@ -52,19 +52,19 @@
                 </th>
               </tr>
               <tr class="headings">
-                <th ng-repeat="item_group in checklistview.checklistItemGroups" class="column-title">{{ item_group.group }}</th> <!-- ng-repeat para sacar los grupos-->
+                <th ng-repeat="item_group in checklistView.checklistItemGroups" class="column-title">{{ item_group.name }}</th> <!-- ng-repeat para sacar los grupos-->
                 <th class="column-title">Entregadas</th>
                 <th class="column-title">Disponibles</th>
                 <th class="column-title">Total</th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="checklistRegistry in checklistview.checklistsRegistries">
+              <tr ng-repeat="checklistRegistry in checklistView.checklistsRegistries">
                 <td><input type="checkbox" class="flat" name="table_records"></td>
                 <td>{{ checklistRegistry.id }}</td>
                 <td>{{ checklistRegistry.date }}</td>
                 <td>{{ checklistRegistry.turn }}</td>
-                <td ng-repeat="item_group in checklistview.checklistItemGroups">{{ checklistRegistry.entries.length }}</td>
+                <td ng-repeat="item_group in checklistView.checklistItemGroups">{{ checklistRegistry.entries.length }}</td>
                 <td>{{ checklistRegistry.delivered }}</td>
                 <td>{{ checklistRegistry.avaliable }}</td>
                 <td>{{ checklistRegistry.class }}</td>

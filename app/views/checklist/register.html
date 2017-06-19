@@ -6,7 +6,7 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <form ng-controller="ChecklistRegisterCtrl as checklistregister" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
           <div class="form-group">
             <label class="col-md-2 col-sm-3 col-xs-12" for="date">Fecha</label>
             <div class="col-md-4 col-sm-6 col-xs-12">
@@ -15,7 +15,7 @@
             <label class="col-md-2 col-sm-3 col-xs-12" for="active">Turno</label>
             <div class="col-md-4 col-sm-6 col-xs-12" id="active" required>
               <select class="form-control">
-                <option ng-repeat="item in checklistregister.checklistTurns"> {{ item.turn }}</option>
+                <option ng-repeat="item in checklistRegister.checklistTurns"> {{ item.turn }}</option>
               </select>
             </div>
           </div>
@@ -33,7 +33,7 @@
                     <th>Observaciones</th>
                   </tr>
                 </thead>
-                <tbody ng-repeat="group in checklistregister.checklistItemGroups">
+                <tbody ng-repeat="group in checklistRegister.checklistItemGroups">
                   <tr ng-repeat="item_sub in group.items">
                     <td ng-if="$first" rowspan="{{ group.items.length }}">{{ group.name }}</td>
                     <td>{{ item_sub.name }}</td>
