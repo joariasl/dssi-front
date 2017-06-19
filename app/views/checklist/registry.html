@@ -15,7 +15,7 @@
             <label class="col-md-2 col-sm-3 col-xs-12" for="active">Turno</label>
             <div class="col-md-4 col-sm-6 col-xs-12" id="active" required>
               <select class="form-control">
-                <option ng-repeat="item in checklistRegister.checklistTurns"> {{ item.turn }}</option>
+                <option ng-repeat="item in checklistRegistry.checklistTurns"> {{ item.turn }}</option>
               </select>
             </div>
           </div>
@@ -33,7 +33,7 @@
                     <th>Observaciones</th>
                   </tr>
                 </thead>
-                <tbody ng-repeat="group in checklistRegister.checklistItemGroups">
+                <tbody ng-repeat="group in checklistRegistry.checklistItemGroups">
                   <tr ng-repeat="item_sub in group.items">
                     <td ng-if="$first" rowspan="{{ group.items.length }}">{{ group.name }}</td>
                     <td>{{ item_sub.name }}</td>

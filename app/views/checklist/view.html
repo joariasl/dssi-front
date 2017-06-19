@@ -63,10 +63,10 @@
                 <td><input type="checkbox" class="flat" name="table_records"></td>
                 <td>{{ checklistRegistry.id }}</td>
                 <td>{{ checklistRegistry.date }}</td>
-                <td>{{ checklistRegistry.turn }}</td>
-                <td ng-repeat="item_group in checklistView.checklistItemGroups">{{ checklistRegistry.entries.length }}</td>
-                <td>{{ checklistRegistry.delivered }}</td>
-                <td>{{ checklistRegistry.avaliable }}</td>
+                <td>{{ checklistView.checklistTurns[checklistRegistry.turn-1].name }}</td>
+                <td ng-repeat="item_group in checklistView.checklistItemGroups">{{ checklistRegistry.checklist_entries.length }}</td>
+                <td>{{ checklistRegistry.credential_delivered }}</td>
+                <td>{{ checklistRegistry.credential_avaliable }}</td>
                 <td>{{ checklistRegistry.class }}</td>
                 <td>{{ checklistRegistry.class }}</td>
               </tr>

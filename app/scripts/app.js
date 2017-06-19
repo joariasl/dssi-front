@@ -50,11 +50,11 @@ angular
         controller: 'ChecklistCtrl',
         controllerAs: 'checklist'
       })
-      .state('checklist.register', {
-        url: '/register',
-        templateUrl: 'views/checklist/register.html',
-        controller: 'ChecklistRegisterCtrl',
-        controllerAs: 'checklistRegister'
+      .state('checklist.registry', {
+        url: '/registry',
+        templateUrl: 'views/checklist/registry.html',
+        controller: 'ChecklistRegistryCtrl',
+        controllerAs: 'checklistRegistry'
       })
       .state('checklist.view', {
         url: '/view',
