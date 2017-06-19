@@ -25,11 +25,50 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  // Configurable environment vars for the application
+  var env = {
+    dev: {
+      BASE_API: 'http://localhost:8000/api'
+    },
+    build: {
+      BASE_API: '../api'
+    }
+  };
+
+  grunt.loadNpmTasks('grunt-replace');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
     // Project settings
     yeoman: appConfig,
+
+    // Project environment vars
+    env: env,
+
+    replace: {
+      dist: {
+        options: {
+          patterns: [
+            // {
+            //   json:  function (done) {
+            //     // Replace all environment vers
+            //     done(Object.assign({}, process.env));
+            //   }
+            // },
+            {
+              match: /BASE_API: \'.*\'/g,
+              replacement: function(){
+                return 'BASE_API: \'' + process.env.BASE_API + '\'';
+              }
+            }
+          ]
+        },
+        files: [
+          {expand: true, flatten: true, src: ['.tmp/concat/scripts/{,*/}*.js'], dest: '.tmp/concat/scripts/'}
+        ]
+      }
+    },
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -497,12 +536,14 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'env:build',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
     'postcss',
     'ngtemplates',
     'concat',
+    'replace',
     'ngAnnotate',
     'copy:dist',
     'cdnify',
