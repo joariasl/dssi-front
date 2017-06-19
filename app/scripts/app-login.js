@@ -18,7 +18,8 @@ angular
     'ui.router',
     'ngSanitize',
     'ngTouch',
-    'ngStorage'
+    'ngStorage',
+    'angular-loading-bar'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/");
@@ -29,4 +30,8 @@ angular
         controller: 'LoginCtrl',
         controllerAs: 'login'
       });
-  });
+  })
+  .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = false;
+    cfpLoadingBarProvider.includeBar = true;
+  }]);
