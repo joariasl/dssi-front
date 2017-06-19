@@ -25,9 +25,7 @@
             <div class="navbar nav_title" style="border: 0;">
               <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Dreams - SSI</span></a>
             </div>
-
             <div class="clearfix"></div>
-
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
@@ -40,13 +38,9 @@
               <div class="clearfix"></div>
             </div>
             <!-- /menu profile quick info -->
-
-            <br />
-
             <!-- sidebar menu -->
             <div ng-controller="MenuCtrl as menu" ng-include="'views/menu.html'"></div>
             <!-- sidebar menu -->
-
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
@@ -65,7 +59,6 @@
             <!-- /menu footer buttons -->
           </div>
         </div>
-
         <!-- top navigation -->
         <div class="top_nav">
           <div class="nav_menu">
@@ -74,7 +67,7 @@
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
               </div>
               <ul class="nav navbar-nav navbar-right">
-                <li class="">
+                <li>
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <img src="images/img.jpg" alt="">John Doe
                     <span class=" fa fa-angle-down"></span>
@@ -156,25 +149,24 @@
                   </ul>
                 </li>
                 <!-- property -->
-                <li ng-controller="PropertyCtrl as property" class="">
-                  <a href="#" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <li ng-controller="PropertyCtrl as property">
+                  <a href="#" data-toggle="dropdown" aria-expanded="false">
                     <span>{{ property.property_selected.name }}</span>
-                    <span class=" fa fa-angle-down"></span>
+                    <span class="fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li ng-repeat="item in property.property"><a ng-click="property.property_selected = item" href="#">{{ item.name }}</a></li>
                   </ul>
                 </li>
-                <!-- property -->
+                <!-- /property -->
               </ul>
             </nav>
           </div>
         </div>
         <!-- /top navigation -->
-
         <!-- page content -->
         <div class="right_col" role="main">
-          <div class="">
+          <div>
             <!-- AngularJS content -->
             <div class="container">
             <div ui-view=""></div>
@@ -182,7 +174,6 @@
           </div>
         </div>
         <!-- /page content -->
-
         <!-- footer content -->
         <footer>
           <div class="pull-right">
@@ -193,7 +184,6 @@
         <!-- /footer content -->
       </div>
     </div>
-
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -235,8 +225,8 @@
         <script src="scripts/services/property.js"></script>
         <!-- endbuild -->
 
-        <!-- Static JavaScript files -->
-        <!-- Gentella template -->
-        <!-- <script src="js/gentella.js"></script> -->
-</body>
+    <!-- Static JavaScript files -->
+    <!-- Gentella template -->
+    <!-- <script src="js/gentella.js"></script> -->
+  </body>
 </html>

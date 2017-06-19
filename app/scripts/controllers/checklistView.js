@@ -12,10 +12,10 @@ angular.module('dssiFrontApp')
     var vm = this;
     vm.checklistItemGroups = [
       {
-        group: 'OPERATIVIDAD'
+        group: 'Operatividad'
       },
       {
-        group: 'ACTIVIDAD'
+        group: 'Actividad'
       }
     ];
     vm.checklistsRegistries = [
