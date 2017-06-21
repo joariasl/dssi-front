@@ -19,7 +19,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngStorage',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'angular-loading-bar'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/");
@@ -50,11 +51,11 @@ angular
         controller: 'ChecklistCtrl',
         controllerAs: 'checklist'
       })
-      .state('checklist.register', {
-        url: '/register',
-        templateUrl: 'views/checklist/register.html',
-        controller: 'ChecklistRegisterCtrl',
-        controllerAs: 'checklistRegister'
+      .state('checklist.registry', {
+        url: '/registry',
+        templateUrl: 'views/checklist/registry.html',
+        controller: 'ChecklistRegistryCtrl',
+        controllerAs: 'checklistRegistry'
       })
       .state('checklist.view', {
         url: '/view',
@@ -140,4 +141,8 @@ angular
         }
       };
     }]);
-  });
+  })
+  .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = false;
+    cfpLoadingBarProvider.includeBar = true;
+  }]);

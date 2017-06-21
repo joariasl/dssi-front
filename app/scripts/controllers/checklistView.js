@@ -8,35 +8,23 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('ChecklistViewCtrl', function () {
+  .controller('ChecklistViewCtrl', function (ChecklistRegistry, ChecklistItemGroup) {
     var vm = this;
-    vm.checklistItemGroups = [
+    vm.checklistTurns= [
       {
-        group: 'Operatividad'
+        name: 'Mañana'
       },
       {
-        group: 'Actividad'
-      }
-    ];
-    vm.checklistsRegistries = [
+        name: 'Tarde'
+      },
       {
-        id: '1',
-        date: '18/06/1990',
-        turn: 'Mañana',
-        entries: [
-          {
-            id: 1,
-            response: true,
-            observation: 'Una observación'
-          },
-          {
-            id: 2,
-            response: false,
-            observation: 'Otra observación'
-          }
-        ],
-        delivered: '10',
-        avaliable: '20'
+        name: 'Noche'
       }
     ];
+    vm.checklistItemGroups = ChecklistItemGroup.query({
+      checklist_id: '1'
+    });
+    vm.checklistsRegistries = ChecklistRegistry.query({
+      checklist_id: '1'
+    });
   });
