@@ -70,7 +70,7 @@ angular
         controller: 'ChecklistViewCtrl',
         controllerAs: 'checklistView',
         ncyBreadcrumb: {
-          label: 'Ver'
+          label: 'Buscar'
         }
       })
       .state('checklist.admin', {
@@ -88,25 +88,37 @@ angular
         url: '/visits',
         templateUrl: 'views/visits/visits.html',
         controller: 'VisitsCtrl',
-        controllerAs: 'visits'
+        controllerAs: 'visits',
+        ncyBreadcrumb: {
+          label: 'Visitas'
+        }
       })
       .state('visits.view', {
         url: '/view',
         templateUrl: 'views/visits/view.html',
         controller: 'VisitsViewCtrl',
-        controllerAs: 'visitsView'
+        controllerAs: 'visitsView',
+        ncyBreadcrumb: {
+          label: 'Buscar'
+        }
       })
       .state('visits.checkin', {
         url: '/checkin',
         templateUrl: 'views/visits/checkin.html',
         controller: 'VisitsCheckinCtrl',
-        controllerAs: 'visitsCheckin'
+        controllerAs: 'visitsCheckin',
+        ncyBreadcrumb: {
+          label: 'Check-In'
+        }
       })
       .state('visits.checkout', {
         url: '/checkout',
         templateUrl: 'views/visits/checkout.html',
         controller: 'VisitsCheckoutCtrl',
-        controllerAs: 'visitsCheckout'
+        controllerAs: 'visitsCheckout',
+        ncyBreadcrumb: {
+          label: 'Check-Out'
+        }
       })
       //Llaves
       .state('keys', {
@@ -114,25 +126,37 @@ angular
         url: '/keys',
         templateUrl: 'views/keys/keys.html',
         controller: 'KeysCtrl',
-        controllerAs: 'keys'
+        controllerAs: 'keys',
+        ncyBreadcrumb: {
+          label: 'Llaves'
+        }
       })
       .state('keys.delivery', {
         url: '/delivery',
         templateUrl: 'views/keys/delivery.html',
         controller: 'KeysDeliveryCtrl',
-        controllerAs: 'keysDelivery'
+        controllerAs: 'keysDelivery',
+        ncyBreadcrumb: {
+          label: 'Entrega'
+        }
       })
       .state('keys.return', {
         url: '/return',
         templateUrl: 'views/keys/return.html',
         controller: 'KeysReturnCtrl',
-        controllerAs: 'keysReturn'
+        controllerAs: 'keysReturn',
+        ncyBreadcrumb: {
+          label: 'Devolución'
+        }
       })
       .state('keys.view', {
         url: '/view',
         templateUrl: 'views/keys/view.html',
         controller: 'KeysViewCtrl',
-        controllerAs: 'keysView'
+        controllerAs: 'keysView',
+        ncyBreadcrumb: {
+          label: 'Buscar'
+        }
       });
   })
   .config(function($httpProvider) {
