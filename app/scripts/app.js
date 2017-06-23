@@ -20,7 +20,8 @@ angular
     'ngTouch',
     'ngStorage',
     'ui.bootstrap',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'ncy-angular-breadcrumb'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/");
@@ -49,25 +50,37 @@ angular
         url: '/checklist',
         templateUrl: 'views/checklist/checklist.html',
         controller: 'ChecklistCtrl',
-        controllerAs: 'checklist'
+        controllerAs: 'checklist',
+        ncyBreadcrumb: {
+          label: 'Checklist'
+        }
       })
       .state('checklist.registry', {
         url: '/registry',
         templateUrl: 'views/checklist/registry.html',
         controller: 'ChecklistRegistryCtrl',
-        controllerAs: 'checklistRegistry'
+        controllerAs: 'checklistRegistry',
+        ncyBreadcrumb: {
+          label: 'Registrar'
+        }
       })
       .state('checklist.view', {
         url: '/view',
         templateUrl: 'views/checklist/view.html',
         controller: 'ChecklistViewCtrl',
-        controllerAs: 'checklistView'
+        controllerAs: 'checklistView',
+        ncyBreadcrumb: {
+          label: 'Ver'
+        }
       })
       .state('checklist.admin', {
         url: '/admin',
         templateUrl: 'views/checklist/admin.html',
         controller: 'ChecklistAdminCtrl',
-        controllerAs: 'checklistAdmin'
+        controllerAs: 'checklistAdmin',
+        ncyBreadcrumb: {
+          label: 'Administrar'
+        }
       })
       //Visitas
       .state('visits', {
@@ -145,4 +158,23 @@ angular
   .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
     cfpLoadingBarProvider.includeBar = true;
-  }]);
+  }])
+  .config(function($breadcrumbProvider) {
+    $breadcrumbProvider.setOptions({
+      template: 'bootstrap3',
+      includeAbstract: true,
+      template: `
+      <ol class="breadcrumb">
+        <li ng-repeat="step in steps | limitTo:(steps.length-1)" style="vertical-align: middle;">
+          <h2 ng-if="$first">
+            <a href="{{step.ncyBreadcrumbLink}}" ng-bind-html="step.ncyBreadcrumbLabel"></a>
+          </h2>
+          <a ng-if="!$first" href="{{step.ncyBreadcrumbLink}}" ng-bind-html="step.ncyBreadcrumbLabel"></a>
+        </li>
+        <li ng-repeat="step in steps | limitTo:-1" class="active" style="vertical-align: middle;">
+          <span ng-bind-html="step.ncyBreadcrumbLabel"></span>
+        </li>
+      </ol>
+      `
+    });
+  });
