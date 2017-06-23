@@ -96,30 +96,30 @@ angular
         controllerAs: 'visitsCheckout'
       })
       //Llaves
-      .state('keys', {
+      .state('key', {
         abstract: true,
-        url: '/keys',
-        templateUrl: 'views/keys/keys.html',
-        controller: 'KeysCtrl',
-        controllerAs: 'keys'
+        url: '/key',
+        templateUrl: 'views/key/key.html',
+        controller: 'KeyCtrl',
+        controllerAs: 'key'
       })
-      .state('keys.delivery', {
+      .state('key.delivery', {
         url: '/delivery',
-        templateUrl: 'views/keys/delivery.html',
-        controller: 'KeysDeliveryCtrl',
-        controllerAs: 'keysDelivery'
+        templateUrl: 'views/key/delivery.html',
+        controller: 'KeyDeliveryCtrl',
+        controllerAs: 'keyDelivery'
       })
-      .state('keys.return', {
+      .state('key.return', {
         url: '/return',
-        templateUrl: 'views/keys/return.html',
-        controller: 'KeysReturnCtrl',
-        controllerAs: 'keysReturn'
+        templateUrl: 'views/key/return.html',
+        controller: 'KeyReturnCtrl',
+        controllerAs: 'keyReturn'
       })
-      .state('keys.view', {
+      .state('key.view', {
         url: '/view',
-        templateUrl: 'views/keys/view.html',
-        controller: 'KeysViewCtrl',
-        controllerAs: 'keysView'
+        templateUrl: 'views/key/view.html',
+        controller: 'KeyViewCtrl',
+        controllerAs: 'keyView'
       });
   })
   .config(function($httpProvider) {

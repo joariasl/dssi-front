@@ -34,7 +34,7 @@ angular.module('dssiFrontApp')
           {
             id: 4,
             name: 'Llaves',
-            state: 'keys.view',
+            state: 'key.view',
           }
         ]
       },
