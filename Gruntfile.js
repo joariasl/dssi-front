@@ -28,9 +28,11 @@ module.exports = function (grunt) {
   // Configurable environment vars for the application
   var env = {
     dev: {
+      BASE_URL: 'http://localhost:8000',
       BASE_API: 'http://localhost:8000/api'
     },
     build: {
+      BASE_URL: '..',
       BASE_API: '../api'
     }
   };
@@ -56,6 +58,12 @@ module.exports = function (grunt) {
             //     done(Object.assign({}, process.env));
             //   }
             // },
+            {
+              match: /BASE_URL: \'.*\'/g,
+              replacement: function(){
+                return 'BASE_URL: \'' + process.env.BASE_URL + '\'';
+              }
+            },
             {
               match: /BASE_API: \'.*\'/g,
               replacement: function(){

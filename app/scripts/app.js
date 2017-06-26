@@ -26,11 +26,11 @@ angular
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/");
     $stateProvider
-      .state('main', {
+      .state('index', {
         url: '/',
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        templateUrl: 'views/index.html',
+        controller: 'IndexCtrl',
+        controllerAs: 'index'
       })
       .state('about', {
         url: '/about',
@@ -176,7 +176,7 @@ angular
         },
         'responseError': function (response) {
           //if (response.status === 401 || response.status === 403) {
-          if (["token_expired", "token_invalid", "token_not_provided"].indexOf(response.data.error) !== -1) {
+          if (response.data && ["token_expired", "token_invalid", "token_not_provided"].indexOf(response.data.error) !== -1) {
             delete $localStorage.token;
             redirectToLogin();
           }

@@ -13,39 +13,35 @@ angular.module('dssiFrontApp')
 Auth.$inject = ['$http', '$localStorage', 'urls'];
 function Auth($http, $localStorage, urls) {
   var service = {
-    signin: signin
+    signin: signin,
+    logout: logout
   };
   return service;
 
   ////////////
 
   function signin(data, success, error) {
-    console.log('Signin Data: ', data);
-    // $http.post(urls.BASE_API + '/authenticate', data).success(success).error(error);
+    // $http.post(urls.BASE_URL + '/authenticate', data).success(success).error(error);
     $http({
       method  : 'POST',
-      url     : urls.BASE_API + '/authenticate',
+      url     : urls.BASE_URL + '/authenticate',
       data    : data, // pass in data as strings
-      headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
-    }).then(
-      function(result) {
-        var data = result.data;
-        console.log('Datos NO error: ', data);
-        // If not return error
-        if (!data.error) {
-          //$localStorage.token = res.token;
-          $state.go('/');
-        }
-      },
-      function(result){
-        var data = result.data;
-        console.log('Datos error: ', data);
-        if(data.error){
-          vm.loginError = true;
-          vm.error = data.error;
-          vm.errorText = data.error_description;
-        }
-      }
-    );
+    }).then(function(result){
+      var data = result.data;
+      $localStorage.token = data.token;
+      success && success(result);
+    }, error);
+  }
+
+  function logout(success) {
+    $http.post(urls.BASE_URL + '/invalidate').then(function(result){
+      invalidate();
+      success && success(result);
+    });
+    return false;
+  }
+
+  function invalidate(){
+    delete $localStorage.token;
   }
 }
