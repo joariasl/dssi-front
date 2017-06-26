@@ -193,18 +193,6 @@ angular
     $breadcrumbProvider.setOptions({
       template: 'bootstrap3',
       includeAbstract: true,
-      template: `
-      <ol class="breadcrumb">
-        <li ng-repeat="step in steps | limitTo:(steps.length-1)" style="vertical-align: middle;">
-          <h2 ng-if="$first">
-            <a href="{{step.ncyBreadcrumbLink}}" ng-bind-html="step.ncyBreadcrumbLabel"></a>
-          </h2>
-          <a ng-if="!$first" href="{{step.ncyBreadcrumbLink}}" ng-bind-html="step.ncyBreadcrumbLabel"></a>
-        </li>
-        <li ng-repeat="step in steps | limitTo:-1" class="active" style="vertical-align: middle;">
-          <span ng-bind-html="step.ncyBreadcrumbLabel"></span>
-        </li>
-      </ol>
-      `
+      templateUrl: 'views/breadcrumb.html'
     });
   });
