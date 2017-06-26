@@ -21,16 +21,6 @@ angular
     'ngStorage',
     'angular-loading-bar'
   ])
-  .config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/");
-    $stateProvider
-      .state('main', {
-        url: '/',
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl',
-        controllerAs: 'login'
-      });
-  })
   .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
     cfpLoadingBarProvider.includeBar = true;
