@@ -161,18 +161,24 @@ angular
   })
   .config(function($httpProvider) {
     $httpProvider.interceptors.push(['$q', '$window', '$localStorage', function ($q, $window, $localStorage) {
+      function redirectToLogin() {
+        $window.location.href = "login.html";
+      }
       return {
         'request': function (config) {
           config.headers = config.headers || {};
           if ($localStorage.token) {
             config.headers.Authorization = 'Bearer ' + $localStorage.token;
+          } else {
+            redirectToLogin();
           }
           return config;
         },
         'responseError': function (response) {
-          if (response.status === 401 || response.status === 403) {
+          //if (response.status === 401 || response.status === 403) {
+          if (["token_expired", "token_invalid", "token_not_provided"].indexOf(response.data.error) !== -1) {
             delete $localStorage.token;
-            $window.location.href = "login.html";
+            redirectToLogin();
           }
           return $q.reject(response);
         }
