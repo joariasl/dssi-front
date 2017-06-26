@@ -35,6 +35,6 @@ angular.module('dssiFrontApp')
       }
       var data = result.data;
       vm.success = null;
-      vm.error = error_messages[data.error] || data.error;
+      vm.error = data ? error_messages[data.error] || data.error : ' ';
     }
   });
