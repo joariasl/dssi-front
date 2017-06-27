@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc function
- * @name dssiFrontApp.controller:KeysReturnCtrl
+ * @name dssiFrontApp.controller:KeyDeliveryCtrl
  * @description
- * # KeysReturnCtrl
+ * # KeyDeliveryCtrl
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('KeysReturnCtrl', function () {
+  .controller('KeyDeliveryCtrl', function () {
   });

@@ -1,12 +1,16 @@
 <div class="x_title">
-  <h2>Buscar llaves</h2>
+  <h2>Buscar Llaves</h2>
   <div class="clearfix"></div>
 </div>
 <div class="x_content">
   <div class="form-group">
-    <label class="col-md-2 col-sm-3 col-xs-12" for="username">Buscar</label>
     <div class="col-md-3 col-sm-6 col-xs-12" id="search" ng-model="criterio">
-      <input type="text" id="search" name="search">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Buscar">
+        <span class="input-group-btn">
+          <button class="btn btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </span>
+      </div>
     </div>
     <!-- Filtrar -->
     <div class="col-md-2 col-sm-6 col-xs-12" class="dropdown dropup docs-options">
@@ -21,9 +25,6 @@
       </ul>
     </div>
     <!-- FIN Filtrar -->
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <button class="btn btn-primary" type="button">Ver</button>
-    </div>
   </div>
 </div>
 <div class="x_title">
@@ -38,30 +39,27 @@
           <th>
             <input type="checkbox" id="check-all" class="flat">
           </th>
-          <th class="column-title">N° Folio</th>
-          <th class="column-title">Fecha</th>
-          <th class="column-title">Hora llegada</th>
-          <th class="column-title">Llave</th>
-          <th class="column-title">Status</th>
-          <th class="column-title">En poder de</th>
-          <th class="column-title">Lugar</th>
-          <th class="column-title">Ver</th>
-          <th class="bulk-actions" colspan="9">
-            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-          </th>
+          <th class="text-center">N° Folio</th>
+          <th class="text-center">Fecha</th>
+          <th class="text-center">Hora llegada</th>
+          <th class="text-center">Llave</th>
+          <th class="text-center">Status</th>
+          <th class="text-center">En poder de</th>
+          <th class="text-center">Lugar</th>
+          <th class="text-center">Ver</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr ng-repeat="key in keyView.key">
           <td><input type="checkbox" class="flat" name="table_records"></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{ key.id }}</td>
+          <td>{{ key.date }}</td>
+          <td>{{ key.hour }}</td>
+          <td>{{ key.key }}</td>
+          <td>{{  }}</td>
+          <td>{{ key.has }}</td>
+          <td>{{ key.place }}</td>
+          <td>{{  }}</td>
         </tr>
       </tbody>
     </table>

@@ -166,7 +166,7 @@ angular
             controller: 'KeysReturnCtrl',
             controllerAs: 'keysReturn',
             ncyBreadcrumb: {
-              label: 'Devolvolución'
+              label: 'Devolución'
             }
           });
   })
