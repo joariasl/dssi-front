@@ -24,17 +24,17 @@ angular.module('dssiFrontApp')
           {
             id: 2,
             name: 'Checklist',
-            state: 'checklist.view',
+            state: 'access-control.checklist.view',
           },
           {
             id: 3,
             name: 'Visitas',
-            state: 'visits.view',
+            state: 'access-control.visits.view',
           },
           {
             id: 4,
             name: 'Llaves',
-            state: 'key.view',
+            state: 'access-control.key.view',
           }
         ]
       },

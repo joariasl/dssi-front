@@ -1,12 +1,18 @@
 @charset "UTF-8";
 
+/*** Bootstrap SASS ***/
 $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+$breadcrumb-bg: inherit;
+$breadcrumb-padding-vertical: 0px;
+$breadcrumb-padding-horizontal: 0px;
 // bower:scss
 @import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
 $fa-font-path: "../bower_components/font-awesome-sass/assets/fonts/font-awesome/";
 @import "font-awesome-sass/assets/stylesheets/font-awesome.scss";
+
+/*** Gentella ***/
 
 .left_col {
   background: #2A3F54;

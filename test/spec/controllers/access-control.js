@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: LoginCtrl', function () {
+describe('Controller: AccessControlCtrl', function () {
 
   // load the controller's module
   beforeEach(module('dssiFrontApp'));
 
-  var LoginCtrl,
+  var AccessControlCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    LoginCtrl = $controller('LoginCtrl', {
+    AccessControlCtrl = $controller('AccessControlCtrl', {
       $scope: scope
       // place here mocked dependencies
     });

@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc function
- * @name dssiFrontApp.controller:ChecklistCtrl
+ * @name dssiFrontApp.controller:AccessControlCtrl
  * @description
- * # ChecklistCtrl
+ * # AccessControlCtrl
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('ChecklistCtrl', function ($state) {
+  .controller('AccessControlCtrl', function () {
   });
