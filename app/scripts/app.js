@@ -55,15 +55,6 @@ angular
           label: 'Checklist'
         }
       })
-      .state('checklist.registry', {
-        url: '/registry',
-        templateUrl: 'views/checklist/registry.html',
-        controller: 'ChecklistRegistryCtrl',
-        controllerAs: 'checklistRegistry',
-        ncyBreadcrumb: {
-          label: 'Registrar'
-        }
-      })
       .state('checklist.view', {
         url: '/view',
         templateUrl: 'views/checklist/view.html',
@@ -71,6 +62,15 @@ angular
         controllerAs: 'checklistView',
         ncyBreadcrumb: {
           label: 'Buscar'
+        }
+      })
+      .state('checklist.registry', {
+        url: '/registry',
+        templateUrl: 'views/checklist/registry.html',
+        controller: 'ChecklistRegistryCtrl',
+        controllerAs: 'checklistRegistry',
+        ncyBreadcrumb: {
+          label: 'Registrar'
         }
       })
       .state('checklist.admin', {
@@ -131,13 +131,22 @@ angular
           label: 'Llaves'
         }
       })
+      .state('keys.view', {
+        url: '/view',
+        templateUrl: 'views/keys/view.html',
+        controller: 'KeysViewCtrl',
+        controllerAs: 'keysView',
+        ncyBreadcrumb: {
+          label: 'Buscar'
+        }
+      })
       .state('keys.delivery', {
         url: '/delivery',
         templateUrl: 'views/keys/delivery.html',
         controller: 'KeysDeliveryCtrl',
         controllerAs: 'keysDelivery',
         ncyBreadcrumb: {
-          label: 'Entrega'
+          label: 'Entregar'
         }
       })
       .state('keys.return', {
@@ -146,16 +155,7 @@ angular
         controller: 'KeysReturnCtrl',
         controllerAs: 'keysReturn',
         ncyBreadcrumb: {
-          label: 'Devolución'
-        }
-      })
-      .state('keys.view', {
-        url: '/view',
-        templateUrl: 'views/keys/view.html',
-        controller: 'KeysViewCtrl',
-        controllerAs: 'keysView',
-        ncyBreadcrumb: {
-          label: 'Buscar'
+          label: 'Devolver'
         }
       });
   })
