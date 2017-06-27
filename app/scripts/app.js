@@ -44,120 +44,131 @@ angular
         controller: 'AdminUserCtrl',
         controllerAs: 'adminUser'
       })
-      //Checklist
-      .state('checklist', {
+      .state('access-control', {
         abstract: true,
-        url: '/checklist',
-        templateUrl: 'views/checklist/checklist.html',
-        controller: 'ChecklistCtrl',
-        controllerAs: 'checklist',
+        url: '/access-control',
+        templateUrl: 'views/access-control.html',
+        controller: 'AccessControlCtrl',
+        controllerAs: 'accessControl',
         ncyBreadcrumb: {
-          label: 'Checklist'
+          label: 'Control de Acceso',
+          skip: true
         }
       })
-      .state('checklist.view', {
-        url: '/view',
-        templateUrl: 'views/checklist/view.html',
-        controller: 'ChecklistViewCtrl',
-        controllerAs: 'checklistView',
-        ncyBreadcrumb: {
-          label: 'Buscar'
-        }
-      })
-      .state('checklist.registry', {
-        url: '/registry',
-        templateUrl: 'views/checklist/registry.html',
-        controller: 'ChecklistRegistryCtrl',
-        controllerAs: 'checklistRegistry',
-        ncyBreadcrumb: {
-          label: 'Registrar'
-        }
-      })
-      .state('checklist.admin', {
-        url: '/admin',
-        templateUrl: 'views/checklist/admin.html',
-        controller: 'ChecklistAdminCtrl',
-        controllerAs: 'checklistAdmin',
-        ncyBreadcrumb: {
-          label: 'Administrar'
-        }
-      })
-      //Visitas
-      .state('visits', {
-        abstract: true,
-        url: '/visits',
-        templateUrl: 'views/visits/visits.html',
-        controller: 'VisitsCtrl',
-        controllerAs: 'visits',
-        ncyBreadcrumb: {
-          label: 'Visitas'
-        }
-      })
-      .state('visits.view', {
-        url: '/view',
-        templateUrl: 'views/visits/view.html',
-        controller: 'VisitsViewCtrl',
-        controllerAs: 'visitsView',
-        ncyBreadcrumb: {
-          label: 'Buscar'
-        }
-      })
-      .state('visits.checkin', {
-        url: '/checkin',
-        templateUrl: 'views/visits/checkin.html',
-        controller: 'VisitsCheckinCtrl',
-        controllerAs: 'visitsCheckin',
-        ncyBreadcrumb: {
-          label: 'Check-In'
-        }
-      })
-      .state('visits.checkout', {
-        url: '/checkout',
-        templateUrl: 'views/visits/checkout.html',
-        controller: 'VisitsCheckoutCtrl',
-        controllerAs: 'visitsCheckout',
-        ncyBreadcrumb: {
-          label: 'Check-Out'
-        }
-      })
-      //Llaves
-      .state('keys', {
-        abstract: true,
-        url: '/keys',
-        templateUrl: 'views/keys/keys.html',
-        controller: 'KeysCtrl',
-        controllerAs: 'keys',
-        ncyBreadcrumb: {
-          label: 'Llaves'
-        }
-      })
-      .state('keys.view', {
-        url: '/view',
-        templateUrl: 'views/keys/view.html',
-        controller: 'KeysViewCtrl',
-        controllerAs: 'keysView',
-        ncyBreadcrumb: {
-          label: 'Buscar'
-        }
-      })
-      .state('keys.delivery', {
-        url: '/delivery',
-        templateUrl: 'views/keys/delivery.html',
-        controller: 'KeysDeliveryCtrl',
-        controllerAs: 'keysDelivery',
-        ncyBreadcrumb: {
-          label: 'Entrega'
-        }
-      })
-      .state('keys.return', {
-        url: '/return',
-        templateUrl: 'views/keys/return.html',
-        controller: 'KeysReturnCtrl',
-        controllerAs: 'keysReturn',
-        ncyBreadcrumb: {
-          label: 'Devolvolución'
-        }
-      });
+        //Checklist
+        .state('access-control.checklist', {
+          abstract: true,
+          url: '/checklist',
+          templateUrl: 'views/access-control/checklist.html',
+          controller: 'ChecklistCtrl',
+          controllerAs: 'checklist',
+          ncyBreadcrumb: {
+            label: 'Checklist'
+          }
+        })
+          .state('access-control.checklist.view', {
+            url: '/view',
+            templateUrl: 'views/access-control/checklist/view.html',
+            controller: 'ChecklistViewCtrl',
+            controllerAs: 'checklistView',
+            ncyBreadcrumb: {
+              label: 'Buscar'
+            }
+          })
+          .state('access-control.checklist.registry', {
+            url: '/registry',
+            templateUrl: 'views/access-control/checklist/registry.html',
+            controller: 'ChecklistRegistryCtrl',
+            controllerAs: 'checklistRegistry',
+            ncyBreadcrumb: {
+              label: 'Registrar'
+            }
+          })
+          .state('access-control.checklist.admin', {
+            url: '/admin',
+            templateUrl: 'views/access-control/checklist/admin.html',
+            controller: 'ChecklistAdminCtrl',
+            controllerAs: 'checklistAdmin',
+            ncyBreadcrumb: {
+              label: 'Administrar'
+            }
+          })
+        //Visitas
+        .state('access-control.visits', {
+          abstract: true,
+          url: '/visits',
+          templateUrl: 'views/access-control/visits.html',
+          controller: 'VisitsCtrl',
+          controllerAs: 'visits',
+          ncyBreadcrumb: {
+            label: 'Visitas'
+          }
+        })
+          .state('access-control.visits.view', {
+            url: '/view',
+            templateUrl: 'views/access-control/visits/view.html',
+            controller: 'VisitsViewCtrl',
+            controllerAs: 'visitsView',
+            ncyBreadcrumb: {
+              label: 'Buscar'
+            }
+          })
+          .state('access-control.visits.checkin', {
+            url: '/checkin',
+            templateUrl: 'views/access-control/visits/checkin.html',
+            controller: 'VisitsCheckinCtrl',
+            controllerAs: 'visitsCheckin',
+            ncyBreadcrumb: {
+              label: 'Check-In'
+            }
+          })
+          .state('access-control.visits.checkout', {
+            url: '/checkout',
+            templateUrl: 'views/access-control/visits/checkout.html',
+            controller: 'VisitsCheckoutCtrl',
+            controllerAs: 'visitsCheckout',
+            ncyBreadcrumb: {
+              label: 'Check-Out'
+            }
+          })
+        //Llaves
+        .state('access-control.keys', {
+          abstract: true,
+          url: '/keys',
+          templateUrl: 'views/access-control/keys.html',
+          controller: 'KeysCtrl',
+          controllerAs: 'keys',
+          ncyBreadcrumb: {
+            label: 'Llaves'
+          }
+        })
+          .state('access-control.keys.view', {
+            url: '/view',
+            templateUrl: 'views/access-control/keys/view.html',
+            controller: 'KeysViewCtrl',
+            controllerAs: 'keysView',
+            ncyBreadcrumb: {
+              label: 'Buscar'
+            }
+          })
+          .state('access-control.keys.delivery', {
+            url: '/delivery',
+            templateUrl: 'views/access-control/keys/delivery.html',
+            controller: 'KeysDeliveryCtrl',
+            controllerAs: 'keysDelivery',
+            ncyBreadcrumb: {
+              label: 'Entrega'
+            }
+          })
+          .state('access-control.keys.return', {
+            url: '/return',
+            templateUrl: 'views/access-control/keys/return.html',
+            controller: 'KeysReturnCtrl',
+            controllerAs: 'keysReturn',
+            ncyBreadcrumb: {
+              label: 'Devolvolución'
+            }
+          });
   })
   .config(function($httpProvider) {
     $httpProvider.interceptors.push(['$q', '$window', '$localStorage', function ($q, $window, $localStorage) {
