@@ -8,20 +8,19 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('PropertyCtrl', function (Property, $localStorage, $filter, $rootScope, $state) {
+  .controller('PropertyCtrl', function (Property, $localStorage, $filter, $state) {
     var vm = this;
     vm.change = change;
-    vm.propertyId = $localStorage.propertyId;
+    vm.property_id = $localStorage.property_id;
     vm.properties = Property.query(function(data){
       if(data.length > 0){
-        vm.property = $filter('filter')(data, {'id':vm.propertyId}, true)[0];
-        $rootScope.property = vm.property;
+        vm.property = $filter('filter')(data, {'id':vm.property_id}, true)[0];
       }
     });
     ////////////
     function change(property){
       vm.property = property;
-      $localStorage.propertyId = vm.property.id;
+      $localStorage.property_id = vm.property.id;
       $state.reload();
     }
   });
