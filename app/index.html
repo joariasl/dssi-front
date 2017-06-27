@@ -9,6 +9,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular/angular-csp.css" />
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
     <!-- endbower -->
     <!-- endbuild -->
@@ -152,7 +153,7 @@
                 <!-- property -->
                 <li ng-controller="PropertyCtrl as property">
                   <a href="#" data-toggle="dropdown" aria-expanded="false">
-                    <span>{{ property.property_selected.name }}</span>
+                    <span ng-cloak>{{ property.property_selected.name }}</span>
                     <span class="fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
