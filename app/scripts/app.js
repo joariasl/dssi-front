@@ -146,7 +146,7 @@ angular
         controller: 'KeysDeliveryCtrl',
         controllerAs: 'keysDelivery',
         ncyBreadcrumb: {
-          label: 'Entregar'
+          label: 'Entrega'
         }
       })
       .state('keys.return', {
@@ -155,7 +155,7 @@ angular
         controller: 'KeysReturnCtrl',
         controllerAs: 'keysReturn',
         ncyBreadcrumb: {
-          label: 'Devolver'
+          label: 'Devolvolución'
         }
       });
   })
