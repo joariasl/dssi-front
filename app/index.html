@@ -152,12 +152,12 @@
                 </li>
                 <!-- property -->
                 <li ng-controller="PropertyCtrl as property">
-                  <a href="#" data-toggle="dropdown" aria-expanded="false">
+                  <a href="javascript:;" data-toggle="dropdown" aria-expanded="false">
                     <span ng-cloak>{{ property.property.name }}</span>
                     <span class="fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li ng-repeat="item in property.properties"><a ng-click="property.change(item)" href="#">{{ item.name }}</a></li>
+                    <li ng-repeat="item in property.properties"><a ng-click="property.change(item)" href="javascript:;">{{ item.name }}</a></li>
                   </ul>
                 </li>
                 <!-- /property -->

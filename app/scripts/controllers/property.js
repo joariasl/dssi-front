@@ -8,7 +8,7 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('PropertyCtrl', function (Property, $localStorage, $filter, $rootScope) {
+  .controller('PropertyCtrl', function (Property, $localStorage, $filter, $rootScope, $state) {
     var vm = this;
     vm.change = change;
     vm.propertyId = $localStorage.propertyId;
@@ -22,5 +22,6 @@ angular.module('dssiFrontApp')
     function change(property){
       vm.property = property;
       $localStorage.propertyId = vm.property.id;
+      $state.reload();
     }
   });
