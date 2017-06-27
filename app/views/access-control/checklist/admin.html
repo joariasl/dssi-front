@@ -3,55 +3,69 @@
   <div class="clearfix"></div>
 </div>
 <div class="x_content">
-  <div class="form-group">
-    <label class="col-md-2 col-sm-3 col-xs-12" for="groups">Grupos</label>
-    <div class="col-md-4 col-sm-6 col-xs-12" id="groups" required>
-      <select class="form-control">
-        <option ng-repeat="item_group in checklistAdmin.checklistItemGroups">{{ item_group.name }}</option>
-      </select>
+  <div class="panel panel-default">
+    <div class="panel-heading">Items
+      <div class="btn-group pull-right">
+        <a href="#" class="btn btn-default btn-xs">Nuevo</a>
+      </div>
     </div>
-    <label class="col-md-2 col-sm-3 col-xs-12" for="group">Grupo</label>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <input type="text" id="newgroup" name="newgroup">
-      <button class="btn btn-primary" type="button">Nuevo</button>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr class="headings">
+            <th class="column-title">Item</th>
+            <th class="column-title">Grupo</th>
+            <th class="column-title">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Equipo Radial</td>
+            <td>
+              <select class="form-control">
+                <option>Actividad</option>
+                <option>Operatividad</option>
+              </select>
+            </td>
+            <td><input type="checkbox" class="flat" checked="checked"></td>
+          </tr>
+          <tr>
+            <td>Computador</td>
+            <td>
+              <select class="form-control">
+                <option>Actividad</option>
+                <option>Operatividad</option>
+              </select>
+            </td>
+            <td><input type="checkbox" class="flat"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-</div>
-<div class="x_title">
-  <div class="clearfix"></div>
-</div>
-<div class="x_content">
-  <div class="table-responsive">
-    <table class="table table-bordered">
-      <thead>
-        <tr class="headings">
-          <th class="column-title">Item</th>
-          <th class="column-title">Grupo</th>
-          <th class="column-title">Estado</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Equipo Radial</td>
-          <td>
-            <select class="form-control">
-              <option>Actividad</option>
-              <option>Operatividad</option>
-            </select>
-          </td>
-          <td><input type="checkbox" class="flat" checked="checked"></td>
-        </tr>
-        <tr>
-          <td>Computador</td>
-          <td>
-            <select class="form-control">
-              <option>Actividad</option>
-              <option>Operatividad</option>
-            </select>
-          </td>
-          <td><input type="checkbox" class="flat"></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="row">
+    <div class="col-md-4 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Grupos
+          <div class="btn-group pull-right">
+            <a href="#" class="btn btn-default btn-xs">Nuevo</a>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr class="headings">
+                <th class="column-title">Grupo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item_group in checklistAdmin.checklistItemGroups">
+                <td>{{ item_group.name }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
