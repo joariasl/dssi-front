@@ -62,6 +62,9 @@
           <td>{{ checklistRegistry.id }}</td>
           <td>{{ checklistRegistry.date | date }}</td>
           <td>{{ checklistView.checklistTurns[checklistRegistry.turn-1].name }}</td>
+          <!-- Blank cell -->
+          <td ng-if="checklistView.checklistItemGroups.$resolved && checklistView.checklistItemGroups.length === 0"></td>
+          <!-- /Blank cell -->
           <td ng-repeat="item_group in checklistView.checklistItemGroups">{{ checklistRegistry.checklist_entries.length }}</td>
           <td>{{ checklistRegistry.credential_delivered }}</td>
           <td>{{ checklistRegistry.credential_avaliable }}</td>
