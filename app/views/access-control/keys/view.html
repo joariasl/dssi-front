@@ -1,94 +1,88 @@
-<div class="row">
-  <div class="col-md-12 col-sm-12 col-xs-12">
-    <div class="x_panel">
-      <div class="x_title">
-        <h2>Buscar llaves</h2>
-        <div class="clearfix"></div>
-      </div>
-      <div class="x_content">
-        <div class="form-group">
-          <label class="col-md-2 col-sm-3 col-xs-12" for="username">Buscar</label>
-          <div class="col-md-3 col-sm-6 col-xs-12" id="search" ng-model="criterio">
-            <input type="text" id="search" name="search">
-          </div>
-          <!-- Filtrar -->
-          <div class="col-md-2 col-sm-6 col-xs-12" class="dropdown dropup docs-options">
-            <button type="button" class="btn btn-primary btn-block dropdown-toggle" id="toggleOptions" data-toggle="dropdown" aria-expanded="true">Filtrar<span class="caret"></span></button>
-            <ul class="dropdown-menu" aria-labelledby="toggleOptions" role="menu">
-              <li role="presentation">
-                <label class="checkbox-inline"><input type="checkbox" name="responsive" checked>Nombre</label>
-              </li>
-              <li role="presentation">
-                <label class="checkbox-inline"><input type="checkbox" name="restore">Apellido</label>
-              </li>
-            </ul>
-          </div>
-          <!-- FIN Filtrar -->
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <button class="btn btn-primary" type="button">Ver</button>
-          </div>
+<div class="x_title">
+  <h2>Buscar llaves</h2>
+  <div class="clearfix"></div>
+</div>
+<div class="x_content">
+  <div class="form-group">
+    <label class="col-md-2 col-sm-3 col-xs-12" for="username">Buscar</label>
+    <div class="col-md-3 col-sm-6 col-xs-12" id="search" ng-model="criterio">
+      <input type="text" id="search" name="search">
+    </div>
+    <!-- Filtrar -->
+    <div class="col-md-2 col-sm-6 col-xs-12" class="dropdown dropup docs-options">
+      <button type="button" class="btn btn-primary btn-block dropdown-toggle" id="toggleOptions" data-toggle="dropdown" aria-expanded="true">Filtrar<span class="caret"></span></button>
+      <ul class="dropdown-menu" aria-labelledby="toggleOptions" role="menu">
+        <li role="presentation">
+          <label class="checkbox-inline"><input type="checkbox" name="responsive" checked>Nombre</label>
+        </li>
+        <li role="presentation">
+          <label class="checkbox-inline"><input type="checkbox" name="restore">Apellido</label>
+        </li>
+      </ul>
+    </div>
+    <!-- FIN Filtrar -->
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <button class="btn btn-primary" type="button">Ver</button>
+    </div>
+  </div>
+</div>
+<div class="x_title">
+  <h2>Últimas visitas</h2>
+  <div class="clearfix"></div>
+</div>
+<div class="x_content">
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="headings">
+          <th>
+            <input type="checkbox" id="check-all" class="flat">
+          </th>
+          <th class="column-title">N° Folio</th>
+          <th class="column-title">Fecha</th>
+          <th class="column-title">Hora llegada</th>
+          <th class="column-title">Llave</th>
+          <th class="column-title">Status</th>
+          <th class="column-title">En poder de</th>
+          <th class="column-title">Lugar</th>
+          <th class="column-title">Ver</th>
+          <th class="bulk-actions" colspan="9">
+            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" class="flat" name="table_records"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Enviar</button>
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Seleccionar destinatarios</h4>
         </div>
-      </div>
-      <div class="x_title">
-        <h2>Últimas visitas</h2>
-        <div class="clearfix"></div>
-      </div>
-      <div class="x_content">
-        <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead>
-              <tr class="headings">
-                <th>
-                  <input type="checkbox" id="check-all" class="flat">
-                </th>
-                <th class="column-title">N° Folio</th>
-                <th class="column-title">Fecha</th>
-                <th class="column-title">Hora llegada</th>
-                <th class="column-title">Llave</th>
-                <th class="column-title">Status</th>
-                <th class="column-title">En poder de</th>
-                <th class="column-title">Lugar</th>
-                <th class="column-title">Ver</th>
-                <th class="bulk-actions" colspan="9">
-                  <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><input type="checkbox" class="flat" name="table_records"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="modal-body">
+          <h4>Text in a modal</h4>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
         </div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Enviar</button>
-        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Seleccionar destinatarios</h4>
-              </div>
-              <div class="modal-body">
-                <h4>Text in a modal</h4>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>

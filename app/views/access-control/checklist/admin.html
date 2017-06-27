@@ -1,64 +1,58 @@
-<div class="row">
-  <div class="col-md-12 col-sm-12 col-xs-12">
-    <div class="x_panel">
-      <div class="x_title">
-        <h2>Configuraciones</h2>
-        <div class="clearfix"></div>
-      </div>
-      <div class="x_content">
-        <div class="form-group">
-          <label class="col-md-2 col-sm-3 col-xs-12" for="groups">Grupos</label>
-          <div class="col-md-4 col-sm-6 col-xs-12" id="groups" required>
+<div class="x_title">
+  <h2>Configuraciones</h2>
+  <div class="clearfix"></div>
+</div>
+<div class="x_content">
+  <div class="form-group">
+    <label class="col-md-2 col-sm-3 col-xs-12" for="groups">Grupos</label>
+    <div class="col-md-4 col-sm-6 col-xs-12" id="groups" required>
+      <select class="form-control">
+        <option>Actividad</option>
+        <option>Operatividad</option>
+      </select>
+    </div>
+    <label class="col-md-2 col-sm-3 col-xs-12" for="group">Grupo</label>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <input type="text" id="newgroup" name="newgroup">
+      <button class="btn btn-primary" type="button">Nuevo</button>
+    </div>
+  </div>
+</div>
+<div class="x_title">
+  <div class="clearfix"></div>
+</div>
+<div class="x_content">
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="headings">
+          <th class="column-title">Item</th>
+          <th class="column-title">Grupo</th>
+          <th class="column-title">Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Equipo Radial</td>
+          <td>
             <select class="form-control">
               <option>Actividad</option>
               <option>Operatividad</option>
             </select>
-          </div>
-          <label class="col-md-2 col-sm-3 col-xs-12" for="group">Grupo</label>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <input type="text" id="newgroup" name="newgroup">
-            <button class="btn btn-primary" type="button">Nuevo</button>
-          </div>
-        </div>
-      </div>
-      <div class="x_title">
-        <div class="clearfix"></div>
-      </div>
-      <div class="x_content">
-        <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead>
-              <tr class="headings">
-                <th class="column-title">Item</th>
-                <th class="column-title">Grupo</th>
-                <th class="column-title">Estado</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Equipo Radial</td>
-                <td>
-                  <select class="form-control">
-                    <option>Actividad</option>
-                    <option>Operatividad</option>
-                  </select>
-                </td>
-                <td><input type="checkbox" class="flat" checked="checked"></td>
-              </tr>
-              <tr>
-                <td>Computador</td>
-                <td>
-                  <select class="form-control">
-                    <option>Actividad</option>
-                    <option>Operatividad</option>
-                  </select>
-                </td>
-                <td><input type="checkbox" class="flat"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+          </td>
+          <td><input type="checkbox" class="flat" checked="checked"></td>
+        </tr>
+        <tr>
+          <td>Computador</td>
+          <td>
+            <select class="form-control">
+              <option>Actividad</option>
+              <option>Operatividad</option>
+            </select>
+          </td>
+          <td><input type="checkbox" class="flat"></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
