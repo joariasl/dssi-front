@@ -206,11 +206,4 @@ angular
       includeAbstract: true,
       templateUrl: 'views/breadcrumb.html'
     });
-  })
-  .run(['$rootScope', '$localStorage', '$http', 'urls', function($rootScope, $localStorage, $http, urls) {
-    $rootScope.tokenValid = !!$localStorage.token && $http.post(urls.BASE_URL + '/validate-token').then(function(result){
-      $rootScope.tokenValid = true;
-    }, function(result){
-      $rootScope.tokenValid = false;
-    });
-  }]);
+  });
