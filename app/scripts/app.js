@@ -47,7 +47,7 @@ angular
       .state('access-control', {
         abstract: true,
         url: '/access-control',
-        templateUrl: 'views/access-control.html',
+        templateUrl: 'views/accesscontrol.html',
         controller: 'AccessControlCtrl',
         controllerAs: 'accessControl',
         ncyBreadcrumb: {
@@ -59,7 +59,7 @@ angular
         .state('access-control.checklist', {
           abstract: true,
           url: '/checklist',
-          templateUrl: 'views/access-control/checklist.html',
+          templateUrl: 'views/accesscontrol/checklist.html',
           controller: 'ChecklistCtrl',
           controllerAs: 'checklist',
           ncyBreadcrumb: {
@@ -68,7 +68,7 @@ angular
         })
           .state('access-control.checklist.view', {
             url: '/view',
-            templateUrl: 'views/access-control/checklist/view.html',
+            templateUrl: 'views/accesscontrol/checklist/view.html',
             controller: 'ChecklistViewCtrl',
             controllerAs: 'checklistView',
             ncyBreadcrumb: {
@@ -77,7 +77,7 @@ angular
           })
           .state('access-control.checklist.registry', {
             url: '/registry',
-            templateUrl: 'views/access-control/checklist/registry.html',
+            templateUrl: 'views/accesscontrol/checklist/registry.html',
             controller: 'ChecklistRegistryCtrl',
             controllerAs: 'checklistRegistry',
             ncyBreadcrumb: {
@@ -86,7 +86,7 @@ angular
           })
           .state('access-control.checklist.admin', {
             url: '/admin',
-            templateUrl: 'views/access-control/checklist/admin.html',
+            templateUrl: 'views/accesscontrol/checklist/admin.html',
             controller: 'ChecklistAdminCtrl',
             controllerAs: 'checklistAdmin',
             ncyBreadcrumb: {
@@ -97,7 +97,7 @@ angular
         .state('access-control.visits', {
           abstract: true,
           url: '/visits',
-          templateUrl: 'views/access-control/visits.html',
+          templateUrl: 'views/accesscontrol/visits.html',
           controller: 'VisitsCtrl',
           controllerAs: 'visits',
           ncyBreadcrumb: {
@@ -106,7 +106,7 @@ angular
         })
           .state('access-control.visits.view', {
             url: '/view',
-            templateUrl: 'views/access-control/visits/view.html',
+            templateUrl: 'views/accesscontrol/visits/view.html',
             controller: 'VisitsViewCtrl',
             controllerAs: 'visitsView',
             ncyBreadcrumb: {
@@ -115,7 +115,7 @@ angular
           })
           .state('access-control.visits.checkin', {
             url: '/checkin',
-            templateUrl: 'views/access-control/visits/checkin.html',
+            templateUrl: 'views/accesscontrol/visits/checkin.html',
             controller: 'VisitsCheckinCtrl',
             controllerAs: 'visitsCheckin',
             ncyBreadcrumb: {
@@ -124,7 +124,7 @@ angular
           })
           .state('access-control.visits.checkout', {
             url: '/checkout',
-            templateUrl: 'views/access-control/visits/checkout.html',
+            templateUrl: 'views/accesscontrol/visits/checkout.html',
             controller: 'VisitsCheckoutCtrl',
             controllerAs: 'visitsCheckout',
             ncyBreadcrumb: {
@@ -135,7 +135,7 @@ angular
         .state('access-control.keys', {
           abstract: true,
           url: '/keys',
-          templateUrl: 'views/access-control/keys.html',
+          templateUrl: 'views/accesscontrol/keys.html',
           controller: 'KeysCtrl',
           controllerAs: 'keys',
           ncyBreadcrumb: {
@@ -144,7 +144,7 @@ angular
         })
           .state('access-control.keys.view', {
             url: '/view',
-            templateUrl: 'views/access-control/keys/view.html',
+            templateUrl: 'views/accesscontrol/keys/view.html',
             controller: 'KeysViewCtrl',
             controllerAs: 'keysView',
             ncyBreadcrumb: {
@@ -153,7 +153,7 @@ angular
           })
           .state('access-control.keys.delivery', {
             url: '/delivery',
-            templateUrl: 'views/access-control/keys/delivery.html',
+            templateUrl: 'views/accesscontrol/keys/delivery.html',
             controller: 'KeysDeliveryCtrl',
             controllerAs: 'keysDelivery',
             ncyBreadcrumb: {
@@ -162,7 +162,7 @@ angular
           })
           .state('access-control.keys.return', {
             url: '/return',
-            templateUrl: 'views/access-control/keys/return.html',
+            templateUrl: 'views/accesscontrol/keys/return.html',
             controller: 'KeysReturnCtrl',
             controllerAs: 'keysReturn',
             ncyBreadcrumb: {
