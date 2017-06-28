@@ -2,15 +2,16 @@
 
 /**
  * @ngdoc function
- * @name dssiFrontApp.controller:KeyViewCtrl
+ * @name dssiFrontApp.controller:KeysViewCtrl
  * @description
- * # KeyViewCtrl
+ * # KeysViewCtrl
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('KeyViewCtrl', function () {
+  .controller('KeysViewCtrl', function (KeyLoan) {
     var vm = this;
-    vm.key= [
+    /*
+    vm.keyLoans= [
       {
         id: 1,
         date: '01-01-2017',
@@ -28,4 +29,8 @@ angular.module('dssiFrontApp')
         place: 'Bodega',
       }
     ];
+    */
+    vm.keyLoans = KeyLoan.query({
+      keyloan_id: '1'
+    });
   });
