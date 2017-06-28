@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name dssiFrontApp.controller:KeyReturnCtrl
+ * @name dssiFrontApp.controller:KeysReturnCtrl
  * @description
- * # KeyReturnCtrl
+ * # KeysReturnCtrl
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('KeyReturnCtrl', function () {
+  .controller('KeysReturnCtrl', function () {
     var vm = this;
     vm.condition= [
       {
