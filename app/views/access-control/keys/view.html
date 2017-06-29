@@ -53,11 +53,11 @@
         <tr ng-repeat="key in keysView.keyLoans">
           <td><input type="checkbox" class="flat" name="table_records"></td>
           <td>{{ key.id }}</td>
-          <td>{{ key.date }}</td>
-          <td>{{ key.hour }}</td>
-          <td>{{ key.key }}</td>
-          <td>{{  }}</td>
-          <td>{{ key.has }}</td>
+          <td>{{ key.date | limitTo: 10 }}</td>
+          <td>{{ key.date | limitTo: -9 }}</td>
+          <td>{{ key.key.code }}</td>
+          <td>{{ key.return_condition }}</td>
+          <td>{{ key.person_delivery.name }} {{ key.person_delivery.lastname }}</td>
           <td>{{ key.place }}</td>
           <td>{{  }}</td>
         </tr>
