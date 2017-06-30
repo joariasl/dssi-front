@@ -21,7 +21,8 @@ angular
     'ngStorage',
     'ui.bootstrap',
     'angular-loading-bar',
-    'ncy-angular-breadcrumb'
+    'ncy-angular-breadcrumb',
+    'angularMoment'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/");
