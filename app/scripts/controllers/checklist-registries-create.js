@@ -8,14 +8,15 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('ChecklistRegistriesCreateCtrl', function (Turns, moment, $localStorage, ChecklistItem) {
+  .controller('ChecklistRegistriesCreateCtrl', function (Turns, moment, $localStorage, ChecklistItem, ChecklistRegistry) {
     var vm = this;
+    vm.save = save;
     vm.checklistTurns = Turns.turns;
 
     // Datepicker
     vm.datepicker = {
       format: 'dd-MM-yyyy',
-      date: new Date(),
+      //date: new Date(),
       opened: false,
       dateOptions: {
         formatYear: 'yy',
@@ -28,50 +29,31 @@ angular.module('dssiFrontApp')
         vm.datepicker.opened = true;
       }
     };
+
+    vm.checklistRegistry = new ChecklistRegistry({
+      date: new Date(),
+      turn: null,
+      property_id: $localStorage.property_id,
+      credential_avaliable: 0,
+      credential_delivered: 0,
+      checklist_entries: []
+    });
     vm.checklistItems = ChecklistItem.query({
       property_id: $localStorage.property_id
     });
+    vm.checklistItems.$promise.then(function(){
+      angular.forEach(vm.checklistItems, function(value, key){
+        vm.checklistRegistry.checklist_entries.push({
+          checklist_item_id: value.id,
+          response: false,
+          observations: null
+        });
+      });
+    });
 
-    vm.checklistItemGroups = [
-      {
-        name: 'Operatividad',
-        items: [
-          {
-            name: 'Equipo radial'
-          },
-          {
-            name: 'Computador'
-          },
-          {
-            name: 'Sistemas de cámaras'
-          },
-          {
-            name: 'Sistema de enrolamiento'
-          },
-          {
-            name: 'Celular'
-          },
-          {
-            name: 'Pantalla eventos actualizada'
-          },
-          {
-            name: 'Ascensores'
-          }
-        ],
-      },
-      {
-        name: 'Actividad',
-        items: [
-          {
-            name: 'Retiro de basura'
-          },
-          {
-            name: 'Ingreso camión de valores'
-          },
-          {
-            name: 'Retiro de lavandería'
-          }
-        ],
-      }
-    ];
+    ////////////
+
+    function save(){
+      vm.checklistRegistry.$save();
+    }
   });
