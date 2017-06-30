@@ -8,19 +8,9 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('ChecklistRegistryCtrl', function () {
+  .controller('ChecklistRegistryCtrl', function (Turns) {
     var vm = this;
-    vm.checklistTurns= [
-      {
-        name: 'Mañana'
-      },
-      {
-        name: 'Tarde'
-      },
-      {
-        name: 'Noche'
-      }
-    ];
+    vm.checklistTurns = Turns.turns;
     vm.checklistItemGroups = [
       {
         name: 'Operatividad',

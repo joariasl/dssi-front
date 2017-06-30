@@ -8,19 +8,9 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('ChecklistRegistriesCtrl', function (ChecklistRegistry, ChecklistItemGroup, $localStorage) {
+  .controller('ChecklistRegistriesCtrl', function (ChecklistRegistry, ChecklistItemGroup, $localStorage, Turns) {
     var vm = this;
-    vm.checklistTurns= [
-      {
-        name: 'Mañana'
-      },
-      {
-        name: 'Tarde'
-      },
-      {
-        name: 'Noche'
-      }
-    ];
+    vm.checklistTurns = Turns.turns;
     vm.checklistItemGroups = ChecklistItemGroup.query({
       property_id: $localStorage.property_id
     });
