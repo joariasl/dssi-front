@@ -66,10 +66,10 @@
           <!-- Blank cell -->
           <td ng-if="checklistRegistries.checklistItemGroups.$resolved && checklistRegistries.checklistItemGroups.length === 0"></td>
           <!-- /Blank cell -->
-          <td ng-repeat="item_group in checklistRegistries.checklistItemGroups">{{ checklistRegistry.checklist_entries.length }}</td>
+          <td ng-repeat="item_group in checklistRegistries.checklistItemGroups">{{ 100 * checklistRegistry.total_ok / checklistRegistry.checklist_entries.length | number : 0 }}%</td>
           <td>{{ checklistRegistry.credential_delivered }}</td>
           <td>{{ checklistRegistry.credential_avaliable }}</td>
-          <td></td>
+          <td>{{ checklistRegistry.credential_delivered + checklistRegistry.credential_avaliable }}</td>
           <td class="text-center">
             <div class="btn-group">
               <a type="button" class="btn btn-default btn-xs" ui-sref="access-control.checklist.checklist-registry({id: checklistRegistry.id})">
