@@ -42,15 +42,15 @@
           <th rowspan="2" class="text-center">N° Folio</th>
           <th rowspan="2" class="text-center">Fecha</th>
           <th rowspan="2" class="text-center">Turno</th>
-          <th colspan="{{ checklistView.checklistItemGroups.length }}" class="text-center">% Cumplimiento</th> <!--colspan segun cuantos grupos existan-->
+          <th colspan="{{ checklistRegistries.checklistItemGroups.length }}" class="text-center">% Cumplimiento</th> <!--colspan segun cuantos grupos existan-->
           <th colspan="3" class="text-center">Credenciales</th>
           <th rowspan="2" class="text-center">Acción</th>
         </tr>
         <tr class="headings">
-          <th ng-if="!checklistView.checklistItemGroups.$resolved"><i class="fa fa-spinner fa-pulse" aria-hidden="true"></i></th>
+          <th ng-if="!checklistRegistries.checklistItemGroups.$resolved"><i class="fa fa-spinner fa-pulse" aria-hidden="true"></i></th>
           <!-- Blank cell -->
-          <th ng-if="checklistView.checklistItemGroups.$resolved && checklistView.checklistItemGroups.length === 0"></th>
-          <th ng-repeat="item_group in checklistView.checklistItemGroups" class="text-center">{{ item_group.name }}</th> <!-- ng-repeat para sacar los grupos-->
+          <th ng-if="checklistRegistries.checklistItemGroups.$resolved && checklistRegistries.checklistItemGroups.length === 0"></th>
+          <th ng-repeat="item_group in checklistRegistries.checklistItemGroups" class="text-center">{{ item_group.name }}</th> <!-- ng-repeat para sacar los grupos-->
           <!-- /Blank cell -->
           <th class="text-center">Entregadas</th>
           <th class="text-center">Disponibles</th>
@@ -58,23 +58,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="checklistRegistry in checklistView.checklistsRegistries">
+        <tr ng-repeat="checklistRegistry in checklistRegistries.checklistsRegistries">
           <td><input type="checkbox" class="flat" name="table_records"></td>
           <td>{{ checklistRegistry.id }}</td>
           <td>{{ checklistRegistry.date | date }}</td>
-          <td>{{ checklistView.checklistTurns[checklistRegistry.turn-1].name }}</td>
+          <td>{{ checklistRegistries.checklistTurns[checklistRegistry.turn-1].name }}</td>
           <!-- Blank cell -->
-          <td ng-if="checklistView.checklistItemGroups.$resolved && checklistView.checklistItemGroups.length === 0"></td>
+          <td ng-if="checklistRegistries.checklistItemGroups.$resolved && checklistRegistries.checklistItemGroups.length === 0"></td>
           <!-- /Blank cell -->
-          <td ng-repeat="item_group in checklistView.checklistItemGroups">{{ checklistRegistry.checklist_entries.length }}</td>
+          <td ng-repeat="item_group in checklistRegistries.checklistItemGroups">{{ checklistRegistry.checklist_entries.length }}</td>
           <td>{{ checklistRegistry.credential_delivered }}</td>
           <td>{{ checklistRegistry.credential_avaliable }}</td>
           <td></td>
           <td class="text-center">
             <div class="btn-group">
-              <button type="button" class="btn btn-default btn-xs">
+              <a type="button" class="btn btn-default btn-xs" ui-sref="access-control.checklist.checklist-registry({id: checklistRegistry.id})">
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-              </button>
+              </a>
               <button type="button" class="btn btn-default btn-xs">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
               </button>
