@@ -24,7 +24,7 @@ angular.module('dssiFrontApp')
           {
             id: 2,
             name: 'Checklist',
-            state: 'access-control.checklist.view',
+            state: 'access-control.checklist.checklist-registries',
           },
           {
             id: 3,
