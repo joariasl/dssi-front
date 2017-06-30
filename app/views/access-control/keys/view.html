@@ -50,7 +50,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr dir-paginate="key in keysView.keyLoans | filter:searchText | itemsPerPage: 2">
+        <tr ng-repeat="key in keysView.keyLoans.slice(((keysView.currentPage-1)*keysView.itemsPerPage), ((keysView.currentPage)*keysView.itemsPerPage)) | filter:searchText">
           <td><input type="checkbox" class="flat" name="table_records"></td>
           <td>{{ key.id }}</td>
           <td>{{ key.date | limitTo: 10 }}</td>
@@ -63,7 +63,7 @@
         </tr>
       </tbody>
     </table>
-    <dir-pagination-controls></dir-pagination-controls>
+    <ul uib-pagination total-items="keysView.totalItems" ng-model="keysView.currentPage" ng-change="keysView.pageChanged()" items-per-page="keysView.itemsPerPage"></ul>
   </div>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Enviar</button>
   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
