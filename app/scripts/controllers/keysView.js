@@ -8,29 +8,31 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('KeysViewCtrl', function (KeyLoan) {
+  .controller('KeysViewCtrl', function (KeyLoan, $localStorage, $log) {
     var vm = this;
-    /*
-    vm.keyLoans= [
-      {
-        id: 1,
-        date: '01-01-2017',
-        hour: '09:00',
-        key: 'S-126',
-        has: 'Juan Peréz',
-        place: 'Oficina',
-      },
-      {
-        id: 2,
-        date: '01-02-2017',
-        hour: '19:00',
-        key: 'A-239',
-        has: 'Maria Lopez',
-        place: 'Bodega',
-      }
-    ];
-    */
+
+    vm.totalItems = 0; // 10 = 1 Página
+    vm.currentPage = 1; //Cominenzo de la paginación
+    vm.itemsPerPage = 10;
+    vm.maxSize = 5;
+
     vm.keyLoans = KeyLoan.query({
-      keyloan_id: '1'
+      property_id: $localStorage.property_id
     });
+    vm.keyLoans.$promise.then(function(){
+      vm.totalItems = vm.keyLoans.length;
+    });
+
+    vm.setPage = function (pageNo) {
+      vm.currentPage = pageNo;
+    };
+
+    vm.pageChanged = function() {
+      $log.log('Page changed to: ' + vm.currentPage);
+    };
+
+    vm.setItemsPerPage = function(num) {
+      vm.itemsPerPage = num;
+      vm.currentPage = 1; //reset to first page
+    }
   });

@@ -4,9 +4,9 @@
 </div>
 <div class="x_content">
   <div class="form-group">
-    <div class="col-md-3 col-sm-6 col-xs-12" id="search" ng-model="criterio">
+    <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Buscar">
+        <input type="text" class="form-control" placeholder="Buscar" ng-model="searchText">
         <span class="input-group-btn">
           <button class="btn btn-primary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
         </span>
@@ -33,7 +33,7 @@
 </div>
 <div class="x_content">
   <div class="table-responsive">
-    <table class="table table-bordered">
+    <table id="searchTextResults" class="table table-striped table-bordered bulk_action">
       <thead>
         <tr class="headings">
           <th>
@@ -50,19 +50,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="key in keysView.keyLoans">
+        <tr ng-repeat="key in keysView.keyLoans.slice(((keysView.currentPage-1)*keysView.itemsPerPage), ((keysView.currentPage)*keysView.itemsPerPage)) | filter:searchText">
           <td><input type="checkbox" class="flat" name="table_records"></td>
           <td>{{ key.id }}</td>
-          <td>{{ key.date }}</td>
-          <td>{{ key.hour }}</td>
-          <td>{{ key.key }}</td>
-          <td>{{  }}</td>
-          <td>{{ key.has }}</td>
+          <td>{{ key.date | limitTo: 10 }}</td>
+          <td>{{ key.date | limitTo: -9 }}</td>
+          <td>{{ key.key.code }}</td>
+          <td>{{ key.return_condition }}</td>
+          <td>{{ key.person_delivery.name }} {{ key.person_delivery.lastname }}</td>
           <td>{{ key.place }}</td>
           <td>{{  }}</td>
         </tr>
       </tbody>
     </table>
+    <ul uib-pagination total-items="keysView.totalItems" ng-model="keysView.currentPage" ng-change="keysView.pageChanged()" items-per-page="keysView.itemsPerPage"></ul>
   </div>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Enviar</button>
   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
