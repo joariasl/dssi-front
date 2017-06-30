@@ -25,26 +25,25 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th></th>
+              <th>Grupo</th>
               <th>Item</th>
               <th>Estado</th>
               <th>Observaciones</th>
             </tr>
           </thead>
-          <tbody ng-repeat="group in checklistRegistriesCreate.checklistItemGroups">
-            <tr ng-repeat="item_sub in group.items">
-              <td ng-if="$first" rowspan="{{ group.items.length }}">{{ group.name }}</td>
-              <td>{{ item_sub.name }}</td>
+          <tbody>
+            <tr ng-repeat="item in checklistRegistriesCreate.checklistItems">
+              <td>{{ item.checklist_item_group.name }}</td>
+              <td>{{ item.name }}</td>
               <td>
-                <div class="checkbox">
+                <div class="checkbox text-center">
                   <label>
                     <input type="checkbox" value="">
                   </label>
                 </div>
               </td>
               <td>
-                <textarea id="message" required="required" class="form-control" name="message1" data-parsley-trigger="keyup"
-                data-parsley-maxlength="100" data-parsley-validation-threshold="10" style="width: 290px; height: 35px;"></textarea>
+                <textarea class="form-control" style="height: 35px;"></textarea>
               </td>
             </tr>
           </tbody>
@@ -57,43 +56,49 @@
             </tr>
           </tbody>
         </table>
-        <table class="table table-bordered">
-          <tbody>
-            <tr>
-              <td colspan="2">Control de credenciales</td>
-            </tr>
-            <tr>
-              <td>Disponiblidad</td>
-              <td>
-                <div class="item form-group">
-                  <div class="col-md-4 col-sm-6 col-xs-12">
-                    <input type="number" id="number" name="number1" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+      </div>
+      <div class="row">
+        <div class="table-responsive col-md-6">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th colspan="2">Control de credenciales</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Disponiblidad</td>
+                <td>
+                  <div class="item form-group">
+                    <div class="col-xs-12">
+                      <input type="number" min="0" class="form-control">
+                    </div>
                   </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>Entregadas</td>
-              <td>
-                <div class="item form-group">
-                  <div class="col-md-4 col-sm-6 col-xs-12">
-                    <input type="number" id="number" name="number2" required="required" data-validate-minmax="10,100" class="form-control col-md-7 col-xs-12">
+                </td>
+              </tr>
+              <tr>
+                <td>Entregadas</td>
+                <td>
+                  <div class="item form-group">
+                    <div class="col-xs-12">
+                      <input type="number" min="0" class="form-control">
+                    </div>
                   </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>Total</td>
-              <td>
-                <div class="form-group">
-                  <div class="col-md-4 col-sm-6 col-xs-12">
-                    <input type="text" class="form-control" disabled="disabled" placeholder="">
+                </td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>
+                  <div class="form-group">
+                    <div class="col-xs-12">
+                      <input type="text" class="form-control" disabled="disabled" placeholder="">
+                    </div>
                   </div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div class="ln_solid"></div>
       <div class="form-group">

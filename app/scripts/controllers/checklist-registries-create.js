@@ -8,7 +8,7 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('ChecklistRegistriesCreateCtrl', function (Turns, moment) {
+  .controller('ChecklistRegistriesCreateCtrl', function (Turns, moment, $localStorage, ChecklistItem) {
     var vm = this;
     vm.checklistTurns = Turns.turns;
 
@@ -28,6 +28,9 @@ angular.module('dssiFrontApp')
         vm.datepicker.opened = true;
       }
     };
+    vm.checklistItems = ChecklistItem.query({
+      property_id: $localStorage.property_id
+    });
 
     vm.checklistItemGroups = [
       {
