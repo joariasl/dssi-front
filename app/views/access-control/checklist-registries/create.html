@@ -3,7 +3,12 @@
     <div class="form-group">
       <label class="col-md-2 col-sm-3 col-xs-12" for="date">Fecha</label>
       <div class="col-md-4 col-sm-6 col-xs-12">
-        <input type="text" id="date" required="required">
+        <p class="input-group">
+          <input type="text" class="form-control" uib-datepicker-popup="{{checklistRegistriesCreate.datepicker.format}}" ng-model="checklistRegistriesCreate.datepicker.date" is-open="checklistRegistriesCreate.datepicker.opened" datepicker-options="checklistRegistriesCreate.datepicker.dateOptions" ng-required="true" close-text="Close" alt-input-formats="checklistRegistriesCreate.datepicker.altInputFormats" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="checklistRegistriesCreate.datepicker.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
       </div>
       <label class="col-md-2 col-sm-3 col-xs-12" for="active">Turno</label>
       <div class="col-md-4 col-sm-6 col-xs-12" id="active" required>
