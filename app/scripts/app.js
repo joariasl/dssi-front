@@ -78,18 +78,18 @@ angular
           .state('access-control.checklist.checklist-registry', {
             url: '/checklist-registries/{id}',
             templateUrl: 'views/access-control/checklist-registries/view.html',
-            controller: 'ChecklistViewCtrl',
-            controllerAs: 'checklistView',
+            controller: 'ChecklistRegistryViewCtrl',
+            controllerAs: 'checklistRegistryView',
             ncyBreadcrumb: {
               label: 'Registro',
               parent: 'access-control.checklist.checklist-registries'
             }
           })
-          .state('access-control.checklist.checklist-registries.registry', {
-            url: '/registry',
-            templateUrl: 'views/access-control/checklist/registry.html',
-            controller: 'ChecklistRegistryCtrl',
-            controllerAs: 'checklistRegistry',
+          .state('access-control.checklist.checklist-registries-create', {
+            url: '/checklist-registries/create',
+            templateUrl: 'views/access-control/checklist-registries/create.html',
+            controller: 'ChecklistRegistriesCreateCtrl',
+            controllerAs: 'checklistRegistriesCreate',
             ncyBreadcrumb: {
               label: 'Registrar'
             }
