@@ -2,25 +2,15 @@
 
 /**
  * @ngdoc function
- * @name dssiFrontApp.controller:ChecklistRegistryCtrl
+ * @name dssiFrontApp.controller:ChecklistRegistriesCreateCtrl
  * @description
- * # ChecklistRegistryCtrl
+ * # ChecklistRegistriesCreateCtrl
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('ChecklistRegistryCtrl', function () {
+  .controller('ChecklistRegistriesCreateCtrl', function (Turns) {
     var vm = this;
-    vm.checklistTurns= [
-      {
-        name: 'Mañana'
-      },
-      {
-        name: 'Tarde'
-      },
-      {
-        name: 'Noche'
-      }
-    ];
+    vm.checklistTurns = Turns.turns;
     vm.checklistItemGroups = [
       {
         name: 'Operatividad',

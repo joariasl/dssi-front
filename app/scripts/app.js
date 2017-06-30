@@ -66,20 +66,30 @@ angular
             label: 'Checklist'
           }
         })
-          .state('access-control.checklist.view', {
-            url: '/view',
-            templateUrl: 'views/access-control/checklist/view.html',
-            controller: 'ChecklistViewCtrl',
-            controllerAs: 'checklistView',
+          .state('access-control.checklist.checklist-registries', {
+            url: '/checklist-registries',
+            templateUrl: 'views/access-control/checklist-registries/list.html',
+            controller: 'ChecklistRegistriesCtrl',
+            controllerAs: 'checklistRegistries',
             ncyBreadcrumb: {
               label: 'Buscar'
             }
           })
-          .state('access-control.checklist.registry', {
-            url: '/registry',
-            templateUrl: 'views/access-control/checklist/registry.html',
-            controller: 'ChecklistRegistryCtrl',
-            controllerAs: 'checklistRegistry',
+          .state('access-control.checklist.checklist-registry', {
+            url: '/checklist-registries/{id}',
+            templateUrl: 'views/access-control/checklist-registries/view.html',
+            controller: 'ChecklistRegistryViewCtrl',
+            controllerAs: 'checklistRegistryView',
+            ncyBreadcrumb: {
+              label: 'Registro',
+              parent: 'access-control.checklist.checklist-registries'
+            }
+          })
+          .state('access-control.checklist.checklist-registries-create', {
+            url: '/checklist-registries/create',
+            templateUrl: 'views/access-control/checklist-registries/create.html',
+            controller: 'ChecklistRegistriesCreateCtrl',
+            controllerAs: 'checklistRegistriesCreate',
             ncyBreadcrumb: {
               label: 'Registrar'
             }

@@ -8,7 +8,7 @@
       <label class="col-md-2 col-sm-3 col-xs-12" for="active">Turno</label>
       <div class="col-md-4 col-sm-6 col-xs-12" id="active" required>
         <select class="selectpicker">
-          <option ng-repeat="item in checklistRegistry.checklistTurns">{{ item.name }}</option>
+          <option ng-repeat="item in checklistRegistriesCreate.checklistTurns">{{ item.name }}</option>
         </select>
       </div>
     </div>
@@ -26,7 +26,7 @@
               <th>Observaciones</th>
             </tr>
           </thead>
-          <tbody ng-repeat="group in checklistRegistry.checklistItemGroups">
+          <tbody ng-repeat="group in checklistRegistriesCreate.checklistItemGroups">
             <tr ng-repeat="item_sub in group.items">
               <td ng-if="$first" rowspan="{{ group.items.length }}">{{ group.name }}</td>
               <td>{{ item_sub.name }}</td>
