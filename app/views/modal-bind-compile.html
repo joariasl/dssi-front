@@ -1,0 +1,10 @@
+<div class="modal-header">
+  <button type="button" class="close" aria-label="Close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+  <h4 class="modal-title" ng-cloak>{{modal_options.title}}</h4>
+</div>
+<div class="modal-body">
+  <div bind-html-compile="modal_options.content"></div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" ng-click="close()">{{modal_options.ok || 'Close'}}</button>
+</div>
