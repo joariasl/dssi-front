@@ -6,7 +6,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">Items
       <div class="btn-group pull-right">
-        <a href="#" class="btn btn-default btn-xs">Nuevo</a>
+        <button class="btn btn-default btn-xs" ng-click="checklistAdmin.checklistItemCreate()">Nuevo</button>
       </div>
     </div>
     <div class="table-responsive">
@@ -22,8 +22,8 @@
           <tr ng-repeat="item in checklistAdmin.checklistItems">
             <td>{{ item.name }}</td>
             <td>
-              <select class="selectpicker">
-                <option ng-repeat="item_group in checklistAdmin.checklistItemGroups" ng-selected="{{ item.checklist_item_group.id === item_group.id }}">{{ item_group.name }}</option>
+              <select class="selectpicker" ng-model="item.checklist_item_group.id">
+                <option ng-repeat="item_group in checklistAdmin.checklistItemGroups" ng-value="item_group.id">{{ item_group.name }}</option>
               </select>
             </td>
             <td><input type="checkbox" class="flat" ng-true-value="1" ng-false-value="0" ng-model="item.status"></td>
@@ -37,7 +37,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">Grupos
           <div class="btn-group pull-right">
-            <a href="#" class="btn btn-default btn-xs">Nuevo</a>
+            <button class="btn btn-default btn-xs" ui-sref="">Nuevo</button>
           </div>
         </div>
         <div class="table-responsive">
