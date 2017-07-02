@@ -50,20 +50,29 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="key in keysView.keyLoans.slice(((keysView.currentPage-1)*keysView.itemsPerPage), ((keysView.currentPage)*keysView.itemsPerPage)) | filter:searchText">
+        <tr ng-repeat="keyLoan in keyLoansView.keyLoans.slice(((keyLoansView.currentPage-1)*keyLoansView.itemsPerPage), ((keyLoansView.currentPage)*keyLoansView.itemsPerPage)) | filter:searchText">
           <td><input type="checkbox" class="flat" name="table_records"></td>
-          <td>{{ key.id }}</td>
-          <td>{{ key.date | limitTo: 10 }}</td>
-          <td>{{ key.date | limitTo: -9 }}</td>
-          <td>{{ key.key.code }}</td>
-          <td>{{ key.return_condition }}</td>
-          <td>{{ key.person_delivery.name }} {{ key.person_delivery.lastname }}</td>
-          <td>{{ key.place }}</td>
-          <td>{{  }}</td>
+          <td>{{ keyLoan.id }}</td>
+          <td>{{ keyLoan.date | limitTo: 10 }}</td>
+          <td>{{ keyLoan.date | limitTo: -9 }}</td>
+          <td>{{ keyLoan.key.code }}</td>
+          <td>{{ keyLoan.return_condition }}</td>
+          <td>{{ keyLoan.person_delivery.name }} {{ keyLoan.person_delivery.lastname }}</td>
+          <td>{{ keyLoan.place }}</td>
+          <td class="text-center">
+            <div class="btn-group">
+              <a type="button" class="btn btn-default btn-xs" ui-sref="access-control.key-loans.return({id: keyLoan.id})">
+                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+              </a>
+              <button type="button" class="btn btn-default btn-xs">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+              </button>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
-    <ul uib-pagination total-items="keysView.totalItems" ng-model="keysView.currentPage" ng-change="keysView.pageChanged()" items-per-page="keysView.itemsPerPage"></ul>
+    <ul uib-pagination total-items="keyLoansView.totalItems" ng-model="keyLoansView.currentPage" ng-change="keyLoansView.pageChanged()" items-per-page="keyLoansView.itemsPerPage"></ul>
   </div>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Enviar</button>
   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
