@@ -39,7 +39,8 @@ angular.module('dssiFrontApp')
       checklist_entries: []
     });
     vm.checklistItems = ChecklistItem.query({
-      property_id: $localStorage.property_id
+      property_id: $localStorage.property_id,
+      without_disabled: 1
     });
     vm.checklistItems.$promise.then(function(){
       angular.forEach(vm.checklistItems, function(value, key){

@@ -14,6 +14,7 @@ angular.module('dssiFrontApp')
       property_id: $localStorage.property_id
     });
     vm.checklistItems = ChecklistItem.query({
-      property_id: $localStorage.property_id
+      property_id: $localStorage.property_id,
+      without_disabled: 0
     });
   });
