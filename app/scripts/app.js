@@ -22,7 +22,8 @@ angular
     'ui.bootstrap',
     'angular-loading-bar',
     'ncy-angular-breadcrumb',
-    'angularMoment'
+    'angularMoment',
+    'angular-bind-html-compile'
   ])
   .config(function($httpProvider) {
     $httpProvider.interceptors.push(['$q', '$window', '$localStorage', function ($q, $window, $localStorage) {
