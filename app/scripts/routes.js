@@ -128,42 +128,53 @@ angular
               label: 'Check-Out'
             }
           })
-        //Llaves
-        .state('access-control.keys', {
+        //Prestamo de Llaves
+        .state('access-control.key-loans', {
           abstract: true,
-          url: '/keys',
-          templateUrl: 'views/access-control/keys.html',
-          controller: 'KeysCtrl',
-          controllerAs: 'keys',
+          url: '/key-loans',
+          templateUrl: 'views/access-control/keyloans.html',
+          controller: 'KeyLoansCtrl',
+          controllerAs: 'keyloans',
           ncyBreadcrumb: {
             label: 'Llaves'
           }
         })
-          .state('access-control.keys.view', {
+          .state('access-control.key-loans.view', {
             url: '/view',
-            templateUrl: 'views/access-control/keys/view.html',
-            controller: 'KeysViewCtrl',
-            controllerAs: 'keysView',
+            templateUrl: 'views/access-control/key-loans/list.html',
+            controller: 'KeyLoansViewCtrl',
+            controllerAs: 'keyLoansView',
             ncyBreadcrumb: {
               label: 'Buscar'
             }
           })
-          .state('access-control.keys.delivery', {
+          .state('access-control.key-loans.return', {
+            url: '/view/{id}',
+            templateUrl: 'views/access-control/key-loans/return.html',
+            controller: 'KeyLoansReturnCtrl',
+            controllerAs: 'keyLoansReturn',
+            ncyBreadcrumb: {
+              label: 'Devolución',
+              parent: 'access-control.key-loans.view'
+            }
+          })
+          .state('access-control.key-loans.delivery', {
             url: '/delivery',
-            templateUrl: 'views/access-control/keys/delivery.html',
-            controller: 'KeysDeliveryCtrl',
-            controllerAs: 'keysDelivery',
+            templateUrl: 'views/access-control/key-loans/delivery.html',
+            controller: 'KeyLoansDeliveryCtrl',
+            controllerAs: 'keyLoansDelivery',
             ncyBreadcrumb: {
               label: 'Entrega'
             }
           })
-          .state('access-control.keys.return', {
-            url: '/return',
-            templateUrl: 'views/access-control/keys/return.html',
-            controller: 'KeysReturnCtrl',
-            controllerAs: 'keysReturn',
+          //Llaves
+          .state('access-control.key-loans.admin', {
+            url: '/admin',
+            templateUrl: 'views/access-control/key/admin.html',
+            controller: 'KeyAdminCtrl',
+            controllerAs: 'keyAdmin',
             ncyBreadcrumb: {
-              label: 'Devolución'
+              label: 'Administrar'
             }
           });
   });

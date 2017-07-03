@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name dssiFrontApp.controller:KeysViewCtrl
+ * @name dssiFrontApp.controller:KeyLoansViewCtrl
  * @description
- * # KeysViewCtrl
+ * # KeyLoansViewCtrl
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('KeysViewCtrl', function (KeyLoan, $localStorage, $log) {
+  .controller('KeyLoansViewCtrl', function (KeyLoan, $localStorage, $log) {
     var vm = this;
 
     vm.totalItems = 0; // 10 = 1 Página
@@ -19,6 +19,8 @@ angular.module('dssiFrontApp')
     vm.keyLoans = KeyLoan.query({
       property_id: $localStorage.property_id
     });
+
+    //Paginator
     vm.keyLoans.$promise.then(function(){
       vm.totalItems = vm.keyLoans.length;
     });

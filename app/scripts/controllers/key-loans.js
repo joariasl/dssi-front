@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name dssiFrontApp.controller:KeysCtrl
+ * @name dssiFrontApp.controller:KeyLoansCtrl
  * @description
- * # KeysCtrl
+ * # KeyLoansCtrl
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('KeysCtrl', function () {
+  .controller('KeyLoansCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
