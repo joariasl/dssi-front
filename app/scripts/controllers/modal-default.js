@@ -12,6 +12,7 @@ angular.module('dssiFrontApp')
     $scope.modal_options = options;
 
     $scope.ok_text = options.ok_text;
+    $scope.without_footer = options.without_footer || false;
 
     $scope.close = close;
     $scope.ok = angular.isFunction(options.ok)?options.ok:close;

@@ -5,6 +5,6 @@
 <div class="modal-body">
   <div bind-html-compile="modal_options.content"></div>
 </div>
-<div class="modal-footer">
+<div class="modal-footer" ng-if="!without_footer">
   <button type="button" class="btn btn-primary" ng-click="ok()">{{modal_options.ok_text || 'Close'}}</button>
 </div>
