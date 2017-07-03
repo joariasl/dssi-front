@@ -30,7 +30,6 @@ angular.module('dssiFrontApp')
       $scope.checklist = vm.checklist;
       vm.checklist.$promise.then(function(){
         vm.checklistItems = vm.checklist.checklist_items;
-        $log.log(vm.checklist);
       });
     }
 
@@ -62,7 +61,7 @@ angular.module('dssiFrontApp')
           options: {
             title: 'Crear Item para Checklist',
             content: '<div ng-controller="ChecklistItemCreateCtrl as checklistItemCreate" ng-include="\'views/access-control/checklist-items/create.html\'"></div>',
-            ok: 'Guardar'
+            ok_text: 'Guardar'
           }
         }
       }).result.finally(function() {
