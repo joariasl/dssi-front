@@ -23,7 +23,8 @@ angular
     'angular-loading-bar',
     'ncy-angular-breadcrumb',
     'angularMoment',
-    'angular-bind-html-compile'
+    'angular-bind-html-compile',
+    'jlareau.pnotify'
   ])
   .config(function($httpProvider) {
     $httpProvider.interceptors.push(['$q', '$window', '$localStorage', function ($q, $window, $localStorage) {
