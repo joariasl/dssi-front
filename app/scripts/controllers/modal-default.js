@@ -11,7 +11,14 @@ angular.module('dssiFrontApp')
   .controller('ModalDefaultCtrl', function ($scope, $uibModalInstance, options) {
     $scope.modal_options = options;
 
-    $scope.close = function(){
+    $scope.ok_text = options.ok_text;
+
+    $scope.close = close;
+    $scope.ok = angular.isFunction(options.ok)?options.ok:close;
+
+    ////////////
+
+    function close(){
       $uibModalInstance.close();
-    };
+    }
   });
