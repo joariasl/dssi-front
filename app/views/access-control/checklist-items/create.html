@@ -1,16 +1,17 @@
-<form class="form-horizontal form-label-left">
+<form class="form-horizontal form-label-left" ng-submit="formSubmit()">
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nombre <span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <input type="text" required="required" class="form-control col-md-7 col-xs-12" ng-model="checklistItemCreate.checklistItem.name">
+      <input type="text" class="form-control col-md-7 col-xs-12" ng-model="checklistItemCreate.checklistItem.name" required>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Grupo <span class="required">*</span>
     </label>
     <div class="col-md-6 col-sm-6 col-xs-12">
-      <select class="selectpicker" ng-model="checklistItemCreate.checklistItem.checklist_item_group_id">
+      <select class="selectpicker" ng-model="checklistItemCreate.checklistItem.checklist_item_group_id" required>
+        <option value="" selected="selected"></option>
         <option ng-repeat="item_group in checklistItemCreate.checklistItemGroups" ng-value="item_group.id">{{ item_group.name }}</option>
       </select>
     </div>
@@ -20,5 +21,10 @@
     <div class="col-md-6 col-sm-6 col-xs-12">
       <input type="checkbox" class="flat" ng-true-value="1" ng-false-value="0" ng-model="checklistItemCreate.checklistItem.status">
     </div>
+  </div>
+  <div class="ln_solid"></div>
+  <div class="form-group pull-right">
+    <button class="btn btn-default" type="button" ng-click="close()">Cancelar</button>
+    <button type="submit" class="btn btn-success">Guardar</button>
   </div>
 </form>

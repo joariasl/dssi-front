@@ -15,7 +15,9 @@ angular.module('dssiFrontApp')
     $scope = $scope.$parent || $scope;
 
     vm.checklistItem = new ChecklistItem({
-      checklist_id: $scope.$parent.checklist.id || null
+      checklist_id: $scope.$parent.checklist.id || null,
+      checklist_item_group_id: null,
+      status: false
     });
     vm.checklistItemGroups = $scope.$parent.checklistItemGroups || ChecklistItemGroup.query({
       property_id: $localStorage.property_id
@@ -24,15 +26,25 @@ angular.module('dssiFrontApp')
     // Replace method from parent ModalDefaultCtrl
     var parentClose = $scope.close;
     $scope.ok = ok;
+    $scope.formSubmit = formSubmit;
 
     ////////////
 
-    function ok (){
-      vm.checklistItem.$save().then(function(){
+    function saveChecklistItem(checklistItem){
+      checklistItem.$save().then(function(){
+        notificationService.success('¡Guardado!');
         $scope.$parent.loadChecklistItems();
         parentClose();
       }, function(){
         notificationService.error('No ha sido posible atender la solicitud.');
       });
+    }
+
+    function ok(){
+      saveChecklistItem(vm.checklistItem);
+    }
+
+    function formSubmit(){
+      saveChecklistItem(vm.checklistItem);
     }
   });

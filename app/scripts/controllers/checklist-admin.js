@@ -61,7 +61,8 @@ angular.module('dssiFrontApp')
           options: {
             title: 'Crear Item para Checklist',
             content: '<div ng-controller="ChecklistItemCreateCtrl as checklistItemCreate" ng-include="\'views/access-control/checklist-items/create.html\'"></div>',
-            ok_text: 'Guardar'
+            //ok_text: 'Guardar',
+            without_footer: true
           }
         }
       }).result.finally(function() {
