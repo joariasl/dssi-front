@@ -29,18 +29,11 @@
   "moduleName": "dssiFrontApp",
   "overrides": {
     "bootstrap": {
-      "main": [
-        "less/bootstrap.less",
-        "dist/css/bootstrap.css",
-        "dist/js/bootstrap.js"
-      ]
+      "main": []
     }
   },
   "resolutions": {
     "pnotify": "^3.2.0",
     "angular": "^1.4.0"
-  },
-  "ignoredDependencies": [
-    "bootstrap"
-  ]
+  }
 }
