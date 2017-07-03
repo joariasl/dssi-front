@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc service
- * @name dssiFrontApp.checklist
+ * @name dssiFrontApp.Checklist
  * @description
- * # checklist
+ * # Checklist
  * Factory in the dssiFrontApp.
  */
 angular.module('dssiFrontApp')
