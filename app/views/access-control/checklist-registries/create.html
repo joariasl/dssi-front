@@ -1,18 +1,19 @@
 <div class="x_content">
-  <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+  <form ng-submit="checklistRegistriesCreate.save()" class="form-horizontal form-label-left">
     <div class="form-group">
-      <label class="col-md-2 col-sm-3 col-xs-12" for="date">Fecha</label>
+      <label class="col-md-2 col-sm-3 col-xs-12 control-label">Fecha</label>
       <div class="col-md-4 col-sm-6 col-xs-12">
         <p class="input-group">
-          <input type="text" class="form-control" uib-datepicker-popup="{{checklistRegistriesCreate.datepicker.format}}" ng-model="checklistRegistriesCreate.checklistRegistry.date" is-open="checklistRegistriesCreate.datepicker.opened" datepicker-options="checklistRegistriesCreate.datepicker.dateOptions" ng-required="true" close-text="Close" alt-input-formats="checklistRegistriesCreate.datepicker.altInputFormats" />
+          <input type="text" class="form-control" uib-datepicker-popup="{{checklistRegistriesCreate.datepicker.format}}" ng-model="checklistRegistriesCreate.checklistRegistry.date" is-open="checklistRegistriesCreate.datepicker.opened" datepicker-options="checklistRegistriesCreate.datepicker.dateOptions" close-text="Close" alt-input-formats="checklistRegistriesCreate.datepicker.altInputFormats" required/>
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="checklistRegistriesCreate.datepicker.open()"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
         </p>
       </div>
-      <label class="col-md-2 col-sm-3 col-xs-12" for="active">Turno</label>
-      <div class="col-md-4 col-sm-6 col-xs-12" id="active" required>
-        <select class="selectpicker" ng-model="checklistRegistriesCreate.checklistRegistry.turn">
+      <label class="col-md-2 col-sm-3 col-xs-12 control-label">Turno</label>
+      <div class="col-md-4 col-sm-6 col-xs-12" required>
+        <select class="form-control" ng-model="checklistRegistriesCreate.checklistRegistry.turn" required>
+          <option value="" selected="selected"></option>
           <option ng-repeat="turn in checklistRegistriesCreate.checklistTurns" value="{{ turn.id }}">{{ turn.name }}</option>
         </select>
       </div>
@@ -101,10 +102,9 @@
         </div>
       </div>
       <div class="ln_solid"></div>
-      <div class="form-group">
+      <div class="form-group pull-right">
         <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-3">
-          <button class="btn btn-primary" type="reset">Limpiar</button>
-          <button type="submit" class="btn btn-success" ng-click="checklistRegistriesCreate.save()">Registrar</button>
+          <button type="submit" class="btn btn-success">Registrar</button>
         </div>
       </div>
     </div>
