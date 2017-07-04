@@ -7,8 +7,8 @@ describe('Service: checklist', function () {
 
   // instantiate service
   var checklist;
-  beforeEach(inject(function (_checklist_) {
-    checklist = _checklist_;
+  beforeEach(inject(function (_Checklist_) {
+    checklist = _Checklist_;
   }));
 
   it('should do something', function () {

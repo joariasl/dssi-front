@@ -36,6 +36,7 @@ module.exports = function(config) {
       'bower_components/angular-loading-bar/build/loading-bar.js',
       'bower_components/angular-breadcrumb/release/angular-breadcrumb.js',
       'bower_components/moment/moment.js',
+      'bower_components/moment/locale/es.js',
       'bower_components/angular-moment/angular-moment.js',
       'bower_components/angular-bind-html-compile/angular-bind-html-compile.js',
       'bower_components/pnotify/dist/pnotify.js',
