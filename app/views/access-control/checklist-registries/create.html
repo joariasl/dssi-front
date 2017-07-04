@@ -4,7 +4,7 @@
       <label class="col-md-2 col-sm-3 col-xs-12 control-label">Fecha</label>
       <div class="col-md-4 col-sm-6 col-xs-12">
         <p class="input-group">
-          <input type="text" class="form-control" uib-datepicker-popup="{{checklistRegistriesCreate.datepicker.format}}" ng-model="checklistRegistriesCreate.checklistRegistry.date" is-open="checklistRegistriesCreate.datepicker.opened" datepicker-options="checklistRegistriesCreate.datepicker.dateOptions" close-text="Close" alt-input-formats="checklistRegistriesCreate.datepicker.altInputFormats" required/>
+          <input type="text" class="form-control" uib-datepicker-popup="{{checklistRegistriesCreate.datepicker.format}}" ng-model="checklistRegistriesCreate.checklistRegistry.date" is-open="checklistRegistriesCreate.datepicker.opened" datepicker-options="checklistRegistriesCreate.datepicker.dateOptions" close-text="Close" alt-input-formats="checklistRegistriesCreate.datepicker.altInputFormats" required>
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="checklistRegistriesCreate.datepicker.open()"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
@@ -37,9 +37,9 @@
               <td>{{ item.checklist_item_group.name }}</td>
               <td>{{ item.name }}</td>
               <td>
-                <div class="text-center" ng-init="response = checklistRegistriesCreate.checklistRegistry.checklist_entries[$index].response">
-                  <button type="button" class="btn btn-sm" ng-class="{'btn-success': response, 'btn-default': !response}" ng-model="response" uib-btn-checkbox>
-                    <span class="glyphicon" ng-class="{'glyphicon-ok': response, 'glyphicon-minus': !response}" aria-hidden="true"></span>
+                <div class="text-center">
+                  <button type="button" class="btn btn-sm" ng-class="{'btn-success': checklistRegistriesCreate.checklistRegistry.checklist_entries[$index].response, 'btn-default': !checklistRegistriesCreate.checklistRegistry.checklist_entries[$index].response}" ng-model="checklistRegistriesCreate.checklistRegistry.checklist_entries[$index].response" uib-btn-checkbox>
+                    <span class="glyphicon" ng-class="{'glyphicon-ok': checklistRegistriesCreate.checklistRegistry.checklist_entries[$index].response, 'glyphicon-minus': !checklistRegistriesCreate.checklistRegistry.checklist_entries[$index].response}" aria-hidden="true"></span>
                   </button>
                 </div>
               </td>
@@ -92,7 +92,7 @@
                 <td>
                   <div class="form-group">
                     <div class="col-xs-12">
-                      <input type="text" class="form-control" disabled="disabled" placeholder="">
+                      <input type="text" class="form-control" readonly="readonly" placeholder="" value="{{ checklistRegistriesCreate.checklistRegistry.credential_avaliable + checklistRegistriesCreate.checklistRegistry.credential_delivered }}">
                     </div>
                   </div>
                 </td>

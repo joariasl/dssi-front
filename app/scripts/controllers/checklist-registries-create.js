@@ -8,23 +8,23 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('ChecklistRegistriesCreateCtrl', function (Turns, moment, $localStorage, ChecklistItem, ChecklistRegistry) {
+  .controller('ChecklistRegistriesCreateCtrl', function (Turns, moment, $localStorage, ChecklistItem, ChecklistRegistry, $filter) {
     var vm = this;
     vm.save = save;
     vm.checklistTurns = Turns.turns;
 
     // Datepicker
     vm.datepicker = {
-      format: 'dd-MM-yyyy',
+      format: 'dd/MM/yyyy',
       //date: new Date(),
       opened: false,
       dateOptions: {
-        formatYear: 'yy',
+        //initDate: moment(),
         maxDate: moment(),
         minDate: moment().subtract(1, 'month'),
         startingDay: 1
       },
-      altInputFormats: ['d!/M!/yyyy'],
+      altInputFormats: ['d!-M!-yyyy'],
       open: function(){
         vm.datepicker.opened = true;
       }
@@ -55,6 +55,11 @@ angular.module('dssiFrontApp')
     ////////////
 
     function save(){
+      // vm.checklistRegistry.date = dateFormat(vm.datepicker.value);
       vm.checklistRegistry.$save();
     }
+
+    // function dateFormat(date){
+    //   return $filter('date')(date, 'yyyy-MM-dd');
+    // }
   });
