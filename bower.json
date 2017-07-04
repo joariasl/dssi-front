@@ -30,6 +30,12 @@
   "overrides": {
     "bootstrap": {
       "main": []
+    },
+    "moment": {
+      "main": [
+        "moment.js",
+        "locale/es.js"
+      ]
     }
   },
   "resolutions": {
