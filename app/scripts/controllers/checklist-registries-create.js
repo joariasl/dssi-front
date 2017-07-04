@@ -8,7 +8,7 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('ChecklistRegistriesCreateCtrl', function (Turns, moment, $localStorage, ChecklistItem, ChecklistRegistry, $filter) {
+  .controller('ChecklistRegistriesCreateCtrl', function (Turns, moment, $localStorage, ChecklistItem, ChecklistRegistry, notificationService, $state, $filter) {
     var vm = this;
     vm.save = save;
     vm.checklistTurns = Turns.turns;
@@ -56,7 +56,12 @@ angular.module('dssiFrontApp')
 
     function save(){
       // vm.checklistRegistry.date = dateFormat(vm.datepicker.value);
-      vm.checklistRegistry.$save();
+      vm.checklistRegistry.$save().then(function(){
+        notificationService.success('Checklist guardada!');
+        $state.go('^.checklist-registries');
+      }, function(){
+        notificationService.error('No ha sido posible atender la solicitud.');
+      });;
     }
 
     // function dateFormat(date){
