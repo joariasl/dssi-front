@@ -36,10 +36,10 @@
               <td>{{ item.checklist_item_group.name }}</td>
               <td>{{ item.name }}</td>
               <td>
-                <div class="checkbox text-center">
-                  <label>
-                    <input type="checkbox" value="" ng-model="checklistRegistriesCreate.checklistRegistry.checklist_entries[$index].response">
-                  </label>
+                <div class="text-center" ng-init="response = checklistRegistriesCreate.checklistRegistry.checklist_entries[$index].response">
+                  <button type="button" class="btn btn-sm" ng-class="{'btn-success': response, 'btn-default': !response}" ng-model="response" uib-btn-checkbox>
+                    <span class="glyphicon" ng-class="{'glyphicon-ok': response, 'glyphicon-minus': !response}" aria-hidden="true"></span>
+                  </button>
                 </div>
               </td>
               <td>
