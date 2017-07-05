@@ -11,7 +11,7 @@
         </p>
       </div>
       <label class="col-md-2 col-sm-3 col-xs-12 control-label">Turno</label>
-      <div class="col-md-4 col-sm-6 col-xs-12" required>
+      <div class="col-md-4 col-sm-6 col-xs-12">
         <select class="form-control" ng-model="checklistRegistriesCreate.checklistRegistry.turn" required>
           <option value="" selected="selected"></option>
           <option ng-repeat="turn in checklistRegistriesCreate.checklistTurns" value="{{ turn.id }}">{{ turn.name }}</option>
