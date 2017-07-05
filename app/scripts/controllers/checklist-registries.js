@@ -14,14 +14,25 @@ angular.module('dssiFrontApp')
     vm.checklistItemGroups = ChecklistItemGroup.query({
       property_id: $localStorage.property_id
     });
-    vm.checklistsRegistries = ChecklistRegistry.query({
-      property_id: $localStorage.property_id
-    });
-    vm.checklistsRegistries.$promise.then(function(){
-      $log.log(vm.checklistsRegistries);
-      angular.forEach(vm.checklistsRegistries, function(value, key) {
-        $log.log(value);
-        value.total_ok = $filter('filter')(value.checklist_entries, {response:1}).length;
+    vm.checklistItemGroups.$promise.then(function(){
+      vm.checklistsRegistries = ChecklistRegistry.query({
+        property_id: $localStorage.property_id
+      });
+      vm.checklistsRegistries.$promise.then(function(){
+        angular.forEach(vm.checklistsRegistries, function(checklistRegistry, key) {
+          checklistRegistry.total_ok = $filter('filter')(checklistRegistry.checklist_entries, {response:1}).length;
+          checklistRegistry.total_groups = {};
+          angular.forEach(vm.checklistItemGroups, function(checklistItemGroup, key) {
+            checklistRegistry.total_groups[checklistItemGroup.id] = {
+              total: $filter('filter')(checklistRegistry.checklist_entries, function(item){
+                return item.checklist_item.checklist_item_group_id === checklistItemGroup.id;
+              }).length,
+              total_ok: $filter('filter')(checklistRegistry.checklist_entries, function(item){
+                return item.checklist_item.checklist_item_group_id === checklistItemGroup.id && item.response == 1;
+              }).length
+            };
+          });
+        });
       });
     });
   });

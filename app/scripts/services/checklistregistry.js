@@ -9,7 +9,10 @@
  */
 angular.module('dssiFrontApp')
   .factory('ChecklistRegistry', function ($resource, urls) {
-    var service = $resource(urls.BASE_API + '/checklist-registries/:id');
+    var service = $resource(urls.BASE_API + '/checklist-registries/:id', null,
+    {
+      'update': { method:'PUT' }
+    });
 
     return service;
   });

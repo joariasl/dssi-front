@@ -22,11 +22,11 @@
           <tr ng-repeat="item in checklistAdmin.checklistItems">
             <td>{{ item.name }}</td>
             <td>
-              <select class="selectpicker" ng-model="item.checklist_item_group.id">
+              <select class="selectpicker" ng-model="item.checklist_item_group_id" ng-change="checklistAdmin.updateChecklistItem(item)">
                 <option ng-repeat="item_group in checklistAdmin.checklistItemGroups" ng-value="item_group.id">{{ item_group.name }}</option>
               </select>
             </td>
-            <td><input type="checkbox" class="flat" ng-true-value="1" ng-false-value="0" ng-model="item.status"></td>
+            <td><input type="checkbox" class="flat" ng-true-value="1" ng-false-value="0" ng-model="item.status" ng-change="checklistAdmin.updateChecklistItem(item)"></td>
           </tr>
         </tbody>
       </table>
@@ -37,7 +37,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">Grupos
           <div class="btn-group pull-right">
-            <button class="btn btn-default btn-xs" ui-sref="">Nuevo</button>
+            <button class="btn btn-default btn-xs" ng-click="checklistAdmin.checklistItemGroupCreate()">Nuevo</button>
           </div>
         </div>
         <div class="table-responsive">

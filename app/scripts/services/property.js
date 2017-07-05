@@ -9,7 +9,10 @@
  */
 angular.module('dssiFrontApp')
   .factory('Property', function ($resource, urls) {
-    var service = $resource(urls.BASE_API + '/properties/:id');
+    var service = $resource(urls.BASE_API + '/properties/:id', null,
+    {
+      'update': { method:'PUT' }
+    });
 
     return service;
   });

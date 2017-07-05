@@ -11,7 +11,7 @@
         </p>
       </div>
       <label class="col-md-2 col-sm-3 col-xs-12 control-label">Turno</label>
-      <div class="col-md-4 col-sm-6 col-xs-12" required>
+      <div class="col-md-4 col-sm-6 col-xs-12">
         <select class="form-control" ng-model="checklistRegistriesCreate.checklistRegistry.turn" required>
           <option value="" selected="selected"></option>
           <option ng-repeat="turn in checklistRegistriesCreate.checklistTurns" value="{{ turn.id }}">{{ turn.name }}</option>
@@ -38,7 +38,7 @@
               <td>{{ item.name }}</td>
               <td>
                 <div class="text-center">
-                  <button type="button" class="btn btn-sm" ng-class="{'btn-success': checklistRegistriesCreate.checklistRegistry.checklist_entries[$index].response, 'btn-default': !checklistRegistriesCreate.checklistRegistry.checklist_entries[$index].response}" ng-model="checklistRegistriesCreate.checklistRegistry.checklist_entries[$index].response" uib-btn-checkbox>
+                  <button type="button" class="btn btn-sm" ng-class="{'btn-success': checklistRegistriesCreate.checklistRegistry.checklist_entries[$index].response, 'btn-default': !checklistRegistriesCreate.checklistRegistry.checklist_entries[$index].response}" ng-model="checklistRegistriesCreate.checklistRegistry.checklist_entries[$index].response" ng-click="checklistRegistriesCreate.updateTotalOk()" uib-btn-checkbox>
                     <span class="glyphicon" ng-class="{'glyphicon-ok': checklistRegistriesCreate.checklistRegistry.checklist_entries[$index].response, 'glyphicon-minus': !checklistRegistriesCreate.checklistRegistry.checklist_entries[$index].response}" aria-hidden="true"></span>
                   </button>
                 </div>
@@ -52,8 +52,8 @@
             <tr>
               <th scope="row"></th>
               <td>Cumplimiento</td>
-              <td>%</td>
-              <td>%</td>
+              <td>{{ 100 * checklistRegistriesCreate.total_ok / checklistRegistriesCreate.checklistRegistry.checklist_entries.length | number : 0 }}%</td>
+              <td></td>
             </tr>
           </tbody>
         </table>

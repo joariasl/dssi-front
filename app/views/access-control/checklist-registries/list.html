@@ -42,16 +42,15 @@
           <th rowspan="2" class="text-center">N° Folio</th>
           <th rowspan="2" class="text-center">Fecha</th>
           <th rowspan="2" class="text-center">Turno</th>
-          <th colspan="{{ checklistRegistries.checklistItemGroups.length }}" class="text-center">% Cumplimiento</th> <!--colspan segun cuantos grupos existan-->
+          <th colspan="{{ checklistRegistries.checklistItemGroups.length + 1 }}" class="text-center">% Cumplimiento</th> <!--colspan segun cuantos grupos existan-->
           <th colspan="3" class="text-center">Credenciales</th>
           <th rowspan="2" class="text-center">Acción</th>
         </tr>
         <tr class="headings">
-          <th ng-if="!checklistRegistries.checklistItemGroups.$resolved"><i class="fa fa-spinner fa-pulse" aria-hidden="true"></i></th>
-          <!-- Blank cell -->
-          <th ng-if="checklistRegistries.checklistItemGroups.$resolved && checklistRegistries.checklistItemGroups.length === 0"></th>
-          <th ng-repeat="item_group in checklistRegistries.checklistItemGroups" class="text-center">{{ item_group.name }}</th> <!-- ng-repeat para sacar los grupos-->
-          <!-- /Blank cell -->
+          <th ng-repeat="item_group in checklistRegistries.checklistItemGroups | orderBy : 'name'" class="text-center">{{ item_group.name }}</th> <!-- ng-repeat para sacar los grupos-->
+          <!-- Total % cell -->
+          <th>Total</th>
+          <!-- Total % cell -->
           <th class="text-center">Entregadas</th>
           <th class="text-center">Disponibles</th>
           <th class="text-center">Total</th>
@@ -63,10 +62,10 @@
           <td>{{ checklistRegistry.id }}</td>
           <td>{{ checklistRegistry.date | date }}</td>
           <td>{{ checklistRegistries.checklistTurns[checklistRegistry.turn-1].name }}</td>
-          <!-- Blank cell -->
-          <td ng-if="checklistRegistries.checklistItemGroups.$resolved && checklistRegistries.checklistItemGroups.length === 0"></td>
-          <!-- /Blank cell -->
-          <td ng-repeat="item_group in checklistRegistries.checklistItemGroups">{{ 100 * checklistRegistry.total_ok / checklistRegistry.checklist_entries.length | number : 0 }}%</td>
+          <td ng-repeat="item_group in checklistRegistries.checklistItemGroups | orderBy : 'name'">{{ 100 * checklistRegistry.total_groups[item_group.id].total_ok / checklistRegistry.total_groups[item_group.id].total | number : 0 }}%</td>
+          <!-- Total % cell -->
+          <td>{{ 100 * checklistRegistry.total_ok / checklistRegistry.checklist_entries.length | number : 0 }}%</td>
+          <!-- /Total % cell -->
           <td>{{ checklistRegistry.credential_delivered }}</td>
           <td>{{ checklistRegistry.credential_avaliable }}</td>
           <td>{{ checklistRegistry.credential_delivered + checklistRegistry.credential_avaliable }}</td>

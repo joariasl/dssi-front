@@ -1,1 +1,104 @@
-<p>{{ checklistRegistryView.checklistsRegistry }}</p>
+<div class="x_content">
+  <form class="form-horizontal form-label-left">
+    <div class="form-group">
+      <label class="col-md-2 col-sm-3 col-xs-12 control-label">Fecha</label>
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <p class="input-group">
+          <input type="text" class="form-control" value="{{ checklistRegistryView.checklistRegistry.date | date:'dd/MM/yyyy' }}" readonly>
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" disabled><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+      </div>
+      <label class="col-md-2 col-sm-3 col-xs-12 control-label">Turno</label>
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <select class="form-control" ng-model="checklistRegistryView.checklistRegistry.turn" disabled>
+          <option ng-repeat="turn in checklistRegistryView.checklistTurns" value="{{ turn.id }}" ng-selected="turn.id === checklistRegistryView.checklistRegistry.turn">{{ turn.name }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="x_title">
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Grupo</th>
+              <th>Item</th>
+              <th>Estado</th>
+              <th>Observaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="entry in checklistRegistryView.checklistRegistry.checklist_entries">
+              <td>{{ entry.checklist_item.checklist_item_group.name }}</td>
+              <td>{{ entry.checklist_item.name }}</td>
+              <td>
+                <div class="text-center">
+                  <button type="button" class="btn btn-sm" ng-class="{'btn-success': entry.response, 'btn-default': !entry.response}" ng-model="entry.response" ng-click="checklistRegistryView.updateTotalOk()" uib-btn-checkbox disabled>
+                    <span class="glyphicon" ng-class="{'glyphicon-ok': entry.response, 'glyphicon-minus': !entry.response}" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </td>
+              <td>
+                <textarea class="form-control" style="height: 35px;" ng-model="entry.observations" readonly></textarea>
+              </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td>Cumplimiento</td>
+              <td>{{ 100 * checklistRegistryView.total_ok / checklistRegistryView.checklistRegistry.checklist_entries.length | number : 0 }}%</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="table-responsive col-md-6">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th colspan="2">Control de credenciales</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Disponiblidad</td>
+                <td>
+                  <div class="item form-group">
+                    <div class="col-xs-12">
+                      <input type="number" min="0" class="form-control" ng-model="checklistRegistryView.checklistRegistry.credential_avaliable" readonly>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Entregadas</td>
+                <td>
+                  <div class="item form-group">
+                    <div class="col-xs-12">
+                      <input type="number" min="0" class="form-control" ng-model="checklistRegistryView.checklistRegistry.credential_delivered" readonly>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>
+                  <div class="form-group">
+                    <div class="col-xs-12">
+                      <input type="text" class="form-control" readonly="readonly" placeholder="" value="{{ checklistRegistryView.checklistRegistry.credential_avaliable + checklistRegistryView.checklistRegistry.credential_delivered }}">
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </form>
+</div>
