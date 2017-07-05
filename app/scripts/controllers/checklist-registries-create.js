@@ -8,10 +8,11 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('ChecklistRegistriesCreateCtrl', function (Turns, moment, $localStorage, ChecklistItem, ChecklistRegistry, notificationService, $state, $filter) {
+  .controller('ChecklistRegistriesCreateCtrl', function (Turns, moment, $localStorage, ChecklistItem, ChecklistRegistry, notificationService, $state, $filter, $log) {
     var vm = this;
     vm.save = save;
     vm.checklistTurns = Turns.turns;
+    vm.updateTotalOk = updateTotalOk;
 
     // Datepicker
     vm.datepicker = {
@@ -52,6 +53,9 @@ angular.module('dssiFrontApp')
       });
     });
 
+    vm.total_ok = 0;
+    updateTotalOk();
+
     ////////////
 
     function save(){
@@ -62,6 +66,11 @@ angular.module('dssiFrontApp')
       }, function(){
         notificationService.error('No ha sido posible atender la solicitud.');
       });;
+    }
+
+    function updateTotalOk(){
+      vm.total_ok = $filter('filter')(vm.checklistRegistry.checklist_entries, {response:true}).length;
+      $log.log(vm.total_ok);
     }
 
     // function dateFormat(date){
