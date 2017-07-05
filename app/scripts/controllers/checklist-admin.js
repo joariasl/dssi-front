@@ -10,7 +10,8 @@
 angular.module('dssiFrontApp')
   .controller('ChecklistAdminCtrl', function ($scope, ChecklistItemGroup, Checklist, ChecklistItem, $localStorage, $uibModal, $log) {
     var vm = this;
-    this.checklistItemCreate = checklistItemCreate;
+    vm.checklistItemCreate = checklistItemCreate;
+    vm.checklistItemGroupCreate = checklistItemGroupCreate;
 
     vm.checklistItemGroups = []
     loadChecklistItemGroups();
@@ -66,7 +67,28 @@ angular.module('dssiFrontApp')
           }
         }
       }).result.finally(function() {
+        loadChecklistItems();
+      });
+    }
 
+    function checklistItemGroupCreate(){
+      $uibModal.open({
+        animation: true,
+        templateUrl: 'views/modal-bind-compile.html',
+        size: 'md',
+        controller: 'ModalDefaultCtrl',
+        controllerAs: 'modal',
+        scope: $scope,// This $scope as parent of child element
+        resolve: {
+          options: {
+            title: 'Crear Grupo para Item de Checklist',
+            content: '<div ng-controller="ChecklistItemGroupCreateCtrl as checklistItemGroupCreate" ng-include="\'views/access-control/checklist-item-groups/create.html\'"></div>',
+            without_footer: true
+          }
+        }
+      }).result.finally(function() {
+        loadChecklistItemGroups();
+        loadChecklistItems();
       });
     }
   });
