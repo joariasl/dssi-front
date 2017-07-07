@@ -8,15 +8,11 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('KeyLoansDeliveryCtrl', function (moment, $localStorage, KeyLoan) {
+  .controller('KeyLoansDeliveryCtrl', function (moment, $localStorage, KeyLoan, Amphitryon, notificationService, $log) {
     var vm = this;
+    vm.save = save;
+    vm.searchAmphitryon = searchAmphitryon;
 
-    vm.keyLoans = KeyLoan.query({
-      property_id: $localStorage.property_id
-    });
-
-    //Hour
-    vm.mytime = new moment();
     // Datepicker
     vm.datepicker = {
       format: 'dd/MM/yyyy',
@@ -33,5 +29,42 @@ angular.module('dssiFrontApp')
         vm.datepicker.opened = true;
       }
     };
+
+    vm.search_amphitryon_rut = null;
+    vm.amphitryon = null;
+
+    vm.keyLoan = new KeyLoan({
+      delivery_datetime: new Date()
+    });
+
+    ////////////
+
+    function searchAmphitryon(){
+      var rut = vm.search_amphitryon_rut;
+      var searchRut = rut.substr(0,rut.length-1).replace(/[^\d]*/g,'');
+      vm.amphitryon = Amphitryon.get({
+        person_rut: searchRut
+      });
+    }
+
+    function save(){
+      if(vm.amphitryon){
+        $log.log("Ahora si se guarda");
+        // Agregar atributos faltantes
+        vm.keyLoan.delivery_ampithryon_id = vm.amphitryon.id;
+
+        // Guardar
+
+        vm.keyLoan.$save().then(function(){
+          notificationService.success('Checklist guardada!');
+          $state.go('^.view');
+        }, function(){
+          notificationService.error('No ha sido posible atender la solicitud.');
+        });;
+          $log.log(vm.keyLoan);
+      } else {
+        $log.log("No hay ampithryon");
+      }
+    }
 
   });
