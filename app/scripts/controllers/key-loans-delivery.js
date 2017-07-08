@@ -8,10 +8,11 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('KeyLoansDeliveryCtrl', function (moment, $localStorage, KeyLoan, Amphitryon, notificationService, $log) {
+  .controller('KeyLoansDeliveryCtrl', function (moment, $localStorage, Key, KeyLoan, Amphitryon, notificationService, $log) {
     var vm = this;
     vm.save = save;
     vm.searchAmphitryon = searchAmphitryon;
+    vm.searchKey = searchKey;
 
     // Datepicker
     vm.datepicker = {
@@ -32,6 +33,8 @@ angular.module('dssiFrontApp')
 
     vm.search_amphitryon_rut = null;
     vm.amphitryon = null;
+    vm.search_key = null;
+    vm.key = null;
 
     vm.keyLoan = new KeyLoan({
       delivery_datetime: new Date()
@@ -47,11 +50,19 @@ angular.module('dssiFrontApp')
       });
     }
 
+    function searchKey(){
+      var searchId = vm.search_key_id;
+      vm.key = Key.get({
+        id: searchId
+      });
+    }
+
     function save(){
       if(vm.amphitryon){
         $log.log("Ahora si se guarda");
         // Agregar atributos faltantes
         vm.keyLoan.delivery_ampithryon_id = vm.amphitryon.id;
+        vm.keyLoan.key_id = vm.key.id;
 
         // Guardar
 
