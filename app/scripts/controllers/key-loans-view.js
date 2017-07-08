@@ -36,5 +36,5 @@ angular.module('dssiFrontApp')
     vm.setItemsPerPage = function(num) {
       vm.itemsPerPage = num;
       vm.currentPage = 1; //reset to first page
-    }
+    };
   });

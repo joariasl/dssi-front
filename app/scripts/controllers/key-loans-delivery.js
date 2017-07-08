@@ -33,7 +33,7 @@ angular.module('dssiFrontApp')
 
     vm.search_amphitryon_rut = null;
     vm.amphitryon = null;
-    vm.search_key = null;
+    vm.search_key_code = null;
     vm.key = null;
 
     vm.keyLoan = new KeyLoan({
@@ -51,9 +51,9 @@ angular.module('dssiFrontApp')
     }
 
     function searchKey(){
-      var searchId = vm.search_key_id;
+      var searchCode = vm.search_key_code;
       vm.key = Key.get({
-        id: searchId
+        code: searchCode
       });
     }
 
@@ -61,7 +61,7 @@ angular.module('dssiFrontApp')
       if(vm.amphitryon){
         $log.log("Ahora si se guarda");
         // Agregar atributos faltantes
-        vm.keyLoan.delivery_ampithryon_id = vm.amphitryon.id;
+        vm.keyLoan.delivery_amphitryon_id = vm.amphitryon.id;
         vm.keyLoan.key_id = vm.key.id;
 
         // Guardar
@@ -71,7 +71,7 @@ angular.module('dssiFrontApp')
           $state.go('^.view');
         }, function(){
           notificationService.error('No ha sido posible atender la solicitud.');
-        });;
+        });
           $log.log(vm.keyLoan);
       } else {
         $log.log("No hay ampithryon");
