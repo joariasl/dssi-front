@@ -24,7 +24,8 @@ angular
     'ncy-angular-breadcrumb',
     'angularMoment',
     'angular-bind-html-compile',
-    'jlareau.pnotify'
+    'jlareau.pnotify',
+    'smart-table'
   ])
   .config(function($httpProvider) {
     $httpProvider.interceptors.push(['$q', '$window', '$localStorage', function ($q, $window, $localStorage) {
