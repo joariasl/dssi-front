@@ -33,14 +33,15 @@
 </div>
 <div class="x_content">
   <div class="table-responsive">
-    <table st-table="displayedChecklistsRegistries" st-safe-src="checklistRegistries.checklistsRegistries" class="table table-bordered">
+    <!-- <table st-table="displayedChecklistsRegistries" st-safe-src="checklistRegistries.checklistsRegistries" class="table table-bordered"> -->
+    <table st-table="checklistRegistries.checklistsRegistries" st-pipe="checklistRegistries.load" class="table table-bordered">
       <thead>
         <tr class="headings">
           <th rowspan="3" >
             <input type="checkbox" class="flat">
           </th>
           <th st-sort="id" rowspan="2" class="text-center">N° Folio</th>
-          <th st-sort="date" st-sort-default="reverse" rowspan="2" class="text-center">Fecha</th>
+          <th st-sort="date" rowspan="2" class="text-center">Fecha</th>
           <th rowspan="2" class="text-center">Turno</th>
           <th colspan="{{ checklistRegistries.checklistItemGroups.length + 1 }}" class="text-center">% Cumplimiento</th> <!--colspan segun cuantos grupos existan-->
           <th colspan="3" class="text-center">Credenciales</th>
@@ -62,7 +63,7 @@
   			</tr>
       </thead>
       <tbody ng-show="checklistRegistries.checklistsRegistries.$promise.$$state.status">
-        <tr ng-repeat="checklistRegistry in displayedChecklistsRegistries">
+        <tr ng-repeat="checklistRegistry in checklistRegistries.checklistsRegistries">
           <td><input type="checkbox" class="flat" name="table_records"></td>
           <td>{{ checklistRegistry.id }}</td>
           <td>{{ checklistRegistry.date | date }}</td>
