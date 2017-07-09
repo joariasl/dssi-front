@@ -10,11 +10,12 @@
 angular.module('dssiFrontApp')
   .factory('Auth', Auth);
 
-Auth.$inject = ['$http', '$localStorage', 'urls'];
-function Auth($http, $localStorage, urls) {
+Auth.$inject = ['$http', '$localStorage', 'urls', '$rootScope'];
+function Auth($http, $localStorage, urls, $rootScope) {
   var service = {
     signin: signin,
-    logout: logout
+    logout: logout,
+    getUser: getUser
   };
   return service;
 
@@ -43,5 +44,11 @@ function Auth($http, $localStorage, urls) {
 
   function invalidate(){
     delete $localStorage.token;
+    delete $localStorage.property_id;
+  }
+
+  function getUser(){
+    console.log('ENTRA');
+    return $http.post(urls.BASE_URL + '/user');
   }
 }
