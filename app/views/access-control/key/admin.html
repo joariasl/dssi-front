@@ -1,1 +1,31 @@
-<p>Contenido Keys Admin</p>
+<div class="x_title">
+  <h2>Configuraciones</h2>
+  <div class="clearfix"></div>
+</div>
+<div class="x_content">
+  <div class="panel panel-default">
+    <div class="panel-heading">Llaves
+      <div class="btn-group pull-right">
+        <button class="btn btn-default btn-xs">Nuevo</button>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr class="headings">
+            <th class="column-title">Codigo</th>
+            <th class="column-title">Condición</th>
+            <th class="column-title">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in keyAdmin.keyItems">
+            <td>{{ item.code }}</td>
+            <td>{{ item.key_condition.name }}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
