@@ -45,9 +45,11 @@ angular.module('dssiFrontApp')
     function searchAmphitryon(){
       var rut = vm.search_amphitryon_rut;
       var searchRut = rut.substr(0,rut.length-1).replace(/[^\d]*/g,'');
-      vm.amphitryon = Amphitryon.get({
-        person_rut: searchRut
-      });
+      if(searchRut){
+        vm.amphitryon = Amphitryon.get({
+          person_rut: searchRut
+        });
+      }
     }
 
     function searchKey(){
