@@ -15,7 +15,8 @@ angular.module('dssiFrontApp')
     $scope = $scope.$parent || $scope;
 
     vm.checklistItemGroup = new ChecklistItemGroup({
-      name: null
+      name: null,
+      checklist_id: $scope.$parent.checklist.id || null
     });
 
     // Replace method from parent ModalDefaultCtrl
