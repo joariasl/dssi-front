@@ -12,6 +12,15 @@ $breadcrumb-padding-horizontal: 0px;
 $fa-font-path: "../bower_components/font-awesome-sass/assets/fonts/font-awesome/";
 @import "font-awesome-sass/assets/stylesheets/font-awesome.scss";
 
+/*** smart-table sort class ***/
+.st-sort-ascent:before {
+  content: '\25B2';
+}
+
+.st-sort-descent:before {
+  content: '\25BC';
+}
+
 /*** Gentella ***/
 
 .left_col {
