@@ -37,8 +37,8 @@
               <td>{{ entry.checklist_item.name }}</td>
               <td>
                 <div class="text-center">
-                  <button type="button" class="btn btn-sm" ng-class="{'btn-success': entry.response, 'btn-default': !entry.response}" ng-model="entry.response" ng-click="checklistRegistryView.updateTotalOk()" uib-btn-checkbox disabled>
-                    <span class="glyphicon" ng-class="{'glyphicon-ok': entry.response, 'glyphicon-minus': !entry.response}" aria-hidden="true"></span>
+                  <button type="button" class="btn btn-sm" ng-class="{'btn-success': entry.response, 'btn-danger': !entry.response}" ng-model="entry.response" ng-click="checklistRegistryView.updateTotalOk()" uib-btn-checkbox disabled>
+                    <span class="glyphicon" ng-class="{'glyphicon-ok': entry.response, 'glyphicon-remove': !entry.response}" aria-hidden="true"></span>
                   </button>
                 </div>
               </td>

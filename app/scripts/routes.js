@@ -40,7 +40,8 @@ angular
         ncyBreadcrumb: {
           label: 'Control de Acceso',
           skip: true
-        }
+        },
+        resolve: { authenticate: authenticate }
       })
         //Checklist
         .state('access-control.checklist', {
@@ -178,3 +179,25 @@ angular
             }
           });
   });
+
+////////////
+
+authenticate.$inject = ['$q', '$state', '$timeout', '$localStorage', '$rootScope', 'Auth'];
+function authenticate($q, $state, $timeout, $localStorage, $rootScope, Auth) {
+  var deferred = $q.defer();
+  if($localStorage.token && $rootScope.authenticate_user){
+    deferred.resolve();
+  } else {
+    Auth.getUser().then(function(result){
+      $rootScope.authenticate_user = result.data;
+      deferred.resolve();
+    }, function(result){
+      deferred.reject();
+      $timeout(function() {
+        $window.location.href = "login.html";
+      });
+    });
+  }
+
+  return deferred.promise;
+}
