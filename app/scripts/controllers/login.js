@@ -8,7 +8,7 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('LoginCtrl', function ($http, $state, $window, Auth) {
+  .controller('LoginCtrl', function ($http, $window, Auth) {
     var vm = this;
     vm.submit = submit;
     vm.formLogin = {
