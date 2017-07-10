@@ -10,31 +10,38 @@
 angular.module('dssiFrontApp')
   .controller('KeyLoansViewCtrl', function (KeyLoan, $localStorage, $log) {
     var vm = this;
+    vm.load = load;
+    vm.keyLoanStatus = keyLoanStatus;
 
-    vm.totalItems = 0; // 10 = 1 Página
-    vm.currentPage = 1; //Cominenzo de la paginación
-    vm.itemsPerPage = 10;
-    vm.maxSize = 5;
+    ////////////
 
-    vm.keyLoans = KeyLoan.query({
-      property_id: $localStorage.property_id
-    });
+    function load(tableState){
+      var pagination = tableState.pagination;
+      var start = pagination.start || 0;     // This is NOT the page number, but the index of item in the list that you want to use to display the table.
+      var number = pagination.number || 15;  // Number of entries showed per page.
+      var search = tableState.search.predicateObject;
+      var sort = tableState.sort;
 
-    //Paginator
-    vm.keyLoans.$promise.then(function(){
-      vm.totalItems = vm.keyLoans.length;
-    });
+      vm.keyLoans = KeyLoan.query({
+        property_id: $localStorage.property_id,
+        page: 1 + Math.floor(start/number),
+        search: search,
+        sort: {
+          field: sort.predicate,
+          direction: (sort.reverse?'desc':'asc')
+        }
+      }, function(result, headers){
+        tableState.pagination.numberOfPages = 1 + Math.floor(headers('total')/headers('per_page'));
+      });
+    }
 
-    vm.setPage = function (pageNo) {
-      vm.currentPage = pageNo;
-    };
-
-    vm.pageChanged = function() {
-      $log.log('Page changed to: ' + vm.currentPage);
-    };
-
-    vm.setItemsPerPage = function(num) {
-      vm.itemsPerPage = num;
-      vm.currentPage = 1; //reset to first page
+    function keyLoanStatus(key_loan){
+      var status = '';
+      if(key_loan.amphitryon_return){
+        status = "Devuelta";
+      } else {
+        status = "Prestada";
+      }
+      return status;
     };
   });

@@ -5,7 +5,7 @@
 <div class="x_content">
   <div class="table-responsive">
     <!-- <table st-table="displayedChecklistsRegistries" st-safe-src="checklistRegistries.checklistsRegistries" class="table table-bordered"> -->
-    <table st-table="checklistRegistries.checklistsRegistries" st-pipe="checklistRegistries.load" class="table table-bordered">
+    <table st-table="checklistRegistries.checklistsRegistries" st-pipe="checklistRegistries.load" class="table table-striped table-bordered">
       <thead>
         <tr class="headings">
           <th st-sort="id" rowspan="2" class="text-center">N° Folio</th>
@@ -61,7 +61,7 @@
       <tfoot>
   			<tr>
   				<td colspan="{{ 8 + checklistRegistries.checklistItemGroups.length }}" class="text-center">
-  					<div st-pagination="" st-items-by-page="10" st-displayed-pages="7" st-template="views/smart-table-pagination.html"></div>
+  					<div st-pagination="" st-items-by-page="15" st-displayed-pages="7" st-template="views/smart-table-pagination.html"></div>
   				</td>
   			</tr>
   		</tfoot>
