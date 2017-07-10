@@ -8,9 +8,6 @@
     <table st-table="checklistRegistries.checklistsRegistries" st-pipe="checklistRegistries.load" class="table table-bordered">
       <thead>
         <tr class="headings">
-          <th rowspan="3" >
-            <input type="checkbox" class="flat">
-          </th>
           <th st-sort="id" rowspan="2" class="text-center">N° Folio</th>
           <th st-sort="date" st-sort-default="reverse" st-skip-natural="true" rowspan="2" class="text-center">Fecha</th>
           <th rowspan="2" class="text-center">Turno</th>
@@ -29,13 +26,12 @@
         </tr>
         <!-- Search -->
         <tr>
-  				<th><input st-search="id" class="form-control" placeholder="Id" type="text"/></th>
-          <th colspan="9"></th>
+  				<th><input st-search="id" class="form-control" placeholder="Id" type="number"></th>
+          <th colspan="{{ 7 + checklistRegistries.checklistItemGroups.length }}"></th>
   			</tr>
       </thead>
       <tbody ng-show="checklistRegistries.checklistsRegistries.$promise.$$state.status">
         <tr ng-repeat="checklistRegistry in checklistRegistries.checklistsRegistries">
-          <td><input type="checkbox" class="flat" name="table_records"></td>
           <td>{{ checklistRegistry.id }}</td>
           <td>{{ checklistRegistry.date | date }}</td>
           <td>{{ checklistRegistries.checklistTurns[checklistRegistry.turn-1].name }}</td>
@@ -57,14 +53,14 @@
       </tbody>
       <tbody ng-show="checklistRegistries.checklistsRegistries.$promise.$$state.status === 0">
       	<tr>
-  		    <td colspan="{{ 9 + checklistRegistries.checklistItemGroups.length }}" class="text-center">
+  		    <td colspan="{{ 8 + checklistRegistries.checklistItemGroups.length }}" class="text-center">
             <i class="fa fa-refresh fa-spin fa-2x fa-fw" aria-hidden="true"></i>
           </td>
       	</tr>
     	</tbody>
       <tfoot>
   			<tr>
-  				<td colspan="{{ 9 + checklistRegistries.checklistItemGroups.length }}" class="text-center">
+  				<td colspan="{{ 8 + checklistRegistries.checklistItemGroups.length }}" class="text-center">
   					<div st-pagination="" st-items-by-page="10" st-displayed-pages="7" st-template="views/smart-table-pagination.html"></div>
   				</td>
   			</tr>
