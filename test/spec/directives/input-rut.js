@@ -13,8 +13,7 @@ describe('Directive: inputRut', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<input-rut></input-rut>');
+    element = angular.element('<input-rut ng-model="rut"></input-rut>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the inputRut directive');
   }));
 });
