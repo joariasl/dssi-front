@@ -15,7 +15,6 @@ angular
     'ngCookies',
     'ngMessages',
     'ngResource',
-    'ui.router',
     'ngSanitize',
     'ngTouch',
     'ngStorage',

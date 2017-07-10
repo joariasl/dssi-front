@@ -1,0 +1,9 @@
+<nav ng-if="pages.length >= 2">
+  <ul class="pagination">
+    <li ng-class="{disabled: currentPage === 1}"><a href="javascript:;" ng-click="currentPage > 1 && selectPage(1)">&lt;&lt;</a>
+    </li><li ng-class="{disabled: currentPage === 1}"><a href="javascript:;" ng-click="currentPage > 1 && selectPage(currentPage - 1)">&lt;</a>
+    </li><li><a><page-select></page-select> / {{numPages}}</a>
+    </li><li ng-class="{disabled: currentPage === numPages}"><a href="javascript:;" ng-click="currentPage < numPages && selectPage(currentPage + 1)">&gt;</a>
+    </li><li ng-class="{disabled: currentPage === numPages}"><a href="javascript:;" ng-click="currentPage < numPages && selectPage(numPages)">&gt;&gt;</a></li>
+  </ul>
+</nav>

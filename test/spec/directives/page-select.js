@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: inputRut', function () {
+describe('Directive: pageSelect', function () {
 
   // load the directive's module
   beforeEach(module('dssiFrontApp'));
@@ -13,7 +13,7 @@ describe('Directive: inputRut', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<input-rut ng-model="rut"></input-rut>');
+    element = angular.element('<page-select></page-select>');
     element = $compile(element)(scope);
   }));
 });
