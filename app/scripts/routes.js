@@ -182,8 +182,8 @@ angular
 
 ////////////
 
-authenticate.$inject = ['$q', '$state', '$timeout', '$localStorage', '$rootScope', 'Auth'];
-function authenticate($q, $state, $timeout, $localStorage, $rootScope, Auth) {
+authenticate.$inject = ['$q', '$state', '$timeout', '$localStorage', '$rootScope', 'Auth', '$window'];
+function authenticate($q, $state, $timeout, $localStorage, $rootScope, Auth, $window) {
   var deferred = $q.defer();
   if($localStorage.token && $rootScope.authenticate_user){
     deferred.resolve();

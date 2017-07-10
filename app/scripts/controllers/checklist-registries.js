@@ -21,10 +21,12 @@ angular.module('dssiFrontApp')
       var pagination = tableState.pagination;
       var start = pagination.start || 0;     // This is NOT the page number, but the index of item in the list that you want to use to display the table.
       var number = pagination.number || 10;  // Number of entries showed per page.
+      var search = tableState.search.predicateObject;
 
       vm.checklistsRegistries = ChecklistRegistry.query({
         property_id: $localStorage.property_id,
-        page: 1 + Math.floor(start/number)
+        page: 1 + Math.floor(start/number),
+        search: search
       }, function(result, headers){
         // tableState.pagination.numberOfPages = 1 + Math.floor(vm.checklistsRegistries.length/number);
         tableState.pagination.numberOfPages = 1 + Math.floor(headers('total')/headers('per_page'));
