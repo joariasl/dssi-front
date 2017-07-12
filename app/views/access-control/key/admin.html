@@ -21,7 +21,11 @@
         <tbody>
           <tr ng-repeat="item in keyAdmin.keyItems">
             <td>{{ item.code }}</td>
-            <td>{{ item.key_condition.name }}</td>
+            <td>
+              <select class="selectpicker">
+                <option ng-repeat="item_condition in keyAdmin.keyConditions" ng-value="item_condition.id">{{ item_condition.name }}</option>
+              </select>
+            </td>
             <td></td>
           </tr>
         </tbody>
