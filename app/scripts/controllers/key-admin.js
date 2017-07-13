@@ -11,6 +11,7 @@ angular.module('dssiFrontApp')
   .controller('KeyAdminCtrl', function ($scope, Key, KeyCondition, $localStorage, $uibModal, notificationService, $log) {
     var vm = this;
     vm.updateKeyConditionItem = updateKeyConditionItem;
+    vm.keyCreate = keyCreate;
 
     vm.keyItems = Key.query({
       property_id: $localStorage.property_id
@@ -21,7 +22,7 @@ angular.module('dssiFrontApp')
     });
 
     ////////////
-    
+
     function updateKeyConditionItem(keyConditionItem){
       delete keyConditionItem.key_condition;
       KeyConditionItem.update({id: keyConditionItem.id}, keyConditionItem).$promise.then(function(){
@@ -30,4 +31,24 @@ angular.module('dssiFrontApp')
         notificationService.error('No ha sido posible atender la solicitud.');
       });
     }
+
+    function keyCreate(){
+      $uibModal.open({
+        animation: true,
+        templateUrl: 'views/modal-bind-compile.html',
+        size: 'md',
+        controller: 'ModalDefaultCtrl',
+        controllerAs: 'modal',
+        scope: $scope,// This $scope as parent of child element
+        resolve: {
+          options: {
+            title: 'Crear nueva Llave',
+            content: '<div ng-controller="KeyCreateCtrl as keyCreate" ng-include="\'views/access-control/key/create.html\'"></div>',
+            without_footer: true
+          }
+        }
+      }).result.finally(function() {
+      });
+    }
+
   });
