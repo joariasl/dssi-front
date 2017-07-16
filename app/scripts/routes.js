@@ -190,7 +190,14 @@ function authenticate($q, $state, $timeout, $localStorage, $rootScope, Auth, $wi
   } else {
     Auth.getUser().then(function(result){
       $rootScope.authenticate_user = result.data;
-      deferred.resolve();
+
+      // Get permissions inside
+      Auth.getPermissions().then(function(result){
+        $rootScope.user_permissions = result.data;
+        deferred.resolve();
+      }, function(result){
+        deferred.reject();
+      });
     }, function(result){
       deferred.reject();
       $timeout(function() {
