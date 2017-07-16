@@ -1,5 +1,5 @@
 <!-- sidebar menu -->
-<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+<div ng-if="$root.appReady" ng-show="$root.appReady" id="sidebar-menu" class="main_menu_side hidden-print main_menu ng-hide">
   <div class="menu_section">
     <h3>General</h3>
     <ul class="nav side-menu">
@@ -10,6 +10,6 @@
       </li>
     </ul>
   </div>
+  <!-- /sidebar menu -->
+  <script src="js/gentella.js"></script>
 </div>
-<!-- /sidebar menu -->
-<script src="js/gentella.js"></script>
