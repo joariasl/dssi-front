@@ -25,7 +25,8 @@ angular
     'angularMoment',
     'angular-bind-html-compile',
     'jlareau.pnotify',
-    'smart-table'
+    'smart-table',
+    'permission', 'permission.ui'
   ])
   .config(function($httpProvider) {
     $httpProvider.interceptors.push(['$q', '$window', '$localStorage', function ($q, $window, $localStorage) {
