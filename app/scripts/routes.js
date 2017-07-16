@@ -160,7 +160,7 @@ angular
           url: '/key-loans',
           templateUrl: 'views/access-control/keyloans.html',
           controller: 'KeyLoansCtrl',
-          controllerAs: 'keyloans',
+          controllerAs: 'keyLoans',
           ncyBreadcrumb: {
             label: 'Llaves'
           }

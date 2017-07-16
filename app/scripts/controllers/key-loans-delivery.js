@@ -69,7 +69,7 @@ angular.module('dssiFrontApp')
         // Guardar
 
         vm.keyLoan.$save().then(function(){
-          notificationService.success('Checklist guardada!');
+          notificationService.success('Registro de prestamo exitoso!');
           $state.go('^.view');
         }, function(){
           notificationService.error('No ha sido posible atender la solicitud.');

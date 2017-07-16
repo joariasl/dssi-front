@@ -8,11 +8,10 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('KeyLoansReturnCtrl', function (moment, $localStorage, Key, KeyLoan, Amphitryon, notificationService, $log) {
+  .controller('KeyLoansReturnCtrl', function (moment, $stateParams, KeyCondition, $localStorage, KeyLoan, Amphitryon, notificationService, $log) {
     var vm = this;
-    vm.updateKeyConditionItem = updateKeyConditionItem;
+    vm.update = update;
     vm.searchAmphitryon = searchAmphitryon;
-    vm.searchKey = searchKey;
 
     // Datepicker
     vm.datepicker = {
@@ -33,11 +32,17 @@ angular.module('dssiFrontApp')
 
     vm.search_amphitryon_rut = null;
     vm.amphitryon = null;
-    vm.search_key_code = null;
-    vm.key = null;
 
     vm.keyLoan = new KeyLoan({
       return_datetime: new Date()
+    });
+
+    vm.keyLoanDelivery = KeyLoan.get({
+      id: $stateParams.id
+    });
+
+    vm.keyConditions = KeyCondition.query({
+      property_id: $localStorage.property_id
     });
 
     ////////////
@@ -61,11 +66,26 @@ angular.module('dssiFrontApp')
       }
     }
 
-    function searchKey(){
-      var searchCode = vm.search_key_code;
-      vm.key = Key.get({
-        code: searchCode
-      });
+    function update(){
+      if(vm.amphitryon){
+        $log.log("Ahora si se guarda");
+        // Agregar atributos faltantes
+        vm.keyLoan.delivery_amphitryon_id = vm.keyLoanDelivery.delivery_amphitryon_id;
+        vm.keyLoan.return_amphitryon_id = vm.amphitryon.id;
+        vm.keyLoan.key_id = vm.keyLoanDelivery.id;
+
+        // Guardar
+
+        vm.keyLoan.$update().then(function(){
+          notificationService.success('Registro de devolución exitoso!');
+          $state.go('^.view');
+        }, function(){
+          notificationService.error('No ha sido posible atender la solicitud.');
+        });
+          $log.log(vm.keyLoan);
+      } else {
+        $log.log("No hay ampithryon");
+      }
     }
 
   });

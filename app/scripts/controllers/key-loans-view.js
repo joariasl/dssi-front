@@ -43,5 +43,5 @@ angular.module('dssiFrontApp')
         status = "Prestada";
       }
       return status;
-    };
+    }
   });
