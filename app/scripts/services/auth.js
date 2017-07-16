@@ -15,7 +15,8 @@ function Auth($http, $localStorage, urls, $rootScope) {
   var service = {
     signin: signin,
     logout: logout,
-    getUser: getUser
+    getUser: getUser,
+    getPermissions: getPermissions
   };
   return service;
 
@@ -48,7 +49,10 @@ function Auth($http, $localStorage, urls, $rootScope) {
   }
 
   function getUser(){
-    console.log('ENTRA');
-    return $http.post(urls.BASE_URL + '/user');
+    return $http.get(urls.BASE_URL + '/user');
+  }
+
+  function getPermissions(){
+    return $http.get(urls.BASE_URL + '/user/permissions');
   }
 }

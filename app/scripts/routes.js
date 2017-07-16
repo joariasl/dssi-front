@@ -11,7 +11,12 @@
 angular
   .module('dssiFrontApp')
   .config(function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.deferIntercept();
     $urlRouterProvider.otherwise("/");
+    // $urlRouterProvider.otherwise( function($injector) {
+    //   var $state = $injector.get("$state");
+    //   $state.go('/');
+    // });
     $stateProvider
       .state('index', {
         url: '/',
@@ -61,6 +66,11 @@ angular
             controllerAs: 'checklistRegistries',
             ncyBreadcrumb: {
               label: 'Buscar'
+            },
+            data: {
+              permissions: {
+                only: ['access-control.checklist-registry.read']
+              }
             }
           })
           .state('access-control.checklist.checklist-registry', {
@@ -71,6 +81,11 @@ angular
             ncyBreadcrumb: {
               label: 'Registro',
               parent: 'access-control.checklist.checklist-registries'
+            },
+            data: {
+              permissions: {
+                only: ['access-control.checklist-registry.read']
+              }
             }
           })
           .state('access-control.checklist.checklist-registries-create', {
@@ -80,6 +95,11 @@ angular
             controllerAs: 'checklistRegistriesCreate',
             ncyBreadcrumb: {
               label: 'Registrar'
+            },
+            data: {
+              permissions: {
+                only: ['access-control.checklist-registry.write']
+              }
             }
           })
           .state('access-control.checklist.admin', {
@@ -89,6 +109,11 @@ angular
             controllerAs: 'checklistAdmin',
             ncyBreadcrumb: {
               label: 'Administrar'
+            },
+            data: {
+              permissions: {
+                only: ['access-control.checklist.read','access-control.checklist.write']
+              }
             }
           })
         //Visitas
@@ -182,8 +207,8 @@ angular
 
 ////////////
 
-authenticate.$inject = ['$q', '$state', '$timeout', '$localStorage', '$rootScope', 'Auth', '$window'];
-function authenticate($q, $state, $timeout, $localStorage, $rootScope, Auth, $window) {
+authenticate.$inject = ['$q', '$state', '$timeout', '$localStorage', '$rootScope', 'Auth', '$window', 'PermPermissionStore'];
+function authenticate($q, $state, $timeout, $localStorage, $rootScope, Auth, $window, PermPermissionStore) {
   var deferred = $q.defer();
   if($localStorage.token && $rootScope.authenticate_user){
     deferred.resolve();
