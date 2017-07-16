@@ -112,7 +112,7 @@ angular
             },
             data: {
               permissions: {
-                only: ['access-control.checklist.read','access-control.checklist.write']
+                only: ['access-control.checklist.write']
               }
             }
           })
