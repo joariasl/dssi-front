@@ -8,47 +8,8 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('MenuCtrl', function () {
+  .controller('MenuCtrl', function (Module) {
     var vm = this;
-    vm.menu = [
-      {
-        id: 0,
-        name: 'Dashboard',
-        icon: 'dashboard'
-      },
-      {
-        id: 1,
-        name: 'Control de Acceso',
-        icon: 'unlock-alt',
-        items: [
-          {
-            id: 2,
-            name: 'Checklist',
-            state: 'access-control.checklist.checklist-registries',
-          },
-          {
-            id: 3,
-            name: 'Visitas',
-            state: 'access-control.visits.view',
-          },
-          {
-            id: 4,
-            name: 'Llaves',
-            state: 'access-control.key-loans.view',
-          }
-        ]
-      },
-      {
-        id: 1,
-        name: 'Sistema',
-        icon: 'gears',
-        items: [
-          {
-            id: 5,
-            name: 'Usuarios',
-            state: '',
-          }
-        ]
-      }
-    ];
+
+    vm.menu = Module.query();
   });

@@ -50,6 +50,9 @@ module.exports = function(config) {
       'bower_components/pnotify/dist/pnotify.nonblock.js',
       'bower_components/angular-pnotify/src/angular-pnotify.js',
       'bower_components/angular-smart-table/dist/smart-table.js',
+      'bower_components/angular-permission/dist/angular-permission.js',
+      'bower_components/angular-permission/dist/angular-permission-ui.js',
+      'bower_components/angular-permission/dist/angular-permission-ng.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

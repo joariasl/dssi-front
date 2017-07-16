@@ -1,11 +1,11 @@
 <!-- sidebar menu -->
-<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+<div ng-show="$root.appReady" id="sidebar-menu" class="main_menu_side hidden-print main_menu ng-hide">
   <div class="menu_section">
     <h3>General</h3>
     <ul class="nav side-menu">
       <li ng-repeat="item in menu.menu"><a><i class="fa fa-{{ item.icon }}"></i> {{ item.name }} <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li ng-repeat="item_sub in item.items" ui-sref-active="active"><a ui-sref="{{ item_sub.state }}" href="#"> {{ item_sub.name }}</a></li>
+          <li ng-repeat="item_sub in item.child_modules" ui-sref-active="active"><a ui-sref="{{ item_sub.state }}" href="#"> {{ item_sub.name }}</a></li>
         </ul>
       </li>
     </ul>
