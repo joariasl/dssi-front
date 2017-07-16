@@ -48,7 +48,6 @@ function Auth($http, $localStorage, urls, $rootScope) {
   }
 
   function getUser(){
-    console.log('ENTRA');
-    return $http.post(urls.BASE_URL + '/user');
+    return $http.get(urls.BASE_URL + '/user');
   }
 }
