@@ -8,11 +8,12 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('KeyAdminCtrl', function ($scope, Key, KeyCondition, $localStorage, $uibModal, notificationService, $log) {
+  .controller('KeyAdminCtrl', function ($scope, Key, KeyCondition, $localStorage, $uibModal, notificationService, KeyLoanStatus, $log) {
     var vm = this;
     vm.updateKeyConditionItem = updateKeyConditionItem;
     vm.keyCreate = keyCreate;
     vm.loadKeys = loadKeys;
+    vm.keyLoanStatuses = KeyLoanStatus.key_loan_statuses;
 
     loadKeyConditions();
 

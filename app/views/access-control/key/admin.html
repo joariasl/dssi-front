@@ -37,7 +37,9 @@
                 <option ng-repeat="item_condition in keyAdmin.keyConditions" ng-value="item_condition.id">{{ item_condition.name }}</option>
               </select>
             </td>
-            <td></td>
+            <td>
+              {{ keyAdmin.keyLoanStatuses[item.key_loan_status].name }}
+            </td>
           </tr>
         </tbody>
         <tbody ng-show="keyAdmin.keyConditions.$promise.$$state.status === 0">
