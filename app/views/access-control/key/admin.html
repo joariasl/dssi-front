@@ -54,26 +54,4 @@
       </tfoot>
     </table>
   </div>
-  <div class="table-responsive">
-    <table class="table table-bordered">
-      <thead>
-        <tr class="headings">
-          <th class="column-title">Codigo</th>
-          <th class="column-title">Condición</th>
-          <th class="column-title">Estado</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="item in keyAdmin.keyItems">
-          <td>{{ item.code }}</td>
-          <td>
-            <select class="selectpicker" ng-model="item.key_condition_id">
-              <option ng-repeat="item_condition in keyAdmin.keyConditions" ng-value="item_condition.id">{{ item_condition.name }}</option>
-            </select>
-          </td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 </div>
