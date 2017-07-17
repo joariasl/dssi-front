@@ -5,7 +5,17 @@
         <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre <span class="required">*</span>
         </label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-          <input type="text" class="form-control col-md-7 col-xs-12" ng-model="keyCreate.newKey.code" required>
+          <input type="text" class="form-control col-md-7 col-xs-12" ng-model="keyCreate.key.code" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">Condición <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <select class="form-control" ng-model="keyCreate.key.key_condition_id" required>
+            <option value=""></option>
+            <option ng-repeat="item_condition in keyCreate.keyConditions" ng-value="item_condition.id">{{ item_condition.name }}</option>
+          </select>
         </div>
       </div>
       <div class="pull-right">

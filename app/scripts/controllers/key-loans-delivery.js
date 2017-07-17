@@ -8,7 +8,7 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('KeyLoansDeliveryCtrl', function (moment, $localStorage, Key, KeyLoan, Amphitryon, notificationService, $log) {
+  .controller('KeyLoansDeliveryCtrl', function (moment, $localStorage, Key, KeyLoan, Amphitryon, notificationService, $state, $log) {
     var vm = this;
     vm.save = save;
     vm.searchAmphitryon = searchAmphitryon;
@@ -31,9 +31,7 @@ angular.module('dssiFrontApp')
       }
     };
 
-    vm.search_amphitryon_rut = null;
     vm.amphitryon = null;
-    vm.search_key_code = null;
     vm.key = null;
 
     vm.keyLoan = new KeyLoan({
@@ -42,41 +40,37 @@ angular.module('dssiFrontApp')
 
     ////////////
 
-    function searchAmphitryon(){
-      var rut = vm.search_amphitryon_rut;
-      var searchRut = rut.substr(0,rut.length-1).replace(/[^\d]*/g,'');
+    function searchAmphitryon(rut){
+      var searchRut = rut;//rut.substr(0,rut.length-1).replace(/[^\d]*/g,'');
       if(searchRut){
-        vm.amphitryon = Amphitryon.get({
-          person_rut: searchRut
+        var amphitryon = Amphitryon.query({
+          search: {"person_rut": searchRut}
         });
+        return amphitryon.$promise;
       }
     }
 
-    function searchKey(){
-      var searchCode = vm.search_key_code;
-      vm.key = Key.get({
-        code: searchCode
+    function searchKey(code){
+      var keys = Key.query({
+        property_id: $localStorage.property_id,
+        search: {"code": code}
       });
+      return keys.$promise;
     }
 
     function save(){
-      if(vm.amphitryon){
-        $log.log("Ahora si se guarda");
+      if(vm.amphitryon && vm.key){
         // Agregar atributos faltantes
         vm.keyLoan.delivery_amphitryon_id = vm.amphitryon.id;
         vm.keyLoan.key_id = vm.key.id;
 
         // Guardar
-
         vm.keyLoan.$save().then(function(){
-          notificationService.success('Registro de prestamo exitoso!');
-          $state.go('^.view');
+          notificationService.success('¡Registro de préstamo exitoso!');
+          $state.go('^.key-loans');
         }, function(){
           notificationService.error('No ha sido posible atender la solicitud.');
         });
-          $log.log(vm.keyLoan);
-      } else {
-        $log.log("No hay ampithryon");
       }
     }
 

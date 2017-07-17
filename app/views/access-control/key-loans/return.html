@@ -1,97 +1,94 @@
 <form ng-submit="keyLoansReturn.update()" class="form-horizontal form-label-left">
   <div class="x_title">
-    <h2>Prestamo de llave</h2>
+    <h2>Préstamo de llave</h2>
     <div class="clearfix"></div>
   </div>
   <div class="form-group">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Fecha de entrega</label>
     <div class="col-md-4 col-sm-6 col-xs-12">
       <p class="input-group">
-        <input type="text" class="form-control" value="{{ keyLoansReturn.keyLoanDelivery.delivery_datetime | date:'dd/MM/yyyy' }}" readonly>
+        <input type="text" class="form-control" value="{{ keyLoansReturn.keyLoan.delivery_datetime | amDateFormat:'DD/MM/YYYY HH:mm' }}" readonly>
         <span class="input-group-btn">
           <button type="button" class="btn btn-default" disabled><i class="glyphicon glyphicon-calendar"></i></button>
         </span>
       </p>
     </div>
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Hora de entrega</label>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div uib-timepicker ng-model="keyLoansReturn.keyLoanDelivery.delivery_datetime" show-meridian="false" ng-disabled="true" readonly-input="true"></div>
-    </div>
   </div>
   <div class="form-group">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">N° Llave</label>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <input ng-model="keyLoansReturn.keyLoanDelivery.key.code" type="text" class="form-control" readonly>
+      <input ng-model="keyLoansReturn.keyLoan.key.code" type="text" class="form-control" readonly>
     </div>
   </div>
   <div class="form-group">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">RUT</label>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <input-rut ng-model="keyLoansReturn.keyLoanDelivery.amphitryon_delivery.person.rut" ng-change="keyLoanDelivery.searchAmphitryon()" class="form-control col-md-7 col-xs-12" readonly></input-rut>
+      <input value="{{ keyLoansReturn.keyLoan.amphitryon_delivery.person.rut }}-{{ keyLoansReturn.keyLoan.amphitryon_delivery.person.dv }}" class="form-control col-md-7 col-xs-12" readonly></input>
     </div>
     <label class="col-md-1 col-sm-4 col-xs-12">Área</label>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <input ng-model="keyLoansReturn.keyLoanDelivery.amphitryon_delivery.area.name" type="text" class="form-control" readonly>
+      <input ng-model="keyLoansReturn.keyLoan.amphitryon_delivery.area.name" type="text" class="form-control" readonly>
     </div>
   </div>
   <div class="form-group">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Nombre</label>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <input value="{{ keyLoansReturn.keyLoanDelivery.amphitryon_delivery.person.name }} {{ keyLoansReturn.keyLoanDelivery.amphitryon_delivery.person.lastname }}" type="text" class="form-control" readonly>
+      <input value="{{ keyLoansReturn.keyLoan.amphitryon_delivery.person.name }} {{ keyLoansReturn.keyLoan.amphitryon_delivery.person.lastname }}" type="text" class="form-control" readonly>
     </div>
   </div>
   <div class="ln_solid"></div>
   <div class="x_title">
-    <h2>Registrar devolución de llave</h2>
+    <h2>Devolución de llave</h2>
     <div class="clearfix"></div>
-  </div>
-  <div class="form-group">
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">RUT</label>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <input-rut ng-model="keyLoansReturn.search_amphitryon_rut" ng-change="keyLoansReturn.searchAmphitryon()" class="form-control col-md-7 col-xs-12" required></input-rut>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Nombre</label>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <input value="{{ keyLoansReturn.amphitryon.person.name }} {{ keyLoansReturn.amphitryon.person.lastname }}" type="text" class="form-control" readonly="readonly">
-    </div>
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Área</label>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <input ng-model="keyLoansReturn.amphitryon.area.name" type="text" class="form-control" readonly="readonly">
-    </div>
   </div>
   <div class="form-group">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Fecha</label>
     <div class="col-md-4 col-sm-6 col-xs-12">
       <p class="input-group">
-        <input type="text" class="form-control" uib-datepicker-popup="{{keyLoansReturn.datepicker.format}}" ng-model="keyLoansReturn.keyLoan.return_datetime" is-open="keyLoansReturn.datepicker.opened" datepicker-options="keyLoansReturn.datepicker.dateOptions" close-text="Close" alt-input-formats="keyLoansReturn.datepicker.altInputFormats" required/>
+        <input ng-if="keyLoansReturn.keyLoan.key_loan_status === 1" type="text" class="form-control" uib-datepicker-popup="{{keyLoansReturn.datepicker.format}}" ng-model="keyLoansReturn.keyLoan.return_datetime" is-open="keyLoansReturn.datepicker.opened" datepicker-options="keyLoansReturn.datepicker.dateOptions" close-text="Close" alt-input-formats="keyLoansReturn.datepicker.altInputFormats" required ng-readonly="keyLoansReturn.keyLoan.key_loan_status !== 1"/>
+        <input ng-if="keyLoansReturn.keyLoan.key_loan_status !== 1" type="text" class="form-control" value="{{ keyLoansReturn.keyLoan.delivery_datetime | amDateFormat:'DD/MM/YYYY HH:mm' }}" readonly>
         <span class="input-group-btn">
-          <button type="button" class="btn btn-default" ng-click="keyLoansReturn.datepicker.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+          <button type="button" class="btn btn-default" ng-click="keyLoansReturn.datepicker.open()" ng-disabled="keyLoansReturn.keyLoan.key_loan_status !== 1"><i class="glyphicon glyphicon-calendar"></i></button>
         </span>
       </p>
     </div>
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Hora</label>
-    <div class="col-md-4 col-sm-6 col-xs-12">
+    <label ng-if="keyLoansReturn.keyLoan.key_loan_status === 1" class="col-md-2 col-sm-3 col-xs-12 control-label">Hora</label>
+    <div ng-if="keyLoansReturn.keyLoan.key_loan_status === 1" class="col-md-4 col-sm-6 col-xs-12">
       <div uib-timepicker ng-model="keyLoansReturn.keyLoan.return_datetime" show-meridian="false" required></div>
     </div>
   </div>
   <div class="form-group">
-    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Condición</label>
+    <label class="col-md-2 col-sm-3 col-xs-12 control-label">RUT</label>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <select class="form-control" ng-model="keyLoansReturn.keyLoanDelivery.key.key_condition_id">
-        <option ng-repeat="item_condition in keyLoansReturn.keyConditions" ng-value="item_condition.id">{{ item_condition.name }}</option>
-      </select>
+      <script type="text/ng-template" id="amphitryonResultTemplate.html">
+        <a>
+          <span ng-bind-html="match.model.person_rut+'-'+match.model.person.dv | uibTypeaheadHighlight:query"></span>
+          <br>
+          <span>{{ match.model.person.name + ' ' + match.model.person.lastname }}</span>
+        </a>
+        <div class="divider" style="margin: 0;"></div>
+      </script>
+      <input type="text" ng-model="keyLoansReturn.keyLoan.amphitryon_return" placeholder="RUT" typeahead-editable="false" uib-typeahead="amphitryon as amphitryon.person_rut for amphitryon in keyLoansReturn.searchAmphitryon($viewValue)" typeahead-template-url="amphitryonResultTemplate.html" class="form-control" required ng-readonly="keyLoansReturn.keyLoan.key_loan_status !== 1">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Nombre</label>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <input value="{{ keyLoansReturn.keyLoan.amphitryon_return.person.name }} {{ keyLoansReturn.keyLoan.amphitryon_return.person.lastname }}" type="text" class="form-control" readonly="readonly">
+    </div>
+    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Área</label>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <input ng-model="keyLoansReturn.keyLoan.amphitryon_return.area.name" type="text" class="form-control" readonly="readonly">
     </div>
   </div>
   <div class="form-group">
     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Observaciones</label>
     <div class="col-md-10 col-sm-6 col-xs-12">
-      <textarea class="form-control"></textarea>
+      <textarea ng-model="keyLoansReturn.keyLoan.observations" class="form-control" ng-readonly="keyLoansReturn.keyLoan.key_loan_status !== 1"></textarea>
     </div>
   </div>
   <div class="ln_solid"></div>
-  <div class="form-group pull-right">
+  <div ng-if="keyLoansReturn.keyLoan.key_loan_status === 1" class="form-group pull-right">
     <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-3">
       <button type="submit" class="btn btn-success">Registrar</button>
     </div>

@@ -8,7 +8,7 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('ChecklistRegistriesCreateCtrl', function (Turns, moment, $localStorage, ChecklistItem, ChecklistRegistry, notificationService, $state, $filter, $log) {
+  .controller('ChecklistRegistriesCreateCtrl', function (Turns, moment, $localStorage, ChecklistItem, ChecklistRegistry, notificationService, $state, $filter) {
     var vm = this;
     vm.save = save;
     vm.checklistTurns = Turns.turns;
@@ -70,7 +70,6 @@ angular.module('dssiFrontApp')
 
     function updateTotalOk(){
       vm.total_ok = $filter('filter')(vm.checklistRegistry.checklist_entries, {response:true}).length;
-      $log.log(vm.total_ok);
     }
 
     // function dateFormat(date){

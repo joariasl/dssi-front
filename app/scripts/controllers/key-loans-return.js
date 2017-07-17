@@ -8,7 +8,7 @@
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('KeyLoansReturnCtrl', function (moment, $stateParams, KeyCondition, $localStorage, KeyLoan, Amphitryon, notificationService, $log) {
+  .controller('KeyLoansReturnCtrl', function (moment, $stateParams, KeyCondition, $localStorage, KeyLoan, Amphitryon, notificationService, $state, $log) {
     var vm = this;
     vm.update = update;
     vm.searchAmphitryon = searchAmphitryon;
@@ -30,15 +30,13 @@ angular.module('dssiFrontApp')
       }
     };
 
-    vm.search_amphitryon_rut = null;
-    vm.amphitryon = null;
-
-    vm.keyLoan = new KeyLoan({
-      return_datetime: new Date()
-    });
-
-    vm.keyLoanDelivery = KeyLoan.get({
+    vm.keyLoan = KeyLoan.get({
       id: $stateParams.id
+    }, function(data){
+      $log.log(data, data.return_datetime);
+      if(!data.return_datetime){
+        vm.keyLoan.return_datetime = new Date();
+      }
     });
 
     vm.keyConditions = KeyCondition.query({
@@ -47,44 +45,33 @@ angular.module('dssiFrontApp')
 
     ////////////
 
-    function updateKeyConditionItem(keyConditionItem){
-      delete keyConditionItem.key_condition;
-      KeyConditionItem.update({id: keyConditionItem.id}, keyConditionItem).$promise.then(function(){
-        notificationService.success('¡Actualizado!');
-      }, function(){
-        notificationService.error('No ha sido posible atender la solicitud.');
-      });
-    }
-
-    function searchAmphitryon(){
-      var rut = vm.search_amphitryon_rut;
-      var searchRut = rut.substr(0,rut.length-1).replace(/[^\d]*/g,'');
+    function searchAmphitryon(rut){
+      var searchRut = rut;//rut.substr(0,rut.length-1).replace(/[^\d]*/g,'');
       if(searchRut){
-        vm.amphitryon = Amphitryon.get({
-          person_rut: searchRut
+        var amphitryon = Amphitryon.query({
+          search: {"person_rut": searchRut}
         });
+        return amphitryon.$promise;
       }
     }
 
     function update(){
-      if(vm.amphitryon){
-        $log.log("Ahora si se guarda");
-        // Agregar atributos faltantes
-        vm.keyLoan.delivery_amphitryon_id = vm.keyLoanDelivery.delivery_amphitryon_id;
-        vm.keyLoan.return_amphitryon_id = vm.amphitryon.id;
-        vm.keyLoan.key_id = vm.keyLoanDelivery.id;
+      if(vm.keyLoan.key_loan_status === 1){
+        if(vm.keyLoan.amphitryon_return){
+          // Agregar atributos faltantes
+          vm.keyLoan.return_amphitryon_id = vm.keyLoan.amphitryon_return.id;
 
-        // Guardar
-
-        vm.keyLoan.$update().then(function(){
-          notificationService.success('Registro de devolución exitoso!');
-          $state.go('^.view');
-        }, function(){
-          notificationService.error('No ha sido posible atender la solicitud.');
-        });
-          $log.log(vm.keyLoan);
+          // Guardar
+          vm.keyLoan.$update().then(function(){
+            notificationService.success('¡Registro de devolución exitoso!');
+            //$state.go('^.key-loans');
+            $state.reload();
+          }, function(){
+            notificationService.error('No ha sido posible atender la solicitud.');
+          });
+        }
       } else {
-        $log.log("No hay ampithryon");
+        notificationService.error('¡El registro no se encuentra en estado "Prestado"!');
       }
     }
 
