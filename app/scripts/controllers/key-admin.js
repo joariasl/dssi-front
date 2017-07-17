@@ -12,17 +12,36 @@ angular.module('dssiFrontApp')
     var vm = this;
     vm.updateKeyConditionItem = updateKeyConditionItem;
     vm.keyCreate = keyCreate;
-
-    loadKeys();
+    vm.loadKeys = loadKeys;
 
     loadKeyConditions();
 
     ////////////
 
-    function loadKeys(){
+    function loadKeys(tableState){
+      vm.tableStateKeys = tableState;
+      var pagination = tableState.pagination;
+      var start = pagination.start || 0;     // This is NOT the page number, but the index of item in the list that you want to use to display the table.
+      var number = pagination.number || 15;  // Number of entries showed per page.
+      var search = tableState.search.predicateObject;
+      var sort = tableState.sort;
+
       vm.keys = Key.query({
-        property_id: $localStorage.property_id
+        property_id: $localStorage.property_id,
+        // smart-table params
+        page: 1 + Math.floor(start/number),
+        search: search,
+        sort: {
+          field: sort.predicate,
+          direction: (sort.reverse?'desc':'asc')
+        }
+      }, function(result, headers){
+        tableState.pagination.numberOfPages = 1 + Math.floor(headers('total')/headers('per_page'));
       });
+    }
+
+    function reloadKeys(){
+      loadKeys(vm.tableStateKeys);
     }
 
     function loadKeyConditions(){
@@ -30,6 +49,7 @@ angular.module('dssiFrontApp')
         property_id: $localStorage.property_id
       });
       $scope.keyConditions = vm.keyConditions;
+      $log.log(vm.keyConditions);
     }
 
     function updateKeyConditionItem(keyConditionItem){
@@ -57,7 +77,7 @@ angular.module('dssiFrontApp')
           }
         }
       }).result.finally(function() {
-        loadKeys();
+        reloadKeys();
       });
     }
 

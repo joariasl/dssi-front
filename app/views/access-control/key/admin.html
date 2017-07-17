@@ -10,13 +10,19 @@
       </div>
     </div>
     <div class="table-responsive">
-      <table class="table table-bordered">
+      <table st-table="keyAdmin.keys" st-pipe="keyAdmin.loadKeys" class="table table-bordered">
         <thead>
           <tr class="headings">
-            <th class="column-title">Codigo</th>
+            <th st-sort="code" st-sort-default="true" st-skip-natural="true" class="column-title">Codigo</th>
             <th class="column-title">Condición</th>
             <th class="column-title">Estado</th>
           </tr>
+          <!-- Search -->
+          <tr>
+    				<th><input st-search="code" class="form-control" placeholder="Código" type="text"></th>
+            <th></th>
+            <th></th>
+    			</tr>
         </thead>
         <tbody>
           <tr ng-repeat="item in keyAdmin.keys">
