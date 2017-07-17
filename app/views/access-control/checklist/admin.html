@@ -1,59 +1,54 @@
-<div class="x_title">
-  <h2>Configuraciones</h2>
-  <div class="clearfix"></div>
-</div>
-<div class="x_content">
-  <div class="panel panel-default">
-    <div class="panel-heading">Items
-      <div class="btn-group pull-right">
-        <button class="btn btn-default btn-xs" ng-click="checklistAdmin.checklistItemCreate()">Nuevo</button>
-      </div>
-    </div>
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead>
-          <tr class="headings">
-            <th class="column-title">Item</th>
-            <th class="column-title">Grupo</th>
-            <th class="column-title">Estado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="item in checklistAdmin.checklistItems">
-            <td>{{ item.name }}</td>
-            <td>
-              <select class="selectpicker" ng-model="item.checklist_item_group_id" ng-change="checklistAdmin.updateChecklistItem(item)">
-                <option ng-repeat="item_group in checklistAdmin.checklistItemGroups" ng-value="item_group.id">{{ item_group.name }}</option>
-              </select>
-            </td>
-            <td><input type="checkbox" class="flat" ng-true-value="1" ng-false-value="0" ng-model="item.status" ng-change="checklistAdmin.updateChecklistItem(item)"></td>
-          </tr>
-        </tbody>
-      </table>
+<h3>Configuraciones</h3>
+<div class="panel panel-default">
+  <div class="panel-heading">Items
+    <div class="btn-group pull-right">
+      <button class="btn btn-default btn-xs" ng-click="checklistAdmin.checklistItemCreate()">Nuevo</button>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-4 col-xs-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">Grupos
-          <div class="btn-group pull-right">
-            <button class="btn btn-default btn-xs" ng-click="checklistAdmin.checklistItemGroupCreate()">Nuevo</button>
-          </div>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="headings">
+          <th class="column-title">Item</th>
+          <th class="column-title">Grupo</th>
+          <th class="column-title">Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in checklistAdmin.checklistItems">
+          <td>{{ item.name }}</td>
+          <td>
+            <select class="selectpicker" ng-model="item.checklist_item_group_id" ng-change="checklistAdmin.updateChecklistItem(item)">
+              <option ng-repeat="item_group in checklistAdmin.checklistItemGroups" ng-value="item_group.id">{{ item_group.name }}</option>
+            </select>
+          </td>
+          <td><input type="checkbox" class="flat" ng-true-value="1" ng-false-value="0" ng-model="item.status" ng-change="checklistAdmin.updateChecklistItem(item)"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">Grupos
+        <div class="btn-group pull-right">
+          <button class="btn btn-default btn-xs" ng-click="checklistAdmin.checklistItemGroupCreate()">Nuevo</button>
         </div>
-        <div class="table-responsive">
-          <table class="table">
-            <thead>
-              <tr class="headings">
-                <th class="column-title">Grupo</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="item_group in checklistAdmin.checklistItemGroups">
-                <td>{{ item_group.name }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr class="headings">
+              <th class="column-title">Grupo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item_group in checklistAdmin.checklistItemGroups">
+              <td>{{ item_group.name }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

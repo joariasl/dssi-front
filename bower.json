@@ -22,7 +22,8 @@
     "pnotify": "^3.2.0",
     "angular-pnotify": "^0.1.2",
     "angular-smart-table": "^2.1.8",
-    "angular-permission": "^5.3.2"
+    "angular-permission": "^5.3.2",
+    "startbootstrap-sb-admin-2": "startbootstrap-sb-admin#^3.3.7+1"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
@@ -37,6 +38,12 @@
       "main": [
         "moment.js",
         "locale/es.js"
+      ]
+    },
+    "startbootstrap-sb-admin-2": {
+      "main": [
+        "dist/css/sb-admin-2.css",
+        "dist/js/sb-admin-2.js"
       ]
     }
   },

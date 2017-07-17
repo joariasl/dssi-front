@@ -1,101 +1,99 @@
-<div class="x_content">
-  <form ng-submit="keyLoansReturn.update()" class="form-horizontal form-label-left">
-    <div class="x_title">
-      <h2>Prestamo de llave</h2>
-      <div class="clearfix"></div>
+<form ng-submit="keyLoansReturn.update()" class="form-horizontal form-label-left">
+  <div class="x_title">
+    <h2>Prestamo de llave</h2>
+    <div class="clearfix"></div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Fecha de entrega</label>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <p class="input-group">
+        <input type="text" class="form-control" value="{{ keyLoansReturn.keyLoanDelivery.delivery_datetime | date:'dd/MM/yyyy' }}" readonly>
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" disabled><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </p>
     </div>
-    <div class="form-group">
-      <label class="col-md-2 col-sm-3 col-xs-12 control-label">Fecha de entrega</label>
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <p class="input-group">
-          <input type="text" class="form-control" value="{{ keyLoansReturn.keyLoanDelivery.delivery_datetime | date:'dd/MM/yyyy' }}" readonly>
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default" disabled><i class="glyphicon glyphicon-calendar"></i></button>
-          </span>
-        </p>
-      </div>
-      <label class="col-md-2 col-sm-3 col-xs-12 control-label">Hora de entrega</label>
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <div uib-timepicker ng-model="keyLoansReturn.keyLoanDelivery.delivery_datetime" show-meridian="false" ng-disabled="true" readonly-input="true"></div>
-      </div>
+    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Hora de entrega</label>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div uib-timepicker ng-model="keyLoansReturn.keyLoanDelivery.delivery_datetime" show-meridian="false" ng-disabled="true" readonly-input="true"></div>
     </div>
-    <div class="form-group">
-      <label class="col-md-2 col-sm-3 col-xs-12 control-label">N° Llave</label>
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <input ng-model="keyLoansReturn.keyLoanDelivery.key.code" type="text" class="form-control" readonly>
-      </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 col-sm-3 col-xs-12 control-label">N° Llave</label>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <input ng-model="keyLoansReturn.keyLoanDelivery.key.code" type="text" class="form-control" readonly>
     </div>
-    <div class="form-group">
-      <label class="col-md-2 col-sm-3 col-xs-12 control-label">RUT</label>
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <input-rut ng-model="keyLoansReturn.keyLoanDelivery.amphitryon_delivery.person.rut" ng-change="keyLoanDelivery.searchAmphitryon()" class="form-control col-md-7 col-xs-12" readonly></input-rut>
-      </div>
-      <label class="col-md-1 col-sm-4 col-xs-12">Área</label>
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <input ng-model="keyLoansReturn.keyLoanDelivery.amphitryon_delivery.area.name" type="text" class="form-control" readonly>
-      </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 col-sm-3 col-xs-12 control-label">RUT</label>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <input-rut ng-model="keyLoansReturn.keyLoanDelivery.amphitryon_delivery.person.rut" ng-change="keyLoanDelivery.searchAmphitryon()" class="form-control col-md-7 col-xs-12" readonly></input-rut>
     </div>
-    <div class="form-group">
-      <label class="col-md-2 col-sm-3 col-xs-12 control-label">Nombre</label>
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <input value="{{ keyLoansReturn.keyLoanDelivery.amphitryon_delivery.person.name }} {{ keyLoansReturn.keyLoanDelivery.amphitryon_delivery.person.lastname }}" type="text" class="form-control" readonly>
-      </div>
+    <label class="col-md-1 col-sm-4 col-xs-12">Área</label>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <input ng-model="keyLoansReturn.keyLoanDelivery.amphitryon_delivery.area.name" type="text" class="form-control" readonly>
     </div>
-    <div class="ln_solid"></div>
-    <div class="x_title">
-      <h2>Registrar devolución de llave</h2>
-      <div class="clearfix"></div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Nombre</label>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <input value="{{ keyLoansReturn.keyLoanDelivery.amphitryon_delivery.person.name }} {{ keyLoansReturn.keyLoanDelivery.amphitryon_delivery.person.lastname }}" type="text" class="form-control" readonly>
     </div>
-    <div class="form-group">
-      <label class="col-md-2 col-sm-3 col-xs-12 control-label">RUT</label>
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <input-rut ng-model="keyLoansReturn.search_amphitryon_rut" ng-change="keyLoansReturn.searchAmphitryon()" class="form-control col-md-7 col-xs-12" required></input-rut>
-      </div>
+  </div>
+  <div class="ln_solid"></div>
+  <div class="x_title">
+    <h2>Registrar devolución de llave</h2>
+    <div class="clearfix"></div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 col-sm-3 col-xs-12 control-label">RUT</label>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <input-rut ng-model="keyLoansReturn.search_amphitryon_rut" ng-change="keyLoansReturn.searchAmphitryon()" class="form-control col-md-7 col-xs-12" required></input-rut>
     </div>
-    <div class="form-group">
-      <label class="col-md-2 col-sm-3 col-xs-12 control-label">Nombre</label>
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <input value="{{ keyLoansReturn.amphitryon.person.name }} {{ keyLoansReturn.amphitryon.person.lastname }}" type="text" class="form-control" readonly="readonly">
-      </div>
-      <label class="col-md-2 col-sm-3 col-xs-12 control-label">Área</label>
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <input ng-model="keyLoansReturn.amphitryon.area.name" type="text" class="form-control" readonly="readonly">
-      </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Nombre</label>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <input value="{{ keyLoansReturn.amphitryon.person.name }} {{ keyLoansReturn.amphitryon.person.lastname }}" type="text" class="form-control" readonly="readonly">
     </div>
-    <div class="form-group">
-      <label class="col-md-2 col-sm-3 col-xs-12 control-label">Fecha</label>
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <p class="input-group">
-          <input type="text" class="form-control" uib-datepicker-popup="{{keyLoansReturn.datepicker.format}}" ng-model="keyLoansReturn.keyLoan.return_datetime" is-open="keyLoansReturn.datepicker.opened" datepicker-options="keyLoansReturn.datepicker.dateOptions" close-text="Close" alt-input-formats="keyLoansReturn.datepicker.altInputFormats" required/>
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="keyLoansReturn.datepicker.open()"><i class="glyphicon glyphicon-calendar"></i></button>
-          </span>
-        </p>
-      </div>
-      <label class="col-md-2 col-sm-3 col-xs-12 control-label">Hora</label>
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <div uib-timepicker ng-model="keyLoansReturn.keyLoan.return_datetime" show-meridian="false" required></div>
-      </div>
+    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Área</label>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <input ng-model="keyLoansReturn.amphitryon.area.name" type="text" class="form-control" readonly="readonly">
     </div>
-    <div class="form-group">
-      <label class="col-md-2 col-sm-3 col-xs-12 control-label">Condición</label>
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <select class="form-control" ng-model="keyLoansReturn.keyLoanDelivery.key.key_condition_id">
-          <option ng-repeat="item_condition in keyLoansReturn.keyConditions" ng-value="item_condition.id">{{ item_condition.name }}</option>
-        </select>
-      </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Fecha</label>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <p class="input-group">
+        <input type="text" class="form-control" uib-datepicker-popup="{{keyLoansReturn.datepicker.format}}" ng-model="keyLoansReturn.keyLoan.return_datetime" is-open="keyLoansReturn.datepicker.opened" datepicker-options="keyLoansReturn.datepicker.dateOptions" close-text="Close" alt-input-formats="keyLoansReturn.datepicker.altInputFormats" required/>
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="keyLoansReturn.datepicker.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </p>
     </div>
-    <div class="form-group">
-      <label class="col-md-2 col-sm-3 col-xs-12 control-label">Observaciones</label>
-      <div class="col-md-10 col-sm-6 col-xs-12">
-        <textarea class="form-control"></textarea>
-      </div>
+    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Hora</label>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div uib-timepicker ng-model="keyLoansReturn.keyLoan.return_datetime" show-meridian="false" required></div>
     </div>
-    <div class="ln_solid"></div>
-    <div class="form-group pull-right">
-      <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-3">
-        <button type="submit" class="btn btn-success">Registrar</button>
-      </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Condición</label>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <select class="form-control" ng-model="keyLoansReturn.keyLoanDelivery.key.key_condition_id">
+        <option ng-repeat="item_condition in keyLoansReturn.keyConditions" ng-value="item_condition.id">{{ item_condition.name }}</option>
+      </select>
     </div>
-  </form>
-</div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Observaciones</label>
+    <div class="col-md-10 col-sm-6 col-xs-12">
+      <textarea class="form-control"></textarea>
+    </div>
+  </div>
+  <div class="ln_solid"></div>
+  <div class="form-group pull-right">
+    <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-3">
+      <button type="submit" class="btn btn-success">Registrar</button>
+    </div>
+  </div>
+</form>
