@@ -36,7 +36,7 @@ angular.module('dssiFrontApp')
     }
 
     function ok(){
-      saveChecklistItemGroup(vm.checklistItem);
+      saveChecklistItemGroup(vm.checklistItemGroup);
     }
 
     function formSubmit(){
