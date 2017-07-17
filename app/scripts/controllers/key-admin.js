@@ -10,7 +10,7 @@
 angular.module('dssiFrontApp')
   .controller('KeyAdminCtrl', function ($scope, Key, KeyCondition, $localStorage, $uibModal, notificationService, KeyLoanStatus, $log) {
     var vm = this;
-    vm.updateKeyConditionItem = updateKeyConditionItem;
+    vm.updateKey = updateKey;
     vm.keyCreate = keyCreate;
     vm.loadKeys = loadKeys;
     vm.keyLoanStatuses = KeyLoanStatus.key_loan_statuses;
@@ -53,9 +53,10 @@ angular.module('dssiFrontApp')
       $log.log(vm.keyConditions);
     }
 
-    function updateKeyConditionItem(keyConditionItem){
-      delete keyConditionItem.key_condition;
-      KeyConditionItem.update({id: keyConditionItem.id}, keyConditionItem).$promise.then(function(){
+    function updateKey(key){
+      Key.update({id: key.id}, {
+        key_condition_id: key.key_condition_id
+      }).$promise.then(function(){
         notificationService.success('¡Actualizado!');
       }, function(){
         notificationService.error('No ha sido posible atender la solicitud.');
