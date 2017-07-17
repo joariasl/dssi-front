@@ -31,7 +31,6 @@ angular.module('dssiFrontApp')
       }
     };
 
-    vm.search_amphitryon_rut = null;
     vm.amphitryon = null;
     vm.key = null;
 
@@ -41,20 +40,20 @@ angular.module('dssiFrontApp')
 
     ////////////
 
-    function searchAmphitryon(){
-      var rut = vm.search_amphitryon_rut;
-      var searchRut = rut.substr(0,rut.length-1).replace(/[^\d]*/g,'');
+    function searchAmphitryon(rut){
+      var searchRut = rut;//rut.substr(0,rut.length-1).replace(/[^\d]*/g,'');
       if(searchRut){
-        vm.amphitryon = Amphitryon.get({
-          person_rut: searchRut
+        var amphitryon = Amphitryon.query({
+          search: {"person_rut": searchRut}
         });
+        return amphitryon.$promise;
       }
     }
 
     function searchKey(code){
       var keys = Key.query({
         property_id: $localStorage.property_id,
-        search: {"code":code}
+        search: {"code": code}
       });
       return keys.$promise;
     }
