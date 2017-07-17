@@ -162,7 +162,7 @@ angular
           controller: 'KeyLoansCtrl',
           controllerAs: 'keyLoans',
           ncyBreadcrumb: {
-            label: 'Llaves'
+            label: 'Préstamo de Llaves'
           }
         })
           .state('access-control.key-loans.key-loans', {
@@ -180,8 +180,8 @@ angular
             controller: 'KeyLoansReturnCtrl',
             controllerAs: 'keyLoansReturn',
             ncyBreadcrumb: {
-              label: 'Devolución',
-              parent: 'access-control.key-loans.view'
+              label: 'Préstamo',
+              parent: 'access-control.key-loans.key-loans'
             }
           })
           .state('access-control.key-loans.delivery', {
