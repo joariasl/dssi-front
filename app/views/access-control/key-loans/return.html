@@ -8,15 +8,11 @@
       <label class="col-md-2 col-sm-3 col-xs-12 control-label">Fecha de entrega</label>
       <div class="col-md-4 col-sm-6 col-xs-12">
         <p class="input-group">
-          <input type="text" class="form-control" value="{{ keyLoansReturn.keyLoanDelivery.delivery_datetime | date:'dd/MM/yyyy' }}" readonly>
+          <input type="text" class="form-control" value="{{ keyLoansReturn.keyLoanDelivery.delivery_datetime | amDateFormat:'DD/MM/YYYY HH:mm' }}" readonly>
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" disabled><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
         </p>
-      </div>
-      <label class="col-md-2 col-sm-3 col-xs-12 control-label">Hora de entrega</label>
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <div uib-timepicker ng-model="keyLoansReturn.keyLoanDelivery.delivery_datetime" show-meridian="false" ng-disabled="true" readonly-input="true"></div>
       </div>
     </div>
     <div class="form-group">
