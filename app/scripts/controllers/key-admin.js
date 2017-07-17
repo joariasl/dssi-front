@@ -13,16 +13,24 @@ angular.module('dssiFrontApp')
     vm.updateKeyConditionItem = updateKeyConditionItem;
     vm.keyCreate = keyCreate;
 
-    vm.keyItems = Key.query({
-      property_id: $localStorage.property_id
-    });
+    loadKeys();
 
-    vm.keyConditions = KeyCondition.query({
-      property_id: $localStorage.property_id
-    });
-    $scope.keyConditions = vm.keyConditions;
+    loadKeyConditions();
 
     ////////////
+
+    function loadKeys(){
+      vm.keys = Key.query({
+        property_id: $localStorage.property_id
+      });
+    }
+
+    function loadKeyConditions(){
+      vm.keyConditions = KeyCondition.query({
+        property_id: $localStorage.property_id
+      });
+      $scope.keyConditions = vm.keyConditions;
+    }
 
     function updateKeyConditionItem(keyConditionItem){
       delete keyConditionItem.key_condition;
@@ -49,6 +57,7 @@ angular.module('dssiFrontApp')
           }
         }
       }).result.finally(function() {
+        loadKeys();
       });
     }
 
