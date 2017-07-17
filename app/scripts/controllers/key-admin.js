@@ -20,6 +20,7 @@ angular.module('dssiFrontApp')
     vm.keyConditions = KeyCondition.query({
       property_id: $localStorage.property_id
     });
+    $scope.keyConditions = vm.keyConditions;
 
     ////////////
 
