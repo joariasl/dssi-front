@@ -22,23 +22,31 @@
     <div class="form-group">
       <label class="col-md-2 col-sm-3 col-xs-12 control-label">N° Llave</label>
       <div class="col-md-4 col-sm-6 col-xs-12">
-        <input ng-model="keyLoansDelivery.search_key_code" ng-change="keyLoansDelivery.searchKey()" type="text" class="form-control" required>
+        <input type="text" ng-model="keyLoansDelivery.key" placeholder="Código" typeahead-editable="false" uib-typeahead="key as key.code for key in keyLoansDelivery.searchKey($viewValue)" class="form-control" required>
       </div>
     </div>
     <div class="form-group">
       <label class="col-md-2 col-sm-3 col-xs-12 control-label">RUT</label>
       <div class="col-md-4 col-sm-6 col-xs-12">
-        <input-rut ng-model="keyLoansDelivery.search_amphitryon_rut" ng-change="keyLoansDelivery.searchAmphitryon()" class="form-control col-md-7 col-xs-12" required></input-rut>
+        <script type="text/ng-template" id="amphitryonResultTemplate.html">
+          <a>
+            <span ng-bind-html="match.model.person_rut+'-'+match.model.person.dv | uibTypeaheadHighlight:query"></span>
+            <br>
+            <span>{{ match.model.person.name + ' ' + match.model.person.lastname }}</span>
+          </a>
+          <div class="divider" style="margin: 0;"></div>
+        </script>
+        <input type="text" ng-model="keyLoansDelivery.amphitryon" placeholder="RUT" typeahead-editable="false" uib-typeahead="amphitryon as amphitryon.person_rut for amphitryon in keyLoansDelivery.searchAmphitryon($viewValue)" typeahead-template-url="amphitryonResultTemplate.html" class="form-control" required>
       </div>
       <label class="col-md-1 col-sm-4 col-xs-12">Área</label>
       <div class="col-md-4 col-sm-6 col-xs-12">
-        <input ng-model="keyLoansDelivery.amphitryon.area.name" type="text" class="form-control" readonly="readonly">
+        <input ng-model="keyLoansDelivery.amphitryon.area.name" type="text" class="form-control" readonly>
       </div>
     </div>
     <div class="form-group">
       <label class="col-md-2 col-sm-3 col-xs-12 control-label">Nombre</label>
       <div class="col-md-4 col-sm-6 col-xs-12">
-        <input value="{{ keyLoansDelivery.amphitryon.person.name }} {{ keyLoansDelivery.amphitryon.person.lastname }}" type="text" class="form-control" readonly="readonly">
+        <input value="{{ keyLoansDelivery.amphitryon.person.name }} {{ keyLoansDelivery.amphitryon.person.lastname }}" type="text" class="form-control" readonly>
       </div>
     </div>
     <div class="ln_solid"></div>

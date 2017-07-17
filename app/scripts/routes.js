@@ -160,13 +160,13 @@ angular
           url: '/key-loans',
           templateUrl: 'views/access-control/keyloans.html',
           controller: 'KeyLoansCtrl',
-          controllerAs: 'keyloans',
+          controllerAs: 'keyLoans',
           ncyBreadcrumb: {
-            label: 'Llaves'
+            label: 'Préstamo de Llaves'
           }
         })
-          .state('access-control.key-loans.view', {
-            url: '/view',
+          .state('access-control.key-loans.key-loans', {
+            url: '/key-loans',
             templateUrl: 'views/access-control/key-loans/list.html',
             controller: 'KeyLoansViewCtrl',
             controllerAs: 'keyLoansView',
@@ -174,18 +174,18 @@ angular
               label: 'Buscar'
             }
           })
-          .state('access-control.key-loans.return', {
-            url: '/view/{id}',
+          .state('access-control.key-loans.key-loan', {
+            url: '/key-loans/{id}',
             templateUrl: 'views/access-control/key-loans/return.html',
             controller: 'KeyLoansReturnCtrl',
             controllerAs: 'keyLoansReturn',
             ncyBreadcrumb: {
-              label: 'Devolución',
-              parent: 'access-control.key-loans.view'
+              label: 'Préstamo',
+              parent: 'access-control.key-loans.key-loans'
             }
           })
           .state('access-control.key-loans.delivery', {
-            url: '/delivery',
+            url: '/key-loans/delivery',
             templateUrl: 'views/access-control/key-loans/delivery.html',
             controller: 'KeyLoansDeliveryCtrl',
             controllerAs: 'keyLoansDelivery',

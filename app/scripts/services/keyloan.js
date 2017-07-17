@@ -9,12 +9,12 @@
  */
 angular.module('dssiFrontApp')
   .factory('KeyLoan', function ($resource, urls) {
-    var service = $resource(urls.BASE_API + '/key-loans/:id', null,
+    var service = $resource(urls.BASE_API + '/key-loans/:id', {id: '@id'},
     {
       'update': { method:'PUT' },
       'query' : {method: 'GET', isArray:true, transformResponse : function(data, headers) {
         var jsonData = angular.fromJson(data);
-        if(typeof jsonData === 'array'){
+        if(angular.isArray(jsonData)){
           return jsonData;
         } else {
           headers()['total'] = jsonData.total;

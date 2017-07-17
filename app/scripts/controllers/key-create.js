@@ -2,22 +2,26 @@
 
 /**
  * @ngdoc function
- * @name dssiFrontApp.controller:ChecklistItemGroupCreateCtrl
+ * @name dssiFrontApp.controller:KeyCreateCtrl
  * @description
- * # ChecklistItemGroupCreateCtrl
+ * # KeyCreateCtrl
  * Controller of the dssiFrontApp
  */
 angular.module('dssiFrontApp')
-  .controller('ChecklistItemGroupCreateCtrl', function ($scope, ChecklistItemGroup, $uibModal, notificationService) {
+  .controller('KeyCreateCtrl', function ($scope, Key, $uibModal, notificationService, $localStorage, $log) {
     var vm = this;
 
     // Set scope to modal
     $scope = $scope.$parent || $scope;
 
-    vm.checklistItemGroup = new ChecklistItemGroup({
-      name: null,
-      checklist_id: $scope.$parent.checklist.id || null
+    vm.key = new Key({
+      code: null,
+      property_id: $localStorage.property_id,
+      key_condition_id: 1
     });
+
+    vm.keyConditions = $scope.$parent.keyConditions || null;
+    $log.log($scope.$parent);
 
     // Replace method from parent ModalDefaultCtrl
     var parentClose = $scope.close;
@@ -26,8 +30,8 @@ angular.module('dssiFrontApp')
 
     ////////////
 
-    function saveChecklistItemGroup(checklistItemGroup){
-      checklistItemGroup.$save().then(function(){
+    function saveKey(key){
+      key.$save().then(function(){
         notificationService.success('¡Guardado!');
         parentClose();
       }, function(){
@@ -36,10 +40,10 @@ angular.module('dssiFrontApp')
     }
 
     function ok(){
-      saveChecklistItemGroup(vm.checklistItemGroup);
+      saveKey(vm.key);
     }
 
     function formSubmit(){
-      saveChecklistItemGroup(vm.checklistItemGroup);
+      saveKey(vm.key);
     }
   });
