@@ -20,7 +20,12 @@
           <!-- Search -->
           <tr>
     				<th><input st-search="code" class="form-control" placeholder="Código" type="text"></th>
-            <th></th>
+            <th>
+              <select st-search="key_condition_id" class="form-control">
+                <option value=""></option>
+                <option ng-repeat="item_condition in keyAdmin.keyConditions" ng-value="item_condition.id">{{ item_condition.name }}</option>
+              </select>
+            </th>
             <th></th>
     			</tr>
         </thead>
