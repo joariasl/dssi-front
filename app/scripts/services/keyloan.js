@@ -14,7 +14,7 @@ angular.module('dssiFrontApp')
       'update': { method:'PUT' },
       'query' : {method: 'GET', isArray:true, transformResponse : function(data, headers) {
         var jsonData = angular.fromJson(data);
-        if(typeof jsonData === 'array'){
+        if(angular.isArray(jsonData)){
           return jsonData;
         } else {
           headers()['total'] = jsonData.total;
