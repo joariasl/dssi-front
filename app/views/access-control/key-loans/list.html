@@ -1,5 +1,5 @@
 <div class="x_title">
-  <h2>Buscar Llaves</h2>
+  <h2>Buscar Préstamo de Llaves</h2>
   <div class="clearfix"></div>
 </div>
 <div class="x_content">
@@ -12,9 +12,7 @@
           </th>
           <th st-sort="id" class="text-center">N° Folio</th>
           <th class="text-center">Fecha de entrega</th>
-          <th class="text-center">Hora de entrega</th>
           <th class="text-center">Fecha de devolución</th>
-          <th class="text-center">Hora de devolución</th>
           <th class="text-center">Llave</th>
           <th class="text-center">Estado</th>
           <th class="text-center">Entregada a</th>
@@ -26,8 +24,6 @@
         <tr>
           <th></th>
   				<th><input st-search="id" class="form-control" placeholder="Id" type="number"></th>
-          <th></th>
-          <th></th>
           <th></th>
           <th></th>
   				<th><input st-search="key.code" class="form-control" placeholder="Código" type="text"></th>
@@ -42,10 +38,8 @@
         <tr ng-repeat="keyLoan in keyLoansView.keyLoans">
           <td><input type="checkbox" class="flat" name="table_records"></td>
           <td>{{ keyLoan.id }}</td>
-          <td>{{ keyLoan.delivery_datetime | limitTo: 10 }}</td>
-          <td>{{ keyLoan.delivery_datetime | limitTo: -9 }}</td>
-          <td>{{ keyLoan.return_datetime | limitTo: 10 }}</td>
-          <td>{{ keyLoan.return_datetime | limitTo: -9 }}</td>
+          <td>{{ keyLoan.delivery_datetime | amDateFormat:'DD/MM/YYYY HH:mm' }}</td>
+          <td>{{ keyLoan.return_datetime | amDateFormat:'DD/MM/YYYY HH:mm' }}</td>
           <td>{{ keyLoan.key.code }}</td>
           <td>{{ keyLoansView.keyLoanStatus(keyLoan) }}</td>
           <td>{{ keyLoan.amphitryon_delivery.person.name }} {{ keyLoan.amphitryon_delivery.person.lastname }}</td>
@@ -62,14 +56,14 @@
       </tbody>
       <tbody ng-show="keyLoansView.keyLoans.$promise.$$state.status === 0">
       	<tr>
-  		    <td colspan="12" class="text-center">
+  		    <td colspan="10" class="text-center">
             <i class="fa fa-refresh fa-spin fa-2x fa-fw" aria-hidden="true"></i>
           </td>
       	</tr>
     	</tbody>
       <tfoot>
   			<tr>
-  				<td colspan="12" class="text-center">
+  				<td colspan="10" class="text-center">
   					<div st-pagination="" st-items-by-page="15" st-displayed-pages="7" st-template="views/smart-table-pagination.html"></div>
   				</td>
   			</tr>
