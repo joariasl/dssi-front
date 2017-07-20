@@ -10,8 +10,11 @@
  */
 angular
   .module('dssiFrontApp')
-  .run(function($rootScope, Auth, PermPermissionStore, $urlRouter, $q){
+  .run(function($rootScope, Auth, PermPermissionStore, $urlRouter, $q, urls, $localStorage){
     $rootScope.appReady = false;
+
+    $rootScope.urls = urls;
+    $rootScope.token = $localStorage.token;
 
     var promise1 = Auth.getUser().then(function(result){
       $rootScope.authenticate_user = result.data;
