@@ -37,9 +37,9 @@
           <td>{{ checklistRegistry.id }}</td>
           <td>{{ checklistRegistry.date | date }}</td>
           <td>{{ checklistRegistries.checklistTurns[checklistRegistry.turn-1].name }}</td>
-          <td ng-repeat="item_group in checklistRegistries.checklistItemGroups | orderBy : 'name'">{{ 100 * checklistRegistry.total_groups[item_group.id].total_ok / checklistRegistry.total_groups[item_group.id].total | number : 0 }}%</td>
+          <td ng-repeat="item_group in checklistRegistries.checklistItemGroups | orderBy : 'name'" ng-init="show_percentage=(checklistRegistry.total_groups[item_group.id].total > 0)"><span ng-if="show_percentage">{{ 100 * checklistRegistry.total_groups[item_group.id].total_ok / checklistRegistry.total_groups[item_group.id].total | number : 0 }}%</span><span ng-if="!show_percentage">-</td>
           <!-- Total % cell -->
-          <td>{{ 100 * checklistRegistry.total_ok / checklistRegistry.checklist_entries.length | number : 0 }}%</td>
+          <td ng-init="show_percentage=(checklistRegistry.checklist_entries.length > 0)"><span ng-if="show_percentage">{{ 100 * checklistRegistry.total_ok / checklistRegistry.checklist_entries.length | number : 0 }}%</span><span ng-if="!show_percentage">-</span></td>
           <!-- /Total % cell -->
           <td>{{ checklistRegistry.credential_delivered }}</td>
           <td>{{ checklistRegistry.credential_avaliable }}</td>
