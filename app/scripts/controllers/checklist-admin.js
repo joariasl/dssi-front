@@ -36,12 +36,14 @@ angular.module('dssiFrontApp')
     }
 
     function loadChecklistItems(){
-      vm.checklistItems = ChecklistItem.query({
-        checklist_id: vm.checklist.id
-      });
-      vm.checklistItems.$promise.then(function(){
-        vm.checklist.checklist_items = vm.checklistItems;
-      });
+      if(vm.checklist.id){
+        vm.checklistItems = ChecklistItem.query({
+          checklist_id: vm.checklist.id
+        });
+        vm.checklistItems.$promise.then(function(){
+          vm.checklist.checklist_items = vm.checklistItems;
+        });
+      }
     }
 
     function loadChecklistItemGroups(){
@@ -98,7 +100,6 @@ angular.module('dssiFrontApp')
         }
       }).result.finally(function() {
         loadChecklistItemGroups();
-        loadChecklistItems();
       });
     }
   });
