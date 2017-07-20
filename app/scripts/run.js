@@ -15,6 +15,7 @@ angular
 
     $rootScope.urls = urls;
     $rootScope.token = $localStorage.token;
+    $rootScope.property_id = $localStorage.property_id;
 
     var promise1 = Auth.getUser().then(function(result){
       $rootScope.authenticate_user = result.data;
