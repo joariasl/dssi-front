@@ -54,12 +54,17 @@ angular.module('dssiFrontApp')
     }
 
     function updateChecklistItem(checklistItem){
-      delete checklistItem.checklist_item_group;
-      ChecklistItem.update({id: checklistItem.id}, checklistItem).$promise.then(function(){
-        notificationService.success('¡Actualizado!');
-      }, function(){
-        notificationService.error('No ha sido posible atender la solicitud.');
-      });
+      if(checklistItem.checklist_item_group_id){
+        delete checklistItem.checklist_item_group;
+        ChecklistItem.update({id: checklistItem.id}, {
+          checklist_item_group_id: checklistItem.checklist_item_group_id,
+          status: checklistItem.status
+          }).$promise.then(function(){
+          notificationService.success('¡Actualizado!');
+        }, function(){
+          notificationService.error('No ha sido posible atender la solicitud.');
+        });
+      }
     }
 
     function checklistItemCreate(){
@@ -100,6 +105,7 @@ angular.module('dssiFrontApp')
         }
       }).result.finally(function() {
         loadChecklistItemGroups();
+        loadChecklistItems();
       });
     }
   });
